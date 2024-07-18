@@ -1,0 +1,22 @@
+footer {
+    background: #1c1c1c;
+    height: 110px;
+    padding: 20px 0;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    gap: 35px;
+    a {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17.7px;
+        text-transform: uppercase;
+    }
+}
