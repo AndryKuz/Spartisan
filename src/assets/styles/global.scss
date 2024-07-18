@@ -1,17 +1,17 @@
-
+@use "sass:math";
 // $mainColor: #ffff;
 
-// $fontSize: toRem(16);
+$fontSize: 16px;
 
-// $fontWeight: 300;
+$fontWeight: 300;
 
-// $fontFamily: "Montserrat";
+$fontFamily: "Montserrat";
 
-// $minWidth: 320;
-// $maxWidth: 1920;
-// $maxWidthContainer: 1200;
-// $containerPadding: 30;
-// $containerWidth: $maxWidthContainer + $containerPadding;
+$minWidth: 320;
+$maxWidth: 1920;
+$maxWidthContainer: 1200;
+$containerPadding: 30;
+$containerWidth: $maxWidthContainer + $containerPadding;
 
 // $pc: em($containerWidth);
 // $tablet: em(991.98);
@@ -25,14 +25,16 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    max-width: 1920px;
+    max-width: $maxWidth;
     main {
         flex: 1 1 auto;
     }
 
     .container {
-        max-width: 1200px;
+        max-width: $containerWidth;
         margin: 0 auto;
-        padding: 0 15px;
+        @if ($containerPadding > 0) {
+            padding: 0 math.div($containerPadding, 2) + px;
+        }
     }
 }

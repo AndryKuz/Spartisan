@@ -1,0 +1,44 @@
+@use "../../assets/styles/mixins.scss" as *;
+
+.pageParent {
+    position: relative;
+    background-image: url("../../assets/images/bg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+.mainPage {
+    width: 996px;
+    @include absolute-center;
+    text-align: center;
+
+    h3,
+    h2 {
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 100px;
+    }
+    h2 {
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    span {
+        margin: 20px 0;
+        display: inline-block;
+        position: relative;
+        width: 1px;
+        height: 140px;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 100%;
+            background: #bca476;
+        }
+    }
+}
