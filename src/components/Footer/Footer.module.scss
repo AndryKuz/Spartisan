@@ -1,22 +1,43 @@
+@use '../../assets/styles/global.scss' as *;
+
+
 footer {
     background: #1c1c1c;
-    height: 110px;
-    padding: 20px 0;
+    
+    
 }
 
 .footer {
+    max-height: 110px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 40px;
+    padding: 20px 0;
+    @media(max-width:378px) {
+        max-height: 142px;
+    }
 }
 
 nav {
     display: flex;
+    flex-wrap: wrap;
     gap: 35px;
+    @media(max-width:660px) {
+        gap: 20px;
+    }
+    @media(max-width:378px) {
+        gap: 12px;
+    }
     a {
         font-weight: 500;
         font-size: 14px;
         line-height: 17.7px;
         text-transform: uppercase;
     }
+}
+
+.logo {
+    width: 70px;
+    height: 68px;
 }

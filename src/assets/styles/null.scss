@@ -1,4 +1,4 @@
-
+@use './global.scss' as *;
 * {
     padding: 0px;
     margin: 0px;
@@ -28,11 +28,11 @@ body {
 }
 body {
     color: #fff;
-    font-family: "Montserrat";
+    font-family: $fontFamily;
     background-color: var(--bg);
     line-height: 1;
-    font-size: 16px;
-    font-weight: 300;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;

@@ -1,5 +1,5 @@
 @use '../../assets/styles/global.scss' as *;
-.test {
+.head {
     position: absolute;
     width: 100%;
     top: 0;
@@ -9,11 +9,20 @@
 .header {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-    padding: 20px;
+    padding: 20px 0px;
     gap: 20px;
     justify-content: space-between;
-    @media(max-width:$mobile) {
-        padding: 20px 0;
+    .logo {
+        width: 140px;
+        height: 136px;
+        @media(max-width: $mobile) {
+            width: 122px;
+            height: px;
+        }
+        @media(max-width: $mobileSmall) {
+            width: 102px;
+            height: 99px;
+        }
     }
 }
 

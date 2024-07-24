@@ -1,40 +1,36 @@
 @use "sass:math";
-// $mainColor: #ffff;
 
-$fontSize: 16px;
+
+$fontSize: toRem(16);
 
 $fontWeight: 300;
 
 $fontFamily: "Montserrat";
 
-$minWidth: 320;
-$maxWidth: 1920;
-$maxWidthContainer: 1200;
-$containerPadding: 30;
+$minWidth: 320px;
+$maxWidth: 1920px;
+$maxWidthContainer: 1200px;
+$containerPadding: 30px;
 $containerWidth: $maxWidthContainer + $containerPadding;
 
-// $pc: em($containerWidth);
-// $tablet: em(991.98);
-// $mobile: em(767.98);
-// $mobileSmall: em(479.98);
- $tablet: 991.98px;
- $mobile: 767.98px;
- $mobileSmall: 479.98px;
+
+$pc: $containerWidth + px;
+$tablet: 991.98px;
+$mobile: 767.98px;
+$mobileSmall: 479.98px;
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    max-width: $maxWidth;
-    main {
-        flex: 1 1 auto;
-    }
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-width: $maxWidth;
+  main {
+    flex: 1 1 auto;
+  }
 
-    .container {
-        max-width: $containerWidth;
-        margin: 0 auto;
-        @if ($containerPadding > 0) {
-            padding: 0 math.div($containerPadding, 2) + px;
-        }
-    }
+  .container {
+    max-width: $containerWidth;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
 }

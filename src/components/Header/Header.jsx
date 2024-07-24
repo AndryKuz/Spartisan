@@ -1,30 +1,29 @@
 import style from "./Header.module.scss";
 import { FaInstagram } from "react-icons/fa";
 
-import Logo from "../Logo/Logo";
+import { ReactComponent as LogoSvg } from "../../assets/images/logo.svg";
 
 const Header = () => {
   return (
-    <section className={style.test}>
+    <header className={style.head}>
       <div className="container">
-        <header>
-          <div className={style.header}>
-            <div className={style.instagram}>
-              <FaInstagram />
-            </div>
-            <Logo sizeWidth="140px" sizeHeight="136px" />
-            <div className={style.navigation}>
-              <div className={style.menu}>
-                <button>Book now</button>
-              </div>
-              <button type="button" class={style.burger}>
-                <span></span>
-              </button>
-            </div>
+        <div className={style.header}>
+          <div className={style.instagram}>
+            <FaInstagram />
           </div>
-        </header>
+          <LogoSvg className={style.logo} />
+
+          <div className={style.navigation}>
+            <div className={style.menu}>
+              <button>Book now</button>
+            </div>
+            <button type="button" class={style.burger}>
+              <span></span>
+            </button>
+          </div>
+        </div>
       </div>
-    </section>
+    </header>
   );
 };
 

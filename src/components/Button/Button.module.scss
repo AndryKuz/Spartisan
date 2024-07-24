@@ -1,0 +1,23 @@
+
+.but,
+.book {
+    display: inline-block;
+    text-align: center;
+    height: 50px;
+    line-height: 30px;
+    padding: 0 20px;
+
+    color: #ffff;
+}
+.but {
+    width: 179px;
+    border: 1px solid #ffff;
+}
+
+.book {
+    width: 175px;
+    background: var(--gold);
+    font-weight: 700;
+    font-size: 17px;
+    text-transform: uppercase;
+}
