@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-google-maps/api": "^2.19.3",
     "@reduxjs/toolkit": "^2.2.6",
     "@rsbuild/plugin-sass": "^1.0.1-beta.3",
     "@rsbuild/plugin-svgr": "^1.0.1-beta.3",
@@ -10,6 +11,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "css-loader": "^7.1.2",
+    "prettier-plugin-import-sort": "^0.0.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icon": "^1.0.0",
@@ -27,7 +29,8 @@
     "start": "rsbuild dev",
     "build": "rsbuild build",
     "preview": "rsbuild preview",
-    "component": "generate-react component"
+    "component": "generate-react component",
+    "format": "prettier --write ."
   },
   "eslintConfig": {
     "extends": [

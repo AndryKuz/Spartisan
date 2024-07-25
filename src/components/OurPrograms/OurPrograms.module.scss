@@ -1,0 +1,13 @@
+.programs {
+    margin-bottom: 40px;
+}
+
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    @media(max-width: 410px) {
+        justify-content: center;
+    }
+}

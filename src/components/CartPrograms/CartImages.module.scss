@@ -1,13 +1,30 @@
+@use '../../assets/styles/global.scss' as *;
+
 .cart {
-    width: 342px;
-    height: 380px;
-    position: relative;
+    width: 342px; 
+    height: 380px; 
     display: flex;
     justify-content: center;
     align-items: center;
-    @media (max-width: 1002px) {
-        width: 100%;
-        height: auto;
-        padding: 40px;
+  
+    @media (max-width: $tablet) {
+      width: 280px; 
+      height: 300px; 
     }
-}
+  
+    @media (max-width: $mobile) {
+      width: 200px; 
+      height: 220px; 
+    }
+    @media (max-width: $mobileSmall) {
+        width: 150px; 
+        height: 150px; 
+      }
+  }
+  
+  .image {
+    svg {
+      width: 100%; 
+      height: auto; 
+    }
+  }

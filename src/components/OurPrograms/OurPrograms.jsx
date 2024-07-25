@@ -1,9 +1,9 @@
-import style from "./Offers.module.scss";
+import style from "./OurPrograms.module.scss";
 import Title from "../../common/Title.jsx";
-import { nameButton, nameTitle } from "../../constants/common";
+import { nameButton, nameTitle } from "../../constants/common.js";
 import Button from "../Button/Button.jsx";
 
-const Offers = () => {
+const OurPrograms = () => {
   return (
     <div className={style.programs}>
       <Title titleStart={nameTitle[0][1]} titleEnd={nameTitle[0][2]} />
@@ -16,4 +16,4 @@ const Offers = () => {
   );
 };
 
-export default Offers;
+export default OurPrograms;

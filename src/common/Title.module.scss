@@ -6,16 +6,24 @@
     .title {
         display: flex;
         gap: 20px;
+        @media (max-width: 600px) {
+            flex-wrap: wrap;
+        }
+        @media (max-width: 450px) {
+            
+            
+        }
         h3,
         h4 {
             font-weight: 300;
             font-size: 60px;
             line-height: 73.14px;
             @media (max-width: $tablet) {
-                font-size: 40px;
+                font-size: 50px;
             }
             @media (max-width: $mobile) {
-                font-size: 30px;
+                font-size: 40px;
+                line-height: 30px;
             }
         }
         h4 {
@@ -36,5 +44,9 @@
             height: 100%;
             background: #d1c396;
         }
+        
+         @media(max-width:670px) {
+            display: none;
+         }
     }
 }

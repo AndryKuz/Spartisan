@@ -1,13 +1,15 @@
 import AdditionalServices from "../components/AdditionalServices/AdditionalServices";
 import CartPrograms from "../components/CartPrograms/CartPrograms";
-import Offers from "../components/Offers/Offers";
+import OurPrograms from "../components/OurPrograms/OurPrograms";
+import OurReviews from "../components/OurReviews/OurReviews";
 
 const Home = () => {
   return (
     <>
-      <Offers />
+      <OurPrograms />
       <CartPrograms/>
       <AdditionalServices/>
+      {/* <OurReviews/> */}
     </>
   );
 };

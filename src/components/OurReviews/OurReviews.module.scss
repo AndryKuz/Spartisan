@@ -1,0 +1,22 @@
+@use "../../assets/styles/global.scss" as *;
+
+.ourReviews {
+    margin-bottom: 60px;
+    .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .navigation {
+            display: flex;
+            margin-right: 60px;
+            gap: 30px;
+        }
+    }
+}
+
+.reviews {
+    display: flex;
+    @media (max-width: $tablet) {
+        flex-wrap: wrap;
+    }
+}
