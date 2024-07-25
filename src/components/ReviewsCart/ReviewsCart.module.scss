@@ -1,14 +1,14 @@
 @use "../../assets/styles/global.scss" as *;
 .review {
-    padding: 15px;
     position: relative;
     display: inline-flex;
+    margin: 25px 0 0 15px;
     .main {
         display: flex;
         flex-direction: column;
         background: #1c1c1c;
         max-width: 566px;
-        padding: 20px;
+        padding: 20px 0 20px 20px;
         position: relative;
         z-index: 1;
         p {
@@ -43,14 +43,13 @@
     }
     .border {
         position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 569px;
-        height: 255px;
+        bottom: -15px;
+        left: -15px;
+        width: 100%;
+        height: 100%;
         border: 1px solid var(--gold);
         z-index: 0;
-        @media (max-width: 1200px) {
-            display: none;
-        }
+        
+        
     }
 }

@@ -11,6 +11,8 @@ export const nameTitle = [
     { 1: "Our", 2: "programs" },
     { 1: "Additional", 2: "services" },
     { 1: "Our", 2: "reviews" },
+    { 1: "Our", 2: "gallery" },
+
 ];
 
 export const serviceItems = [

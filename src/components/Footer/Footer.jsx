@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ReactComponent as LogoSvg } from "../../assets/images/logo.svg";
 import style from "./Footer.module.scss";
+import { ROUTES } from "../Routes";
 
 const Footer = () => {
   return (
@@ -11,10 +12,10 @@ const Footer = () => {
             <LogoSvg className={style.logo} />
           </div>
           <nav className={style.menu}>
-            <Link>Gallery</Link>
-            <Link>About Spartisan</Link>
-            <Link>Gift certificates</Link>
-            <Link>Booking</Link>
+            <Link to={ROUTES.GALLERY}>Gallery</Link>
+            <Link to={ROUTES.ABOUT}>About Spartisan</Link>
+            <Link to={ROUTES.GIFT}>Gift certificates</Link>
+            <Link to={ROUTES.BOOKING}>Booking</Link>
           </nav>
         </div>
       </div>

@@ -1,3 +1,4 @@
+@use '../../assets/styles/global.scss' as *;
 .icon {
     display: flex;
     flex-wrap: wrap;
@@ -13,7 +14,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 16px;
+
 }
 .cart {
     flex: 0 0 calc(25% - 16px);
@@ -21,12 +22,15 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    row-gap: 15px;
+    gap: 15px;
     padding: 23px;
-
-    p {
-        font-size: 17px;
-        color: #ffff;
-        line-height: 30px;
+    @media(max-width: 580px) {
+        gap: 10px;
+        padding: 10px;
+        flex: 0 0 calc(33.333% - 16px);
     }
+    @media(max-width: 580px) {
+        flex: 0 0 calc(50% - 16px);
+    }
+
 }
