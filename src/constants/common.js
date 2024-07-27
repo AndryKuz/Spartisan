@@ -12,6 +12,9 @@ export const nameTitle = [
     { 1: "Additional", 2: "services" },
     { 1: "Our", 2: "reviews" },
     { 1: "Our", 2: "gallery" },
+    { 1: "Book", 2: "now" },
+    { 1: "Gift", 2: "Vouchers" },
+    { 1: "About", 2: "Spartisan" },
 
 ];
 
@@ -26,7 +29,7 @@ export const serviceItems = [
     { id: 8, icon: <WarmHerbs />, text: "Sound therapy" },
 ];
 
-export const nameButton = [
+export const nameButtonProgram = [
     {
         id: 1,
         title: "Short pleasure",

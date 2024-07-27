@@ -1,0 +1,46 @@
+.booking {
+  h5 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    margin: 15px 0;
+  }
+  .buttons {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    @media (max-width: 410px) {
+      justify-content: center;
+    }
+    
+  }
+}
+.time {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    .toggleTime {
+        display: flex;
+        
+        gap: 50px;
+        & > div {
+            display: flex;
+            gap: 10px;
+            .first,
+            .second {
+                font-size: 20px;
+                font-weight: 300;
+                line-height: 25px;
+            }
+            .first {
+                font-size: 25px;
+            }
+            .second {
+                margin-top: 2px;
+            }
+            
+            
+        }
+    }
+}

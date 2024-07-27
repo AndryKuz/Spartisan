@@ -1,10 +1,10 @@
-import { nameButton } from "../../constants/common";
-import { BookNow } from "../Button/BookNow";
+import { nameButtonProgram } from "../../constants/common";
+import { MainButton, nameMainButton } from "../Button/MainButton";
 
 import style from "./CartInfo.module.scss";
 
 const CartInfo = () => {
-  const programData = nameButton.find((item) => item.id === 1);
+  const programData = nameButtonProgram.find((item) => item.id === 1);
 
   return (
     <div className={style.cartInfo}>
@@ -13,7 +13,7 @@ const CartInfo = () => {
         <span></span>
         <p className={style.price}>€120 per person</p>
         <p className={style.time}>120 minutes / 5 guests maximum</p>
-        <BookNow />
+        <MainButton buttonLabel={nameMainButton[1]}/>
       </div>
       <div className={style.right}>
         <div className={style.priceMobile}>
@@ -27,7 +27,7 @@ const CartInfo = () => {
           ))}
         </ul>
         <div className={style.button}>
-          <BookNow />
+          <MainButton />
         </div>
       </div>
     </div>

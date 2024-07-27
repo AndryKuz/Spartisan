@@ -8,9 +8,9 @@ const Footer = () => {
     <footer>
       <div className="container">
         <div className={style.footer}>
-          <div>
+          <Link to={ROUTES.HOME}>
             <LogoSvg className={style.logo} />
-          </div>
+          </Link>
           <nav className={style.menu}>
             <Link to={ROUTES.GALLERY}>Gallery</Link>
             <Link to={ROUTES.ABOUT}>About Spartisan</Link>

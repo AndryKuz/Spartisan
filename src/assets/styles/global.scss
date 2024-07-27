@@ -26,11 +26,25 @@ $mobileSmall: 479.98px;
   max-width: $maxWidth;
   main {
     flex: 1 1 auto;
+    margin-top: 170px;
   }
 
   .container {
     max-width: $containerWidth;
     margin: 0 auto;
     padding: 0 15px;
+  }
+}
+
+// Logo size
+.logo {
+  &.large {
+    width: 140px;
+    height: 136px;
+  }
+
+  &.small {
+    width: 82px;
+    height: 80px;
   }
 }

@@ -1,4 +1,7 @@
-
+@use '../../assets/styles/mixins.scss' as *;
+.buttonWrapper {
+    position: relative;
+}
 .but,
 .book {
     display: inline-block;
@@ -14,6 +17,35 @@
     border: 1px solid #ffff;
 }
 
+
+.info {
+    cursor: pointer;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    .wrapCyrcle {
+        
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: #D1C396;
+        position: relative;
+        transition: all .3s ease;
+        &:hover {
+            transition: all .3s ease;
+            background-color: #856741;
+        }
+        svg {
+            @include absolute-center;
+            width: 6px;
+            height: 13px;
+            color: #ffff;
+            
+        }
+    }
+}
+
+// Book
 .book {
     width: 175px;
     background: var(--gold);

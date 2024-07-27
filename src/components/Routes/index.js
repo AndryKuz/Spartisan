@@ -1,7 +1,7 @@
 export const ROUTES = {
     HOME: '/',
     GALLERY: '/gallery',
-    BOOK: '/book now',
+    BOOKING: '/book now',
     GIFT: '/gift',
     ABOUT: '/about',
     PAYMENT: '/payment',

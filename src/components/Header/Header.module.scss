@@ -5,6 +5,7 @@
     top: 0;
     left: 0;
     z-index: 999;
+    
 }
 .header {
     display: grid;
@@ -12,18 +13,6 @@
     padding: 20px 0px;
     gap: 20px;
     justify-content: space-between;
-    .logo {
-        width: 140px;
-        height: 136px;
-        @media(max-width: $mobile) {
-            width: 122px;
-            height: px;
-        }
-        @media(max-width: $mobileSmall) {
-            width: 102px;
-            height: 99px;
-        }
-    }
 }
 
 .instagram {
