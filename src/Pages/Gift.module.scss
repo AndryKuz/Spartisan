@@ -1,0 +1,44 @@
+@use "../assets/styles/mixins.scss" as *;
+@use "../assets/styles/global.scss" as *;
+.gift {
+  .subtitle {
+    margin: 20px 0;
+  }
+  span {
+    text-transform: uppercase;
+    font-size: calc(23px + 7 * (100vw / 1920));
+    line-height: 30px;
+  }
+  .bold {
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .textWrapper {
+    max-width: 690px;
+    margin-bottom: 30px;
+    & > p:first-child {
+      margin-bottom: 15px;
+    }
+    p {
+      line-height: 30px;
+      opacity: 0.8;
+      font-size: 17px;
+      @media (max-width: $mobileSmall) {
+        line-height: 19.5px;
+      }
+    }
+  }
+  .reasons {
+    text-align: center;
+
+  }
+  .test {
+    display: flex;
+    margin: 20px 0;
+    @media(max-width:$mobile) {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+  }
+}

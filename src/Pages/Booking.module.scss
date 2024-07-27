@@ -1,3 +1,4 @@
+@use "../assets/styles/global.scss" as *;
 .booking {
   h5 {
     font-size: 20px;
@@ -13,34 +14,107 @@
     @media (max-width: 410px) {
       justify-content: center;
     }
-    
+  }
+  p {
+    margin-bottom: 20px;
+    font-size: 18px;
+    line-height: 30px;
   }
 }
 .time {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 20px;
+  @media (max-width: 453px) {
+    margin-bottom: 20px;
+  }
+  .toggleTime {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    @media (max-width: 400px) {
+      gap: 25px;
+    }
+    & > div {
+      display: flex;
+      gap: 10px;
+      .first,
+      .second {
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 25px;
+      }
+      .first {
+        font-size: 25px;
+      }
+      .second {
+        margin-top: 2px;
+      }
+    }
+  }
+}
+
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 20px;
+  .data {
     display: flex;
     align-items: center;
-    gap: 20px;
-    .toggleTime {
-        display: flex;
-        
-        gap: 50px;
-        & > div {
-            display: flex;
-            gap: 10px;
-            .first,
-            .second {
-                font-size: 20px;
-                font-weight: 300;
-                line-height: 25px;
-            }
-            .first {
-                font-size: 25px;
-            }
-            .second {
-                margin-top: 2px;
-            }
-            
-            
-        }
+    justify-content: space-between;
+    width: 20%;
+    height: 50px;
+    background-color: rgba(217, 217, 217, 0.1);
+    padding: 0 10px;
+    @media(max-width:500px) {
+      width: 100%;
     }
+  }
+  .people {
+    display: flex;
+    align-items: center;
+    background-color: rgba(217, 217, 217, 0.1);
+    height: 50px;
+    width: 180px;
+    cursor: pointer;
+    .minus,
+    .plus {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 25%;
+      position: relative;
+      height: 50px;
+      &::after {
+        position: absolute;
+        content: "";
+        width: 1px;
+        height: 30px;
+        background: #fff;
+        opacity: 10%;
+      }
+    }
+    .minus::after {
+      right: 0;
+      top: 10px;
+    }
+    .plus::after {
+      top: 10px;
+      left: 0;
+    }
+    .count {
+      display: flex;
+      justify-content: center;
+      flex: 50%;
+    }
+  }
+  h6 {
+    margin-right: 40px;
+    @media (max-width: $mobile) {
+      margin-right: 20px;
+    }
+  }
 }

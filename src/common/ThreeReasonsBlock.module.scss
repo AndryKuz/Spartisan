@@ -1,0 +1,19 @@
+.block {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    padding: 15px;
+    h2 {
+        font-size: 50px;
+        font-weight: 500;
+        line-height: 30px;
+    }
+    h4 {
+        font-weight: 700;
+    }
+    p {
+        opacity: 0.7;
+        line-height: 30px;
+    }
+}

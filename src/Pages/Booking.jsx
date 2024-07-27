@@ -1,11 +1,22 @@
 import Title from "../common/Title";
 import Button from "../components/Button/Button";
 import { nameButtonProgram, nameTitle } from "../constants/common";
-import { ReactComponent as Data } from "../assets/images/data.svg";
 import style from "./Booking.module.scss";
-import {MainButton, nameMainButton} from '../components/Button/MainButton';
+import { MainButton, nameMainButton } from "../components/Button/MainButton";
+
+import { ReactComponent as Data } from "../assets/images/data.svg";
+import { ReactComponent as Minus } from "../assets/images/minus.svg";
+import { ReactComponent as Plus } from "../assets/images/plus.svg";
+import { useState } from "react";
 
 const Booking = () => {
+  const [one, setOne] = useState(1);
+  const increment = () => setOne(one + 1);
+  const decrement = () => {
+    if(one > 1) {
+      setOne(one - 1);
+    }
+  };
   return (
     <section className={style.booking}>
       <Title titleStart={nameTitle[4][1]} titleEnd={nameTitle[4][2]} />
@@ -38,23 +49,24 @@ const Booking = () => {
           </div>
         </form>
       </div>
-      <div>
-        <div>
-          <button>Date</button>
+      <div className={style.search}>
+        <div className={style.data}>
+          <span>Date</span>
           <Data />
         </div>
-        <div>
-          <div>
-            <button>-</button>
+        <div className={style.people}>
+          <div className={style.minus} onClick={decrement}>
+            <Minus />
           </div>
-          <div>1</div>
-          <div>
-            <button>+</button>
+          <div className={style.count}>{one}</div>
+          <div className={style.plus} onClick={increment}>
+            <Plus />
           </div>
         </div>
-        <p>People</p>
-        <MainButton buttonLabel={nameMainButton[0]}/>
+        <h6>People</h6>
+        <MainButton buttonLabel={nameMainButton[0]} />
       </div>
+      <p>Booking places will appear after you click the Search button</p>
     </section>
   );
 };

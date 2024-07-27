@@ -1,5 +1,6 @@
 @use "sass:math";
 @use './global.scss' as *;
+$maxWidth: 1920px;
 //REM
 @function toRem($px, $current: 16) {
   $result: math.div($px, $current) + rem;
