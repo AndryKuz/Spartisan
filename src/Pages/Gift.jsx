@@ -1,15 +1,31 @@
+import { useState } from "react";
+
+import style from "./Gift.module.scss";
+
+import GiftImg from "../assets/images/gift.png";
+
 import ThreeReasonsBlock from "../common/ThreeReasonsBlock";
 import Title from "../common/Title";
 import { nameTitle } from "../constants/common";
-import style from "./Gift.module.scss";
+import { threeReasons } from "../common/ThreeReasonsBlock";
+import RadioButton from "../common/RadioButton/RadioButton";
+import { labelRadio } from "../common/RadioButton/RadioButton";
 
 const Gift = () => {
+  const [selected, setSelected] = useState("");
+
+  const nameLabelButton = labelRadio.slice(0, 6);
+
+  const handleChange = (id) => {
+    setSelected(id);
+  };
   return (
     <section className={style.gift}>
       <Title titleStart={nameTitle[5][1]} titleEnd={nameTitle[5][2]} />
       <div className={style.subtitle}>
         <span>THE BATHHOUSE GIFT VOUCHER:</span>
         <span className={style.bold}>UNIQUE GIFT!</span>
+        <img src={GiftImg} alt="gift voucher" />
       </div>
       <div className={style.textWrapper}>
         <p>
@@ -29,13 +45,37 @@ const Gift = () => {
         </p>
         <p>Card (pdf format). No email will be sent to the beneficiary.</p>
       </div>
+      <div className={style.giftImgMobile}>
+        <img src={GiftImg} alt="gift voucher" />
+      </div>
       <div className={style.reasons}>
         <span>three reasons TO BUY THE GIFT VOUCHER CARD</span>
       </div>
-      <div className={style.test}>
-        <ThreeReasonsBlock/>
-        <ThreeReasonsBlock/>
-        <ThreeReasonsBlock/>
+      <div className={style.reasonsToBuy}>
+        {threeReasons.map((item) => (
+          <ThreeReasonsBlock key={item.count} {...item} />
+        ))}
+      </div>
+      <div className={style.select}>
+        <div className={style.radio}>
+          {nameLabelButton.map((label, index) => (
+            <RadioButton
+              key={index}
+              checked={selected === label.id}
+              onChange={handleChange}
+              label={label.label}
+              currency={label.currency}
+              id={label.id}
+            />
+          ))}
+          <input
+            type="text"
+            placeholder="Your amount"
+            className={style.amount}
+            pattern="\d*"
+            title="Only numbers are allowed"
+          />
+        </div>
       </div>
     </section>
   );
