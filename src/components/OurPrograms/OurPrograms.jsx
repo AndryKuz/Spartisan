@@ -5,6 +5,7 @@ import Button from "../Button/Button.jsx";
 
 
 const OurPrograms = () => {
+
   return (
     <div className={style.programs}>
       <Title titleStart={nameTitle[0][1]} titleEnd={nameTitle[0][2]} />

@@ -10,6 +10,7 @@ import { nameTitle } from "../constants/common";
 import { threeReasons } from "../common/ThreeReasonsBlock";
 import RadioButton from "../common/RadioButton/RadioButton";
 import { labelRadio } from "../common/RadioButton/RadioButton";
+import  Form  from "../components/Form/Form";
 
 const Gift = () => {
   const [selected, setSelected] = useState("");
@@ -77,6 +78,7 @@ const Gift = () => {
           />
         </div>
       </div>
+      <Form/>
     </section>
   );
 };

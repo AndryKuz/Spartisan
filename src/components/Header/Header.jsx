@@ -6,11 +6,14 @@ import { FaInstagram } from "react-icons/fa";
 import { ROUTES } from "../Routes";
 import { ReactComponent as LogoSvg } from "../../assets/images/logo.svg";
 
-const Header = () => {
+
+const Header = ({handleBurger}) => {
   const location = useLocation();
+ 
 
   const isHomePage = location.pathname === "/";
-  const logoСlass = isHomePage ? 'logo large' : 'logo small';
+  const logoСlass = isHomePage ? "logo large" : "logo small";
+ 
   return (
     <header className={style.head}>
       <div className="container">
@@ -32,7 +35,13 @@ const Header = () => {
             <div className={style.menu}>
               <button>Book now</button>
             </div>
-            <button type="button" class={style.burger}>
+            <button
+            onClick={handleBurger}
+              type="button"
+              class={style.burger}
+              // openBurger={isOpenBurger}
+              // closeBurger={() => setOpenBurger(false)}
+            >
               <span></span>
             </button>
           </div>

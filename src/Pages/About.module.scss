@@ -1,0 +1,90 @@
+@use "../assets/styles/mixins.scss" as *;
+@use "../assets/styles/global.scss" as *;
+.main {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid var(--gray);
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  @media (max-width: $mobile) {
+    flex-wrap: wrap;
+  }
+  .description {
+    width: 100%;
+    max-width: 666px;
+    @media (max-width: 992px) {
+      min-width: 400px;
+    }
+    p {
+        font-size: 22px;
+      &:not(:last-child) {
+        margin-bottom: 10px;
+        opacity: 0.9;
+      }
+      &:first-child {
+        margin-top: 20px;
+      }
+      @media (max-width: $mobile) {
+        font-size: 19px;
+      }
+    }
+  }
+  .imageWrapper {
+    display: flex;
+    width: 100%;
+    max-width: 540px;
+    height: auto;
+    position: relative;
+    @media (max-width: $mobile) {
+        height: 400px;
+        text-align: center;
+      }
+
+    .frame {
+      width: 100%;
+      max-width: 347px;
+      height: 100%;
+      max-height: 480px;
+      border: 10px solid var(--gold);
+      @include absolute-center();
+      @media (max-width: 950px) {
+        max-height: 347px;
+      }
+      @media (max-width: 860px) {
+        max-height: 350px;
+        max-width: 250px;
+      }
+    }
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      object-fit: contain;
+      z-index: 2;
+      @media (max-width: $mobile) {
+        height: 70%;
+        top: 60px;
+      }
+    }
+  }
+}
+
+.contactInfo {
+  
+  h2{
+    font-size: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 50px;
+    @media(max-width: 380px) {
+      line-height: 40px;
+    }
+  }
+}
+
+.infoIcon {
+  margin-bottom: 30px;
+}

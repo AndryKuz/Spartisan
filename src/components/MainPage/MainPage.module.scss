@@ -55,4 +55,10 @@
             background: #bca476;
         }
     }
+    svg {
+        cursor: pointer;
+        &:hover {
+            padding-top: 10px;
+        }
+    }
 }
