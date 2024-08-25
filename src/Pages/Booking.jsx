@@ -1,13 +1,17 @@
+import { useState } from "react";
+
 import Title from "../common/Title";
 import Button from "../components/Button/Button";
-import { nameButtonProgram, nameTitle } from "../constants/common";
-import style from "./Booking.module.scss";
 import { MainButton, nameMainButton } from "../components/Button/MainButton";
+
+import style from "./Booking.module.scss";
 
 import { ReactComponent as Data } from "../assets/images/data.svg";
 import { ReactComponent as Minus } from "../assets/images/minus.svg";
 import { ReactComponent as Plus } from "../assets/images/plus.svg";
-import { useState } from "react";
+
+import { nameButtonProgram} from "../constants/programCart";
+import { nameTitle } from "../constants/common";
 
 const Booking = () => {
   const [one, setOne] = useState(1);

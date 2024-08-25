@@ -1,11 +1,11 @@
 import style from "./CartImages.module.scss";
 
-const CartImages = ({ color, svg }) => {
+const CartImages = ({ program}) => {
 
 
     return (
-        <div className={style.cart} style={{ backgroundColor: color }}>
-            <div className={style.image}>{svg}</div>
+        <div className={style.cart} style={{ backgroundColor: `${program.color}` }}>
+            <div className={style.image}>{program.image}</div>
         </div>
     );
 };

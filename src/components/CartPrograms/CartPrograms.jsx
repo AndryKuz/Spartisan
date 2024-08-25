@@ -8,7 +8,7 @@ const CartPrograms = ({program}) => {
     return (
         <section className={style.cartProgram}>
             <div className={style.images}>
-                <CartImages color='#1C1C1C' svg={<Svg />} />
+                <CartImages program={program} />
                 <h3>{program.title}</h3>
             </div>
             <span></span>
