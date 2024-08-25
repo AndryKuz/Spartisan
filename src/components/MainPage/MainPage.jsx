@@ -1,19 +1,8 @@
 import style from "./MainPage.module.scss";
 import { ReactComponent as Arrow } from "../../assets/images/ExpandDown.svg";
 
-const MainPage = () => {
-
-  const handleScroll = () => {
-    const mainElement = document.querySelector('main');
-      if (mainElement) {
-        window.scrollTo({
-          top:mainElement.offsetTop,
-          behavior:'smooth'
-        })
-      }
-    }
+const MainPage = ({scrollToProgram}) => {
   
-
   return (
     <section className={style.pageParent}>
       <div className={style.mainPage}>
@@ -22,7 +11,7 @@ const MainPage = () => {
         <div>
           <span></span>
         </div>
-        <Arrow onClick={handleScroll} />
+        <Arrow onClick={scrollToProgram}/>
       </div>
     </section>
   );

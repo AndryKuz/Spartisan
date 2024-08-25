@@ -4,16 +4,16 @@ import CartImages from "./CartImages";
 import CartInfo from "./CartInfo";
 
 
-const CartPrograms = () => {
+const CartPrograms = ({program}) => {
     return (
         <section className={style.cartProgram}>
             <div className={style.images}>
                 <CartImages color='#1C1C1C' svg={<Svg />} />
-                <h3>"Short pleasure"</h3>
+                <h3>{program.title}</h3>
             </div>
             <span></span>
             <div>
-                <CartInfo />
+                <CartInfo program={program}/>
             </div>
         </section>
     );

@@ -9,12 +9,18 @@
     height: 50px;
     line-height: 30px;
     padding: 0 20px;
-
     color: #ffff;
 }
 .but {
     width: 179px;
     border: 1px solid #ffff;
+    transition: all .2s ease;
+    &:hover {
+        transition: all .2s ease;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        
+    }
 }
 
 

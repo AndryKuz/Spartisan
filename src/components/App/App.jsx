@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
-import MainPage from "../MainPage/MainPage";
 import MyMap from "../MyMap/MyMap";
 import AppRoutes from "../Routes/AppRoutes";
 import Burger from "../Burger/Burger";
@@ -16,7 +15,7 @@ function App() {
         openBurger={isOpenBurger}
         closeBurger={() => setOpenBurger(false)}
       />
-      <MainPage />
+      {/* <MainPage /> */}
       <main>
         <div className="container">
           <AppRoutes />

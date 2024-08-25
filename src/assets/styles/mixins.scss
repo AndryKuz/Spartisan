@@ -41,6 +41,7 @@ $maxWidth: 1920px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 @mixin adaptiveValue(
   $property,
   $startSize,
