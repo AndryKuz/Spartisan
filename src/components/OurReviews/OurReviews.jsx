@@ -1,11 +1,13 @@
 import style from "./OurReviews.module.scss";
 
-import { nameTitle } from "../../constants/common";
 import { Arrow } from "../../common/Arrow";
 
 import Title from "../../common/Title";
 import ReviewCart from "../ReviewsCart/ReviewsCart";
 import Navigation from "../../common/Navigation";
+
+import { nameTitle } from "../../constants/common";
+import { reviewsData } from "../../constants/reviewsData";
 
 const OurReviews = () => {
     return (
@@ -23,8 +25,9 @@ const OurReviews = () => {
                 </div>
             </div>
             <div className={style.reviews}>
-                <ReviewCart/>
-                <ReviewCart/>
+                {reviewsData.map((item) => {
+                    return <ReviewCart key={item.id} item={item}/>
+                })}
             </div>
             <div>
                 <Navigation/>
