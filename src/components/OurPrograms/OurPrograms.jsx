@@ -20,7 +20,7 @@ const OurPrograms = ({ onButtonClick,activeButton }) => {
         {nameButtonProgram.map((program) => (
           <Button
             key={program.id}
-            id={program.id}
+            program={program}
             isActive={activeButton === program.id}
             nameButtonProgram={program.title}
             onClick={() => handleClickButton(program)}

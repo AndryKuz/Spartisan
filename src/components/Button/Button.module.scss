@@ -1,65 +1,120 @@
-@use '../../assets/styles/mixins.scss' as *;
+@use "../../assets/styles/mixins.scss" as *;
 .buttonWrapper {
-    position: relative;
+  position: relative;
 }
 .but,
-.book {
-    display: inline-block;
-    text-align: center;
-    height: 50px;
-    line-height: 30px;
-    padding: 0 20px;
-    color: #ffff;
+.mainButton {
+  display: inline-block;
+  text-align: center;
+  height: 50px;
+  line-height: 30px;
+  padding: 0 20px;
+  color: #ffff;
 }
 .but {
-    width: 179px;
-    border: 1px solid #ffff;
-    transition: all .2s ease;
-    &:hover {
-        transition: all .2s ease;
-        border: 1px solid var(--gold);
-        color: var(--gold);
-        
-    }
-}
-.activeButton {
+  width: 179px;
+  border: 1px solid #ffff;
+  transition: all 0.2s ease;
+  &:hover {
+    transition: all 0.2s ease;
     border: 1px solid var(--gold);
     color: var(--gold);
+  }
+}
+.activeButton {
+  border: 1px solid var(--gold);
+  color: var(--gold);
 }
 
-
 .info {
-    cursor: pointer;
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    .wrapCyrcle {
-        
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background-color: #D1C396;
-        position: relative;
-        transition: all .3s ease;
-        &:hover {
-            transition: all .3s ease;
-            background-color: #856741;
-        }
-        svg {
-            @include absolute-center;
-            width: 6px;
-            height: 13px;
-            color: #ffff;
-            
-        }
+  cursor: pointer;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  .wrapCircle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #d1c396;
+    position: relative;
+    transition: all 0.3s ease;
+
+    svg {
+      @include absolute-center;
+      width: 6px;
+      height: 13px;
+      color: #ffff;
     }
+    .tooltip,
+    .tooltipLeft {
+      padding-left: 30px;
+      position: absolute;
+      z-index: 1000;
+      top: -10px;
+      left: 35px;
+      background: var(--gold);
+      color: #ffff;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      width: 400px;
+      pointer-events: none;
+      p {
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      li {
+        list-style: circle;
+      }
+    }
+    .tooltip {
+      top: -10px;
+      left: 35px;
+    }
+    .tooltipLeft {
+      top: 70px;
+      left: -383px;
+    }
+    &:hover {
+      transition: all 0.3s ease;
+      background-color: #856741;
+    }
+    &:hover .tooltip {
+      transition: opacity 0.2s ease;
+      opacity: 1;
+    }
+    &:hover .tooltipLeft {
+      transition: opacity 0.2s ease;
+      opacity: 1;
+    }
+  }
 }
 
 // Book
-.book {
-    width: 175px;
-    background: var(--gold);
-    font-weight: 700;
-    font-size: 17px;
-    text-transform: uppercase;
+
+.mainButton {
+  position: relative;
+  width: 175px;
+  background: var(--gold);
+  font-weight: 700;
+  font-size: 17px;
+  text-transform: uppercase;
+  &::after {
+    position: absolute;
+    top: 20px;
+    right: -25px;
+    content: "";
+    display: inline-block;
+    width: 49px;
+    height: 10px;
+    background-image: url(../../assets/images/arrowButton.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  &:hover::after {
+    right: -35px;
+  }
+  &:hover {
+    border: 1px solid var(--bg);
+    letter-spacing: 0.5px;
+  }
 }

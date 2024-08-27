@@ -8,7 +8,7 @@ const ReviewCart = ({ item }) => {
             <div className={style.main}>
                 <div className={style.avatar}>
                     <div className={style.image}>
-                        {/* <img src={item.avatar} alt='avatar customer' /> */}
+                        <img src={item.avatar} alt='avatar customer' />
                     </div>
                     <h5>{item.name}</h5>
                 </div>

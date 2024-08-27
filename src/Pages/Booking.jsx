@@ -1,10 +1,12 @@
 import { useState } from "react";
 
+import style from "./Booking.module.scss";
+
 import Title from "../common/Title";
 import Button from "../components/Button/Button";
 import { MainButton, nameMainButton } from "../components/Button/MainButton";
+import RadioMinutes from "../common/RadioButton/RadioMinutes";
 
-import style from "./Booking.module.scss";
 
 import { ReactComponent as Data } from "../assets/images/data.svg";
 import { ReactComponent as Minus } from "../assets/images/minus.svg";
@@ -26,9 +28,13 @@ const Booking = () => {
       <Title titleStart={nameTitle[4][1]} titleEnd={nameTitle[4][2]} />
       <h5>Program</h5>
       <div className={style.buttons}>
-        {nameButtonProgram.map(({ title }) => (
-          <Button key={title} nameButtonProgram={title} />
+        {nameButtonProgram.map((program) => (
+          <Button key={program.id} nameButtonProgram={program.title} program={program}/>
         ))}
+      </div>
+      <div className={style.time}>
+        <h5>Time</h5>
+        <RadioMinutes/>
       </div>
       <div className={style.time}>
         <h5>Time</h5>
