@@ -119,3 +119,18 @@
     letter-spacing: 0.5px;
   }
 }
+
+// timeButton
+
+.timeButton {
+  display: inline-block;
+  text-align: center;
+ padding: 0 20px;
+  height: 50px;
+  background: var(--gray);
+  transition: all .3s ease;
+  &:hover {
+    transition: all .3s ease;
+    background: #D1C396;
+  }
+}

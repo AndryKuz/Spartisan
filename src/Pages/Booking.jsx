@@ -14,6 +14,7 @@ import { nameButtonProgram } from "../constants/programCart";
 import { nameTitle } from "../constants/common";
 import RadioButton, { labelRadio } from "../common/RadioButton/RadioButton";
 import Calendar from "../components/Calendar/Calendar";
+import TimeButton from "../components/Button/TimeButton";
 
 const Booking = () => {
   const [one, setOne] = useState(1);
@@ -79,6 +80,9 @@ const Booking = () => {
         </div>
         <h6>People</h6>
         <MainButton buttonLabel={nameMainButton[0]} />
+      </div>
+      <div className={style.buttonTime}>
+        <TimeButton/>
       </div>
       <p>Booking places will appear after you click the Search button</p>
     </section>
