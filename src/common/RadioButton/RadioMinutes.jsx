@@ -1,4 +1,6 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+import style from './RadioButton.module.scss';
 import {
   FormControl,
   FormControlLabel,
@@ -12,10 +14,10 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           "&.Mui-checked": {
-            color: "var(--gold)", // Цвет иконки внутри радио-кнопки, когда выбрана
+            color: "var(--gold)", 
           },
           "&.Mui-checked::before": {
-            backgroundColor: "var(--gray)", // Цвет фона радио-кнопки, когда выбрана
+            backgroundColor: "var(--gray)", 
             content: '""',
             display: "block",
             width: "100%",
@@ -27,9 +29,10 @@ const theme = createTheme({
             borderRadius: "50%",
           },
           position: "relative",
-          backgroundColor: "var(--gray)", // Цвет фона радио-кнопки по умолчанию
+          backgroundColor: "var(--gray)", 
           borderRadius: "50%",
-          padding: "3px",
+          padding: "0px",
+          marginRight:'10px'
         },
       },
     },
@@ -60,6 +63,7 @@ const RadioMinutes = () => {
             value="120"
             control={<Radio />}
             label="120 minutes"
+            className={style.secondRadio}
           />
         </RadioGroup>
       </FormControl>

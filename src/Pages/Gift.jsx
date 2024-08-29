@@ -59,9 +59,9 @@ const Gift = () => {
       </div>
       <div className={style.select}>
         <div className={style.radio}>
-          {nameLabelButton.map((label, index) => (
+          {nameLabelButton.map((label) => (
             <RadioButton
-              key={index}
+              key={label.id}
               checked={selected === label.id}
               onChange={handleChange}
               label={label.label}
