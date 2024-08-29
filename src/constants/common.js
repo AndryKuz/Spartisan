@@ -29,3 +29,14 @@ export const serviceItems = [
     { id: 8, icon: <WarmHerbs />, text: "Sound therapy" },
 ];
 
+
+export const randomizeDisable = (arr) => {
+    const randomCount = Math.floor(Math.random() * 4) + 2;
+    const shuffleItems = arr.sort(() => 0.5 - Math.random());
+    for (let i = 0; i < Math.min(randomCount, shuffleItems.length); i++) {
+        shuffleItems[i].dis = true;
+    }
+    shuffleItems.sort((a,b)=> a.id - b.id);
+    return arr;
+}
+

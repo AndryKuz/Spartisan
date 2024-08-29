@@ -1,0 +1,32 @@
+.customCheckbox {
+    position: relative;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+}
+
+.customCheckbox input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.customCheckbox .checkboxBox {
+    width: 15px;
+    height: 15px;
+    background-color: rgba(217, 217, 217, 0.1);
+    border: 1px solid #D9D9D9;
+    display: inline-block;
+    position: relative;
+}
+
+.customCheckbox input[type="checkbox"]:checked + .checkboxBox::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: #D1C396;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

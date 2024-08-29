@@ -3,9 +3,17 @@ import style from './Button.module.scss';
 
 
 const TimeButton = ({children}) => {
+
+
+  if (!children) {
+    return null; 
+  } 
+  const disabledClass = children.dis === true ? style.disableButton : style.timeButton;
+
+  
   return (
-    <button className={style.timeButton}>
-      10:00-11:00
+    <button className={disabledClass}>
+      {children.hours}
     </button>
   );
 };

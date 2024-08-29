@@ -10,11 +10,15 @@ import { ReactComponent as Data } from "../assets/images/data.svg";
 import { ReactComponent as Minus } from "../assets/images/minus.svg";
 import { ReactComponent as Plus } from "../assets/images/plus.svg";
 
+import {dateTime} from '../components/Button/dateTime';
 import { nameButtonProgram } from "../constants/programCart";
-import { nameTitle } from "../constants/common";
+import { nameTitle, randomizeDisable } from "../constants/common";
 import RadioButton, { labelRadio } from "../common/RadioButton/RadioButton";
 import Calendar from "../components/Calendar/Calendar";
 import TimeButton from "../components/Button/TimeButton";
+import AddServicesToOrder from "../components/AddServices/AddServicesToOrder";
+
+
 
 const Booking = () => {
   const [one, setOne] = useState(1);
@@ -31,6 +35,9 @@ const Booking = () => {
     }
   };
   const nameRadio = labelRadio.slice(6, 8);
+
+  const disableShuffle = randomizeDisable(dateTime);
+
 
   return (
     <section className={style.booking}>
@@ -59,6 +66,7 @@ const Booking = () => {
             />
           ))}
         </div>
+        <span className={style.testLine}></span>
       </div>
 
       <div className={style.search}>
@@ -81,10 +89,15 @@ const Booking = () => {
         <h6>People</h6>
         <MainButton buttonLabel={nameMainButton[0]} />
       </div>
-      <div className={style.buttonTime}>
-        <TimeButton/>
+      <div className={style.buttonsTime}>
+        {disableShuffle.map((button) => (
+          <TimeButton key={button.id} children={button}/>
+        ))}
+
       </div>
+      <span className={style.divider}></span>
       <p>Booking places will appear after you click the Search button</p>
+<AddServicesToOrder/>
     </section>
   );
 };
