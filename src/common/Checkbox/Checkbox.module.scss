@@ -4,6 +4,10 @@
     position: relative;
     cursor: pointer;
     user-select: none;
+    @media(max-width:640px) {
+      margin-bottom: 10px;
+    }
+    
   }
   
   .radioInput {

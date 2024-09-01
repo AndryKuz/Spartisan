@@ -1,12 +1,11 @@
-import { nameMainButton } from "../Button/MainButton";
-import style from "./Form.module.scss";
-
-import { MainButton } from "../Button/MainButton";
 import { useForm } from "react-hook-form";
-
+import style from "./Form.module.scss";
 import { GoAlert } from "react-icons/go";
 
-const Form = () => {
+const Form = ({styleForm}) => {
+
+  const classForm = styleForm === 'row' ? style.styleFormRow : style.form;
+  const classError = styleForm === 'row' ? style.errorMessageRow : style.errorMessage;
   const {
     register,
     handleSubmit,
@@ -14,16 +13,18 @@ const Form = () => {
     reset,
   } = useForm({
     defaultValues: {},
-    mode:"onBlur"
+    mode: "onBlur",
   });
+
   const submit = (data) => {
     console.log(data);
     reset();
   };
+
   return (
     <>
       <form onSubmit={handleSubmit(submit)}>
-        <div className={style.form}>
+        <div className={classForm}>
           <div className={style.input}>
             <input
               {...register("name", {
@@ -33,7 +34,7 @@ const Form = () => {
               placeholder="Name"
               autoComplete="off"
             />
-            <div className={style.errorMessage}>
+            <div className={classError}>
               {errors?.name && (
                 <div>
                   <GoAlert />
@@ -41,22 +42,51 @@ const Form = () => {
                 </div>
               )}
             </div>
+
             <input
-              {...register("phone")}
+              {...register("phone", {
+                required: "Phone number is required",
+                pattern: {
+                  value: /^[0-9]{10,15}$/,
+                  message: "Enter a valid phone number (10-15 digits)",
+                },
+              })}
               placeholder="Phone"
               autoComplete="off"
             />
+            <div className={classError}>
+              {errors?.phone && (
+                <div>
+                  <GoAlert />
+                  <span>{errors?.phone.message || "Invalid phone number"}</span>
+                </div>
+              )}
+            </div>
+
             <input
-              {...register("email")}
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                  message: "Enter a valid email address",
+                },
+              })}
               placeholder="Email"
               autoComplete="off"
             />
+            <div className={classError}>
+              {errors?.email && (
+                <div>
+                  <GoAlert />
+                  <span>{errors?.email.message || "Invalid email address"}</span>
+                </div>
+              )}
+            </div>
           </div>
           <div className={style.textArea}>
             <textarea {...register("text")} placeholder="Text"></textarea>
           </div>
         </div>
-        <MainButton buttonLabel={nameMainButton[2]} />
       </form>
     </>
   );

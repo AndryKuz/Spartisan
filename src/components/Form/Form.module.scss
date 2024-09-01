@@ -1,46 +1,77 @@
 form {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+}
+.form,
+.styleFormRow {
+  display: flex;
+  gap: 25px;
+
+  & > div {
+    display: flex;
+    & > input {
+      height: 50px;
+      background-color: rgba(217, 217, 217, 0.1);
+      padding-left: 15px;
+    }
+    & > textarea {
+      background-color: rgba(217, 217, 217, 0.1);
+      padding: 15px;
+      flex: 1 1 auto;
+    }
+  }
+  
 }
 .form {
+  & > div {
+    flex-direction: column;
+    & > div:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+  .input {
+    flex: 0 1 45%;
+  }
+  .textArea {
+    flex: 0 1 50%;
+    textarea {
+      resize: none;
+    }
+  }
+}
+.styleFormRow {
+    
+  flex-direction: column;
+  & > div {
+    flex-direction: row;
+    
+  }
+  .input {
     display: flex;
-    gap: 25px;
-    margin-bottom: 20px;
-    & > div {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        & > input {
-            height: 50px;
-            background-color: rgba(217, 217, 217, 0.1);
-            padding-left: 15px;
+    gap: 20px;
+    input {
+        flex: 1 1 33.33%;
+    }
 
-        }
-        & > textarea {
-            background-color: rgba(217, 217, 217, 0.1);
-            padding: 15px;
-            flex: 1 1 auto;
-            
-        }
-    }
-    .input {
-         flex: 0 1 45%;
-    }
-    .textArea {
-        flex: 0 1 50%;
-    }
+  }
+}
+.errorMessage,
+.errorMessageRow {
+  display: flex;
+  align-items: center;
+  color: rgb(177, 51, 51);
+  span {
+    font-size: 16px;
+    text-transform: lowercase;
+  }
+  svg {
+    width: 15px;
+    height: 15px;
+    margin: 0 10px;
+  }
 }
 .errorMessage {
-    display: flex;
-    align-items: center;
-    color: rgb(177, 51, 51);
-    span {
-        font-size: 16px;
-        text-transform: lowercase;
-    }
-    svg {
-        width: 15px;
-        height: 15px;
-        margin: 0 10px; 
-    }
-    
+
+}
+.errorMessageRow {
+    flex: 1 1 33.33%;
 }

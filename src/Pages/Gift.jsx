@@ -11,6 +11,7 @@ import { threeReasons } from "../common/ThreeReasonsBlock";
 import RadioButton from "../common/RadioButton/RadioButton";
 import { labelRadio } from "../common/RadioButton/RadioButton";
 import  Form  from "../components/Form/Form";
+import { MainButton, nameMainButton } from "../components/Button/MainButton";
 
 const Gift = () => {
   const [selected, setSelected] = useState("");
@@ -79,6 +80,7 @@ const Gift = () => {
         </div>
       </div>
       <Form/>
+      <MainButton buttonLabel={nameMainButton[2]} />
     </section>
   );
 };

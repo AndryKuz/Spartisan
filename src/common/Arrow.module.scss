@@ -1,46 +1,57 @@
 // /* Arrow.module.scss */
 .arrowWrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    .arrow {
-        z-index: 5;
-        width: 49px;
-        height: 1px;
-        background: var(--gold);
-    }
-    .icon {
-        z-index: 5;
-        position: absolute;
-        fill: var(--gold);
-    }
-    .circle {
-        position: absolute;
-        z-index: 3;
-        width: 32px;
-        height: 35px;
-        background-color: #1c1c1c;
-        border-radius: 50%;
-        top: 50%;
-        transform: translateY(-50%);
-    }
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  .arrow {
+    z-index: 5;
+    width: 49px;
+    height: 1px;
+    background: var(--gold);
+   
+  }
+  .icon {
+    z-index: 5;
+    position: absolute;
+    fill: var(--gold);
+  }
+  .circle {
+    position: absolute;
+    z-index: 3;
+    width: 32px;
+    height: 35px;
+    background-color: #1c1c1c;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 .arrowLeft {
-    .icon {
-        left: -7px;
-        transform: rotate(-180deg);
+  .icon {
+    left: -7px;
+    transform: rotate(-180deg);
+    transition: left .3s ease;
+    &:hover {
+        left: -15px;
+        transition: left .3s ease;
     }
-    .circle {
-        left: -17px;
-    }
-}
+  }
+  .circle {
+    left: -17px;
+    
+}}
 .arrowRight {
-    .icon {
-        right: -7px;
+  .icon {
+    right: -7px;
+    transition: right .3s ease;
+    &:hover {
+        right: -15px;
+        transition: right .3s ease;
     }
-    .circle {
-        right: -17px;
-    }
+  }
+  .circle {
+    right: -17px;
+  }
 }

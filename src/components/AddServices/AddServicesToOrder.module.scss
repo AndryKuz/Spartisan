@@ -1,5 +1,4 @@
 .AddServicesToOrder {
-  
   h3 {
     font-size: 20px;
     font-weight: 700;
@@ -8,11 +7,22 @@
   }
   .form {
     display: flex;
+    margin: 0;
+    @media(max-width:500px) {
+      flex-direction: column;
+      gap: 10px;
+    }
     & > div {
-        width: 500px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      padding-right: 10px;
+      @media(max-width:500px) {
+        gap: 10px;
+        
+      }
     }
   }
 }
