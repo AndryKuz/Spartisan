@@ -1,0 +1,37 @@
+.totalBooking {
+    display: flex;
+    align-items: center;
+    border-top: 1px var(--gray) solid;
+    border-bottom: 1px var(--gray) solid;
+    & > div {
+        flex: 1 1 25%;
+    }
+    .describeTotal {
+        display: flex;
+        flex-direction: column;
+        span {
+            font-weight: 700;
+            font-size: 18px;
+            margin-right: 5px;
+        }
+    }
+    .totalPrice {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 164px;
+        background: #000;
+        h3{
+            font-size: 25px;
+            font-weight: 700;
+            margin: 0 5px 0 0;
+        }
+        p {
+            font-size: 30px;
+            font-weight: 700;
+            margin: 0;
+        }
+    }
+}
+
+

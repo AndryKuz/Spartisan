@@ -1,6 +1,7 @@
 @use "../assets/styles/mixins.scss" as *;
 @use "../assets/styles/global.scss" as *;
 .gift {
+  margin-bottom: 20px;
   .subtitle {
     margin: 20px 0;
     position: relative;
@@ -105,4 +106,7 @@
     background: rgba(217, 217, 217, 0.1);
     margin-left: 20px;
   }
+}
+.marginB {
+  margin-bottom: 20px;
 }

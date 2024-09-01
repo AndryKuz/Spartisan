@@ -1,57 +1,55 @@
-form {
-  margin-bottom: 20px;
-}
+
 .form,
 .styleFormRow {
   display: flex;
-  gap: 25px;
 
-  & > div {
+  .input {
     display: flex;
     & > input {
       height: 50px;
       background-color: rgba(217, 217, 217, 0.1);
       padding-left: 15px;
     }
-    & > textarea {
-      background-color: rgba(217, 217, 217, 0.1);
-      padding: 15px;
-      flex: 1 1 auto;
-    }
-  }
-  
-}
-.form {
-  & > div {
-    flex-direction: column;
-    & > div:not(:last-child) {
-      margin-bottom: 15px;
-    }
-  }
-  .input {
-    flex: 0 1 45%;
   }
   .textArea {
-    flex: 0 1 50%;
+    background-color: rgba(217, 217, 217, 0.1);
+    padding: 15px;
     textarea {
+      width: 100%;
+      height: 100%;
       resize: none;
     }
   }
 }
-.styleFormRow {
-    
-  flex-direction: column;
-  & > div {
-    flex-direction: row;
+.form {
+  gap: 25px;
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 45%;
+    .input {
+      display: flex;
+      flex-direction: column;
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
+    }
+  }
+  .textArea {
+    flex: 0 0 50%;
     
   }
-  .input {
+}
+.styleFormRow {
+  flex-direction: column;
+  gap: 10px;
+  .inputs {
     display: flex;
     gap: 20px;
-    input {
-        flex: 1 1 33.33%;
+    .input {
+      flex: 0 1 33.333%;
+      flex-direction: column;
     }
-
   }
 }
 .errorMessage,
@@ -70,8 +68,7 @@ form {
   }
 }
 .errorMessage {
-
 }
 .errorMessageRow {
-    flex: 1 1 33.33%;
+  flex: 1 1 33.33%;
 }

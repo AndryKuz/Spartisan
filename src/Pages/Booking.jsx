@@ -4,25 +4,30 @@ import style from "./Booking.module.scss";
 
 import Title from "../common/Title";
 import Button from "../components/Button/Button";
-import Form from '../components/Form/Form';
+
 import { MainButton, nameMainButton } from "../components/Button/MainButton";
 
 import { ReactComponent as Data } from "../assets/images/data.svg";
 import { ReactComponent as Minus } from "../assets/images/minus.svg";
 import { ReactComponent as Plus } from "../assets/images/plus.svg";
 
-import { dateTime } from "../components/Button/dateTime";
+
 import { nameButtonProgram } from "../constants/programCart";
-import { nameTitle, randomizeDisable } from "../constants/common";
+import { nameTitle} from "../constants/common";
 import RadioButton, { labelRadio } from "../common/RadioButton/RadioButton";
 import Calendar from "../components/Calendar/Calendar";
-import TimeButton from "../components/Button/TimeButton";
-import AddServicesToOrder from "../components/AddServices/AddServicesToOrder";
+import SearchPlace from "../components/SearchPlace/SearchPlace";
+import { useSelector } from "react-redux";
+
+
+
 
 const Booking = () => {
   const [one, setOne] = useState(1);
-  const [selected, useSelected] = useState("");
+  const [selected, useSelected] = useState(7);
   const [isVisibleCalendar, setVisibleCalendar] = useState(false);
+
+  
 
   const handleChange = (id) => {
     useSelected(id);
@@ -34,8 +39,6 @@ const Booking = () => {
     }
   };
   const nameRadio = labelRadio.slice(6, 8);
-
-  const disableShuffle = randomizeDisable(dateTime);
 
   return (
     <section className={style.booking}>
@@ -61,6 +64,7 @@ const Booking = () => {
               currency={item.currency}
               id={item.id}
               onChange={handleChange}
+          
             />
           ))}
         </div>
@@ -69,7 +73,7 @@ const Booking = () => {
 
       <div className={style.search}>
         <div className={style.data}>
-          <span>Date</span>
+          <span>Date: </span>
           <Data onClick={() => setVisibleCalendar(true)} />
         </div>
         {isVisibleCalendar && (
@@ -87,16 +91,9 @@ const Booking = () => {
         <h6>People</h6>
         <MainButton buttonLabel={nameMainButton[0]} />
       </div>
-      <div className={style.buttonsTime}>
-        {disableShuffle.map((button) => (
-          <TimeButton key={button.id} children={button} />
-        ))}
-      </div>
-      <span className={style.divider}></span>
       <p>Booking places will appear after you click the Search button</p>
-      <AddServicesToOrder />
-      <span className={style.divider}></span>
-      <Form styleForm='row'/>
+      <SearchPlace time={selected}/>
+    
     </section>
   );
 };

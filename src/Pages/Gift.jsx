@@ -79,7 +79,8 @@ const Gift = () => {
           />
         </div>
       </div>
-      <Form/>
+      <Form />
+      <div className={style.marginB}></div>
       <MainButton buttonLabel={nameMainButton[2]} />
     </section>
   );

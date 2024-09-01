@@ -4,12 +4,14 @@ import { LocalizationProvider } from "@mui/x-date-pickers-pro/LocalizationProvid
 import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addDate } from "../../features/booking/bookingSlice";
 
 const Calendar = ({ onHide }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const dispatch = useDispatch();
 
   const handleDateChange = (newValue) => {
-    setSelectedDate(newValue);
+    dispatch(addDate(newValue));
     onHide();
   };
   return (
@@ -19,10 +21,7 @@ const Calendar = ({ onHide }) => {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DemoContainer components={["DateRangeCalendar"]}>
             <DemoItem>
-            <DateCalendar
-                value={selectedDate}
-                onChange={handleDateChange}
-              />
+              <DateCalendar onChange={handleDateChange} />
             </DemoItem>
           </DemoContainer>
         </LocalizationProvider>
