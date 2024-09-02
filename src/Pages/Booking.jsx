@@ -11,26 +11,25 @@ import { ReactComponent as Data } from "../assets/images/data.svg";
 import { ReactComponent as Minus } from "../assets/images/minus.svg";
 import { ReactComponent as Plus } from "../assets/images/plus.svg";
 
-
 import { nameButtonProgram } from "../constants/programCart";
-import { nameTitle} from "../constants/common";
+import { nameTitle } from "../constants/common";
 import RadioButton, { labelRadio } from "../common/RadioButton/RadioButton";
 import Calendar from "../components/Calendar/Calendar";
 import SearchPlace from "../components/SearchPlace/SearchPlace";
 import { useSelector } from "react-redux";
 
-
-
-
 const Booking = () => {
-  const [one, setOne] = useState(1);
+  const [one, setOne] = useState(0);
   const [selected, useSelected] = useState(7);
+  const [selectProgram, setSelectProgram] = useState('');
   const [isVisibleCalendar, setVisibleCalendar] = useState(false);
+  const { date = [] } = useSelector((state) => state.booking);
 
-  
+
 
   const handleChange = (id) => {
     useSelected(id);
+    
   };
   const increment = () => setOne(one + 1);
   const decrement = () => {
@@ -39,6 +38,8 @@ const Booking = () => {
     }
   };
   const nameRadio = labelRadio.slice(6, 8);
+
+  
 
   return (
     <section className={style.booking}>
@@ -50,6 +51,7 @@ const Booking = () => {
             key={program.id}
             nameButtonProgram={program.title}
             program={program}
+            onClick={() => setSelectProgram(program.id)}
           />
         ))}
       </div>
@@ -64,7 +66,6 @@ const Booking = () => {
               currency={item.currency}
               id={item.id}
               onChange={handleChange}
-          
             />
           ))}
         </div>
@@ -73,7 +74,7 @@ const Booking = () => {
 
       <div className={style.search}>
         <div className={style.data}>
-          <span>Date: </span>
+          <span>Date: {date}</span>
           <Data onClick={() => setVisibleCalendar(true)} />
         </div>
         {isVisibleCalendar && (
@@ -92,8 +93,7 @@ const Booking = () => {
         <MainButton buttonLabel={nameMainButton[0]} />
       </div>
       <p>Booking places will appear after you click the Search button</p>
-      <SearchPlace time={selected}/>
-    
+      <SearchPlace time={selected} />
     </section>
   );
 };
