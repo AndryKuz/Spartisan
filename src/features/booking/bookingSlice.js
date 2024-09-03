@@ -5,6 +5,7 @@ export const bookingSlice = createSlice({
   name: "booking",
   initialState: {
     date: [],
+    program: [],
   },
   reducers: {
     addDate: (state, { payload }) => {
@@ -16,15 +17,15 @@ export const bookingSlice = createSlice({
       }
     },
     addProgram: (state, { payload }) => {
-      let newItem = [...state.date];
-      const findItem = state.date.find(({ id }) => id === payload.id);
+      const findItemIndex = state.program.findIndex(
+        ({ id }) => id === payload.id
+      );
 
-      if (findItem) {
-        //заменить текущий обьект кнопки на новый
+      if (findItemIndex !== -1) {
+        state.program[findItemIndex] = payload;
       } else {
-        newItem = [...newItem, { ...payload }];
+        state.program.push(payload);
       }
-      state.date = newItem;
     },
   },
   extraReducers: (builder) => {},

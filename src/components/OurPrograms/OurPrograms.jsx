@@ -9,7 +9,6 @@ const OurPrograms = ({ onButtonClick,activeButton }) => {
 
   const handleClickButton = (program) => {
     onButtonClick(program); 
-
   };
 
 
