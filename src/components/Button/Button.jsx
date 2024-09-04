@@ -1,15 +1,25 @@
 import style from "./Button.module.scss";
 import { ReactComponent as Info } from "../../assets/images/info.svg";
+import { useDispatch} from "react-redux";
+import { addProgram } from "../../features/booking/bookingSlice";
 
-const Button = ({ program, isActive, nameButtonProgram, onClick }) => {
-
-const tooltipClass = program.id < 3 ? style.tooltip : style.tooltipLeft;
+const Button = ({ program, isActive, nameButtonProgram }) => {
+  const dispatch = useDispatch();
   
+
+
+  const tooltipClass = program.id < 3 ? style.tooltip : style.tooltipLeft;
+
+  const handleProgram = () => {
+    dispatch(addProgram(program));
+    
+  };
+
   return (
     <div className={style.buttonWrapper}>
       <button
         className={`${style.but} ${isActive ? style.activeButton : ""}`}
-        onClick={onClick}
+        onClick={handleProgram}
       >
         {nameButtonProgram}
       </button>

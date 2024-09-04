@@ -5,7 +5,7 @@ const CartImages = ({ program}) => {
 
     return (
         <div className={style.cart} style={{ backgroundColor: `${program.color}` }}>
-            <div className={style.image}>{program.image}</div>
+            <div className={style.image}><img src={program.image} alt="img" /></div>
         </div>
     );
 };

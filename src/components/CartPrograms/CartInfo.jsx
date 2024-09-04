@@ -3,7 +3,7 @@ import { MainButton, nameMainButton } from "../Button/MainButton";
 
 import style from "./CartInfo.module.scss";
 
-const CartInfo = ({program}) => {
+const CartInfo = ({program = []}) => {
 
 
 

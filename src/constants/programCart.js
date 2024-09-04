@@ -1,8 +1,9 @@
-import {ReactComponent as Short} from '../assets/images/programIcon/1.svg';
-import {ReactComponent as Deep} from '../assets/images/programIcon/2.svg';
-import {ReactComponent as Steam} from '../assets/images/programIcon/3.svg';
-import {ReactComponent as YourOwn} from '../assets/images/programIcon/4.svg';
-import {ReactComponent as One} from '../assets/images/programIcon/5.svg';
+
+import Short from '../assets/images/programIcon/1.svg';
+import Deep from '../assets/images/programIcon/2.svg';
+import Steam from '../assets/images/programIcon/3.svg';
+import Bather from '../assets/images/programIcon/4.svg';
+import OneOnOne from '../assets/images/programIcon/5.svg';
 
 export const nameButtonProgram = [
     {
@@ -18,7 +19,7 @@ export const nameButtonProgram = [
             "Water, tea!",
         ],
         color:'#1C1C1C',
-        image: <Short/>
+        image:Short
     },
     {
         id: 2,
@@ -38,7 +39,7 @@ export const nameButtonProgram = [
             "Water / tea",
         ],
         color:'#D8DAD4',
-        image: <Deep/>
+        image: Deep
     },
     {
         id: 3,
@@ -56,7 +57,7 @@ export const nameButtonProgram = [
             "Warm bath and relaxation",
         ],
         color:'#896634',
-        image: <Steam/>
+        image: Steam
     },
     {
         id: 4,
@@ -71,7 +72,7 @@ export const nameButtonProgram = [
             "Water, tea!",
         ],
         color:'#424A1B',
-        image: <YourOwn/>
+        image: Bather
     },
     {
         id: 5,
@@ -86,6 +87,6 @@ export const nameButtonProgram = [
             "Water, tea of your choice!",
         ],
         color:'#120900',
-        image: <One/>
+        image: OneOnOne
     },
 ];

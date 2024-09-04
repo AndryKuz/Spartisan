@@ -1,7 +1,5 @@
 import style from "./Button.module.scss";
 
-import ArrowButton from '../../assets/images/arrowButton.svg';
-
 export const nameMainButton = [
   "Search place",
   "Book now",
@@ -10,8 +8,25 @@ export const nameMainButton = [
   "Entrance",
 ];
 
-export const MainButton = ({ buttonLabel, isActive }) => {
+export const MainButton = ({
+  buttonLabel,
+  isActive,
+  styleDisabled,
+  handleSearch,
+}) => {
+  const handleClick = () => {
+    // isActive(true);
+    handleSearch();
+  };
+
   return (
-      <button className={style.mainButton} onClick={() => isActive(true)}>{buttonLabel} </button>
+    <button
+      className={`${style.mainButton} ${
+        styleDisabled ? style.disabledSearchButton : ""
+      } `}
+      onClick={handleClick}
+    >
+      {buttonLabel}{" "}
+    </button>
   );
 };

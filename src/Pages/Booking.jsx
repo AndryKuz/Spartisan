@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import style from "./Booking.module.scss";
 
@@ -17,17 +17,19 @@ import { nameTitle } from "../constants/common";
 import RadioButton, { labelRadio } from "../common/RadioButton/RadioButton";
 import Calendar from "../components/Calendar/Calendar";
 import SearchPlace from "../components/SearchPlace/SearchPlace";
-import { addProgram } from "../features/booking/bookingSlice";
+import { selectPrograms } from "../features/booking/bookingSlice";
 
 const Booking = () => {
-  const dispatch = useDispatch();
   const [one, setOne] = useState(0);
   const [selected, useSelected] = useState(7);
-  const [selectProgram, setSelectProgram] = useState("");
   const [isVisibleCalendar, setVisibleCalendar] = useState(false);
-  const { date = [], program = [] } = useSelector((state) => state.booking);
+  const { date = [] } = useSelector((state) => state.booking);
   const [openSearch, setOpenSearch] = useState(false);
+  const [errors, setErrors] = useState([]);
 
+  const programList = useSelector(selectPrograms);
+
+  const isActive = (program) => program.id === programList[0]?.id;
 
   const increment = () => setOne(one + 1);
   const decrement = () => {
@@ -40,8 +42,27 @@ const Booking = () => {
   const handleChange = (id) => {
     useSelected(id);
   };
+  const validateForm = () => {
+    let newErrors = [];
+    if (date.length === 0) {
+      newErrors.push("Select Date");
+    }
+    if (one === 0) {
+      newErrors.push("Select number of people");
+    }
 
- 
+    setErrors(newErrors);
+    return newErrors.length === 0;
+  };
+
+  const handleSearch = () => {
+    if (validateForm()) {
+      setOpenSearch(true);
+    } else {
+      setOpenSearch(false);
+    }
+  };
+
   return (
     <section className={style.booking}>
       <Title titleStart={nameTitle[4][1]} titleEnd={nameTitle[4][2]} />
@@ -52,7 +73,7 @@ const Booking = () => {
             key={program.id}
             nameButtonProgram={program.title}
             program={program}
-            isActive={selectProgram === program.id}
+            isActive={isActive(program)}
           />
         ))}
       </div>
@@ -91,14 +112,25 @@ const Booking = () => {
           </div>
         </div>
         <h6>People</h6>
-        <MainButton buttonLabel={nameMainButton[0]} isActive={setOpenSearch}/>
+        <MainButton
+          buttonLabel={nameMainButton[0]}
+          isActive={setOpenSearch}
+          styleDisabled={validateForm}
+          handleSearch={handleSearch}
+        />
+        {errors.length > 0 && (
+          <div className={style.errors}>
+            {errors.map((errors, i) => (
+              <div key={i}>{errors}</div>
+            ))}
+          </div>
+        )}
       </div>
       {!openSearch ? (
         <p>Booking places will appear after you click the Search button</p>
       ) : (
         <SearchPlace time={selected} />
       )}
-    
     </section>
   );
 };

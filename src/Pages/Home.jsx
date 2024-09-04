@@ -12,7 +12,6 @@ const Home = () => {
 
   const defaultButtonProgram = nameButtonProgram[0];
 
-  const [activeButton, setActiveButton] = useState(defaultButtonProgram.id);
   const [selectButtonProgram, setSelectProgram] =
     useState(defaultButtonProgram);
 
@@ -23,17 +22,12 @@ const Home = () => {
     }
   };
  
-  const handleButtonClick = (program) => {
-    setSelectProgram(program);
-    setActiveButton(program.id)
-  };
-
  
   return (
     <>
       <MainPage scrollToProgram={scrollToProgram} />
       <div ref={programRef}>
-        <OurPrograms onButtonClick={handleButtonClick} activeButton={activeButton}/>
+        <OurPrograms />
       </div>
       <CartPrograms program={selectButtonProgram} />
       <AdditionalServices />

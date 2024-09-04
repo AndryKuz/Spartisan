@@ -26,6 +26,7 @@
   color: var(--gold);
 }
 
+
 .info {
   cursor: pointer;
   position: absolute;
@@ -118,6 +119,10 @@
     border: 1px solid var(--bg);
     letter-spacing: 0.5px;
   }
+}
+.disabledSearchButton {
+  cursor: not-allowed; 
+  opacity: 0.6; 
 }
 
 // timeButton

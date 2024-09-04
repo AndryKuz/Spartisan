@@ -1,11 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import dayjs from "dayjs";
+import { nameButtonProgram } from "../../constants/programCart";
+
+const defaultProgramButton = nameButtonProgram.find(item => item.id === 1);
+
+
 
 export const bookingSlice = createSlice({
   name: "booking",
   initialState: {
     date: [],
-    program: [],
+    programList: [defaultProgramButton],
   },
   reducers: {
     addDate: (state, { payload }) => {
@@ -17,16 +22,20 @@ export const bookingSlice = createSlice({
       }
     },
     addProgram: (state, { payload }) => {
-      const idProgram = state.program[0];
+      const idProgram = state.programList[0];
 
       if(idProgram && idProgram.id === payload.id) {
         return;
       }
-      state.program = [payload];
+      state.programList = [payload];
     },
   },
   extraReducers: (builder) => {},
 });
+
+
+export const selectPrograms = (state) => state.booking.programList;
+export const selectDate = (state) => state.booking.date;
 
 export const { addDate, addProgram } = bookingSlice.actions;
 export default bookingSlice.reducer;

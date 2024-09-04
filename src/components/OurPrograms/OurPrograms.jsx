@@ -1,17 +1,19 @@
+import { useSelector } from "react-redux";
+
 import style from "./OurPrograms.module.scss";
+
 import Title from "../../common/Title.jsx";
-import { nameButtonProgram } from "../../constants/programCart.js";
 import Button from "../Button/Button.jsx";
+import { nameButtonProgram } from "../../constants/programCart.js";
 import { nameTitle } from "../../constants/common.js";
+import { selectPrograms } from "../../features/booking/bookingSlice.js";
 
-const OurPrograms = ({ onButtonClick,activeButton }) => {
+const OurPrograms = () => {
 
+  const programs = useSelector(selectPrograms);
 
-  const handleClickButton = (program) => {
-    onButtonClick(program); 
-  };
-
-
+  
+  const isActive = (program) => program.id === programs[0]?.id;
   return (
     <div className={style.programs}>
       <Title titleStart={nameTitle[0][1]} titleEnd={nameTitle[0][2]} />
@@ -20,9 +22,8 @@ const OurPrograms = ({ onButtonClick,activeButton }) => {
           <Button
             key={program.id}
             program={program}
-            isActive={activeButton === program.id}
             nameButtonProgram={program.title}
-            onClick={() => handleClickButton(program)}
+            isActive={isActive(program)}
           />
         ))}
       </div>
