@@ -25,7 +25,7 @@ const Booking = () => {
   const [selected, useSelected] = useState(7);
   const [selectProgram, setSelectProgram] = useState("");
   const [isVisibleCalendar, setVisibleCalendar] = useState(false);
-  const { date = [] } = useSelector((state) => state.booking);
+  const { date = [], program = [] } = useSelector((state) => state.booking);
   const [openSearch, setOpenSearch] = useState(false);
 
 
@@ -37,22 +37,9 @@ const Booking = () => {
   };
   const nameRadio = labelRadio.slice(6, 8);
 
-  const handleProgram = (id) => {
-    dispatch(addProgram(id));
-    console.log(`change' ${selectProgram}`);
-
+  const handleChange = (id) => {
+    useSelected(id);
   };
-const openDisabledButton = () => {
-  let newItem = [];
- if(!selectProgram) {
-newItem.push[{message:'choose Program', id:1}]
- } else if(date.length === 0) {
-  newItem.push[{message:'choose Date', id:2}]
- } else if(one === 0) {
-  newItem.push[{message:'choose count People', id:2}]
- }
-}
-
 
  
   return (
@@ -65,7 +52,6 @@ newItem.push[{message:'choose Program', id:1}]
             key={program.id}
             nameButtonProgram={program.title}
             program={program}
-            onClick={() => setSelectProgram(program.id)}
             isActive={selectProgram === program.id}
           />
         ))}
@@ -80,7 +66,7 @@ newItem.push[{message:'choose Program', id:1}]
               label={item.label}
               currency={item.currency}
               id={item.id}
-              onChange={handleProgram}
+              onChange={handleChange}
             />
           ))}
         </div>

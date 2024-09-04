@@ -17,15 +17,12 @@ export const bookingSlice = createSlice({
       }
     },
     addProgram: (state, { payload }) => {
-      const findItemIndex = state.program.findIndex(
-        ({ id }) => id === payload.id
-      );
+      const idProgram = state.program[0];
 
-      if (findItemIndex !== -1) {
-        state.program[findItemIndex] = payload;
-      } else {
-        state.program.push(payload);
+      if(idProgram && idProgram.id === payload.id) {
+        return;
       }
+      state.program = [payload];
     },
   },
   extraReducers: (builder) => {},
