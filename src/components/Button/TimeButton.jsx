@@ -2,17 +2,13 @@
 import style from './Button.module.scss';
 
 
-const TimeButton = ({children}) => {
+const TimeButton = ({children = [], onClick}) => {
 
-
-  if (!children) {
-    return null; 
-  } 
   const disabledClass = children.dis === true ? style.disableButton : style.timeButton;
 
   
   return (
-    <button className={disabledClass}>
+    <button className={disabledClass} onClick={onClick}>
       {children.hours}
     </button>
   );

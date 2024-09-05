@@ -8,19 +8,13 @@ export const nameMainButton = [
   "Entrance",
 ];
 
-export const MainButton = ({
-  buttonLabel,
+export const MainButton = ({ buttonLabel, onClick }) => {
 
-  handleSearch,
-}) => {
  
 
   return (
-    <button
-      className={style.mainButton}
-      onClick={() => handleSearch()}
-    >
-      {buttonLabel}{" "}
+    <button className={style.mainButton} onClick={onClick}>
+      {buttonLabel}
     </button>
   );
 };

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import style from "./SearchPlace.module.scss";
 
-import { dateTimeOneHour,dateTimeTwoHour } from "../Button/dateTime";
+import { dateTimeOneHour, dateTimeTwoHour } from "../Button/dateTime";
 import { randomizeDisable } from "constants/common";
 
 import TimeButton from "../Button/TimeButton";
@@ -10,36 +10,39 @@ import Form from "components/Form/Form";
 import AddServicesToOrder from "../AddServices/AddServicesToOrder";
 
 import TotalBooking from "../TotalBooking/TotalBooking";
+import { useDispatch} from "react-redux";
+import { addTime} from "features/booking/bookingSlice";
 
-const SearchPlace = ({time}) => {
 
+const SearchPlace = ({ time }) => {
+  const dispatch = useDispatch();
   const [disabledTimes, setDisabledTimes] = useState([]);
 
-  const choiceTime  = () => {
+  const choiceTime = () => {
     let result;
-    if(time === 7) {
+    if (time === 7) {
       result = randomizeDisable(dateTimeOneHour);
-
     } else if (time === 8) {
       result = randomizeDisable(dateTimeTwoHour);
     }
     return result;
-  }
+  };
+  const handleSelectTime = (selectedTime) => {
+    dispatch(addTime(selectedTime));
+  };
 
- 
-  
-useEffect(() => {
-  const randomizedTimes = choiceTime();
-  setDisabledTimes(randomizedTimes);
-},[time])
+  useEffect(() => {
+    const randomizedTimes = choiceTime();
+    setDisabledTimes(randomizedTimes);
+  }, [time]);
 
-const disableShuffle = randomizeDisable(disabledTimes);
-  
+  const disableShuffle = randomizeDisable(disabledTimes);
+
   return (
     <div className={style.searchPlace}>
       <div className={style.buttonsTime}>
         {disableShuffle.map((button) => (
-          <TimeButton key={button.id} children={button} />
+          <TimeButton key={button.id} children={button} onClick={() => handleSelectTime(button.hours)} />
         ))}
       </div>
       <span className={style.divider}></span>

@@ -1,5 +1,6 @@
 @use "assets/styles/global.scss" as *;
 .booking {
+  user-select: none;
   h5 {
     font-size: 20px;
     font-weight: 700;
@@ -36,82 +37,14 @@
       font-size: 20px;
       line-height: 25px;
     }
-    
-  }
-
-}
-
-
-.search {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 25px;
-  margin-bottom: 20px;
-  .data {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 20%;
-    height: 50px;
-    background-color: rgba(217, 217, 217, 0.1);
-    padding: 0 10px;
-    cursor: pointer;
-    @media(max-width:500px) {
-      width: 100%;
-    }
-  }
-  .people {
-    display: flex;
-    align-items: center;
-    background-color: rgba(217, 217, 217, 0.1);
-    height: 50px;
-    width: 180px;
-    
-    .minus,
-    .plus {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex: 25%;
-      position: relative;
-      height: 50px;
-      cursor: pointer;
-      &::after {
-        position: absolute;
-        content: "";
-        width: 1px;
-        height: 30px;
-        background: #fff;
-        opacity: 10%;
-      }
-    }
-    .minus::after {
-      right: 0;
-      top: 10px;
-    }
-    .plus::after {
-      top: 10px;
-      left: 0;
-    }
-    .count {
-      display: flex;
-      justify-content: center;
-      flex: 50%;
-      
-    }
-  }
-  .errors {
-    margin-left: 30px;
-    color: rgb(187, 58, 58);
-  }
-  h6 {
-    margin-right: 40px;
-    @media (max-width: $mobile) {
-      margin-right: 20px;
-    }
   }
 }
 
 
 
+h6 {
+  margin-right: 40px;
+  @media (max-width: $mobile) {
+    margin-right: 20px;
+  }
+}

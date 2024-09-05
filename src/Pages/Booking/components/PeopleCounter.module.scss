@@ -1,0 +1,48 @@
+.people {
+    display: flex;
+    align-items: center;
+    background-color: rgba(217, 217, 217, 0.1);
+    height: 50px;
+    width: 180px;
+    
+    .minus,
+    .plus {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 25%;
+      position: relative;
+      height: 50px;
+      cursor: pointer;
+      &::after {
+        position: absolute;
+        content: "";
+        width: 1px;
+        height: 30px;
+        background: #fff;
+        opacity: 10%;
+      }
+      
+      &:hover {
+        svg {
+          fill: var(--gold);
+        }
+       
+      }
+
+    }
+    .count {
+        display: flex;
+        justify-content: center;
+        flex: 50%;
+        
+      }
+    .minus::after {
+      right: 0;
+      top: 10px;
+    }
+    .plus::after {
+      top: 10px;
+      left: 0;
+    }
+}
