@@ -1,4 +1,4 @@
-@use "../../assets/styles/mixins.scss" as *;
+@use "assets/styles/mixins.scss" as *;
 .buttonWrapper {
   position: relative;
 }
@@ -108,7 +108,7 @@
     display: inline-block;
     width: 49px;
     height: 10px;
-    background-image: url(../../assets/images/arrowButton.svg);
+    background-image: url(assets/images/arrowButton.svg);
     background-size: contain;
     background-repeat: no-repeat;
   }

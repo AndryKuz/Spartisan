@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 import style from "./Booking.module.scss";
 
-import Title from "../common/Title";
-import Button from "../components/Button/Button";
+import Title from "common/Title";
+import Button from "components/Button/Button";
 
-import { MainButton, nameMainButton } from "../components/Button/MainButton";
+import { MainButton, nameMainButton } from "components/Button/MainButton";
 
-import { ReactComponent as Data } from "../assets/images/data.svg";
-import { ReactComponent as Minus } from "../assets/images/minus.svg";
-import { ReactComponent as Plus } from "../assets/images/plus.svg";
+import { ReactComponent as Data } from "assets/images/data.svg";
+import { ReactComponent as Minus } from "assets/images/minus.svg";
+import { ReactComponent as Plus } from "assets/images/plus.svg";
 
-import { nameButtonProgram } from "../constants/programCart";
-import { nameTitle } from "../constants/common";
-import RadioButton, { labelRadio } from "../common/RadioButton/RadioButton";
-import Calendar from "../components/Calendar/Calendar";
-import SearchPlace from "../components/SearchPlace/SearchPlace";
-import { selectPrograms } from "../features/booking/bookingSlice";
+import { nameButtonProgram } from "constants/programCart";
+import { nameTitle } from "constants/common";
+import RadioButton, { labelRadio } from "common/RadioButton/RadioButton";
+import Calendar from "components/Calendar/Calendar";
+import SearchPlace from "components/SearchPlace/SearchPlace";
+import { selectPrograms } from "../../features/booking/bookingSlice";
 
 const Booking = () => {
   const [one, setOne] = useState(0);
@@ -115,7 +115,6 @@ const Booking = () => {
         <MainButton
           buttonLabel={nameMainButton[0]}
           isActive={setOpenSearch}
-          styleDisabled={validateForm}
           handleSearch={handleSearch}
         />
         {errors.length > 0 && (

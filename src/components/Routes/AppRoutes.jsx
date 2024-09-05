@@ -2,19 +2,21 @@ import { Route, Routes } from "react-router-dom";
 
 import { ROUTES } from "./index";
 
-import Home from "../../Pages/Home";
-import Gallery from "../../Pages/Gallery";
-import Gift from "../../Pages/Gift";
-import Booking from "../../Pages/Booking";
-import About from "../../Pages/About";
-import Payment from "../../Pages/Payment";
-import NotFound from "../../Pages/NotFound";
-import ScrollToTop from "../../Scroll/ScrollToTop";
+import Home from "pages/Home";
+import Gallery from "pages/Gallery/Gallery";
+import Gift from "pages/Gift/Gift";
+import Booking from "pages/Booking/Booking";
+import About from "pages/About/About";
+import Payment from "pages/Payment";
+import NotFound from "pages/NotFound";
+
+import ScrollToTop from "Scroll/ScrollToTop";
+
 
 const AppRoutes = () => {
   return (
     <>
-      <ScrollToTop />
+      <ScrollToTop/>
       <Routes>
         <Route index element={<Home />} />
         <Route path={ROUTES.GALLERY} element={<Gallery />} />

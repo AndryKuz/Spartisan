@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import style from "./SearchPlace.module.scss";
 
 import { dateTimeOneHour,dateTimeTwoHour } from "../Button/dateTime";
-import { randomizeDisable } from "../../constants/common";
+import { randomizeDisable } from "constants/common";
 
 import TimeButton from "../Button/TimeButton";
-import Form from "../../components/Form/Form";
+import Form from "components/Form/Form";
 import AddServicesToOrder from "../AddServices/AddServicesToOrder";
 
 import TotalBooking from "../TotalBooking/TotalBooking";

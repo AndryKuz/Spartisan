@@ -10,21 +10,15 @@ export const nameMainButton = [
 
 export const MainButton = ({
   buttonLabel,
-  isActive,
-  styleDisabled,
+
   handleSearch,
 }) => {
-  const handleClick = () => {
-    // isActive(true);
-    handleSearch();
-  };
+ 
 
   return (
     <button
-      className={`${style.mainButton} ${
-        styleDisabled ? style.disabledSearchButton : ""
-      } `}
-      onClick={handleClick}
+      className={style.mainButton}
+      onClick={() => handleSearch()}
     >
       {buttonLabel}{" "}
     </button>

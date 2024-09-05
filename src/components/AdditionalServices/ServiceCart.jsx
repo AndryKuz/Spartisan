@@ -1,4 +1,4 @@
-import { serviceItems } from "../../constants/common";
+import { serviceItems } from "constants/common";
 import style from "./AdditionalServices.module.scss";
 
 const ServiceCart = () => {

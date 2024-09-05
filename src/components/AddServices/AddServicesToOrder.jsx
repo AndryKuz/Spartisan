@@ -1,5 +1,5 @@
 import style from "./AddServicesToOrder.module.scss";
-import CheckboxCustom from "../../common/Checkbox/Checkbox";
+import CheckboxCustom from "common/Checkbox/Checkbox";
 import { dataServices } from "./dataServices";
 
 const AddServicesToOrder = () => {

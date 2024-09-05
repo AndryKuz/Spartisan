@@ -1,5 +1,5 @@
 import style from "./MainPage.module.scss";
-import { ReactComponent as Arrow } from "../../assets/images/ExpandDown.svg";
+import { ReactComponent as Arrow } from "assets/images/ExpandDown.svg";
 
 const MainPage = ({scrollToProgram}) => {
   

@@ -1,6 +1,6 @@
-import Title from "../common/Title";
-import { nameTitle } from "../constants/common";
-import { images } from "../constants/imageGallery";
+import Title from "common/Title";
+import { nameTitle } from "constants/common";
+import { images } from "constants/imageGallery";
 
 import style from "./Gallery.module.scss";
 

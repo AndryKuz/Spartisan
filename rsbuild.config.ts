@@ -3,8 +3,14 @@ import { pluginReact } from "@rsbuild/plugin-react";
 import { pluginSvgr } from "@rsbuild/plugin-svgr";
 import { pluginSass } from "@rsbuild/plugin-sass";
 
+
 export default defineConfig({
-  plugins: [pluginReact(), pluginSvgr({ mixedImport: true }), pluginSass()],
+  plugins: [
+    pluginReact(),
+    pluginSvgr({ mixedImport: true }),
+    pluginSass(),
+    
+  ],
   output: {
     distPath: {
       root: "dist",

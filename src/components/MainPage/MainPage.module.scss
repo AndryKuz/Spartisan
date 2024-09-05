@@ -1,9 +1,9 @@
-@use "../../assets/styles/mixins.scss" as *;
-@use '../../assets/styles/global.scss' as *;
+@use "assets/styles/mixins.scss" as *;
+@use 'assets/styles/global.scss' as *;
 
 .pageParent {
     position: relative;
-    background-image: url("../../assets/images/bg.png");
+    background-image: url("assets/images/bg.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

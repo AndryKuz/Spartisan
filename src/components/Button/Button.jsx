@@ -1,5 +1,5 @@
 import style from "./Button.module.scss";
-import { ReactComponent as Info } from "../../assets/images/info.svg";
+import { ReactComponent as Info } from "assets/images/info.svg";
 import { useDispatch} from "react-redux";
 import { addProgram } from "../../features/booking/bookingSlice";
 

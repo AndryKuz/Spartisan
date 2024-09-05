@@ -1,9 +1,9 @@
 import style from "./Info.module.scss";
 
-import { ReactComponent as Phone } from "../../assets/images/info/phone.svg";
-import { ReactComponent as Email } from "../../assets/images/info/email.svg";
-import { ReactComponent as Location } from "../../assets/images/info/location.svg";
-import { ReactComponent as Time } from "../../assets/images/info/time.svg";
+import { ReactComponent as Phone } from "assets/images/info/phone.svg";
+import { ReactComponent as Email } from "assets/images/info/email.svg";
+import { ReactComponent as Location } from "assets/images/info/location.svg";
+import { ReactComponent as Time } from "assets/images/info/time.svg";
 
 export const iconInfo = [
   { id: 1, icon: <Phone />, title: "Telephone", text: "+436609508090" },

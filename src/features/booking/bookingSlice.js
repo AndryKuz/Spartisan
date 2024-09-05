@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import dayjs from "dayjs";
-import { nameButtonProgram } from "../../constants/programCart";
+import { nameButtonProgram } from "constants/programCart";
 
 const defaultProgramButton = nameButtonProgram.find(item => item.id === 1);
 

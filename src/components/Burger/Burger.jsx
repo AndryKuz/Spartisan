@@ -6,7 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import style from "./Burger.module.scss";
 
 import { ROUTES } from "../Routes";
-import { LinkName } from "../../constants/link.js";
+import { LinkName } from "constants/link.js";
 
 const Burger = (props) => {
   const { openBurger, closeBurger } = props;

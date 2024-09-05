@@ -4,7 +4,7 @@ import style from "./Header.module.scss";
 import { FaInstagram } from "react-icons/fa";
 
 import { ROUTES } from "../Routes";
-import { ReactComponent as LogoSvg } from "../../assets/images/logo.svg";
+import { ReactComponent as LogoSvg } from "assets/images/logo.svg";
 
 
 const Header = ({handleBurger}) => {
