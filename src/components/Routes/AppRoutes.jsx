@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { ROUTES } from "./index";
 
@@ -24,7 +24,7 @@ const AppRoutes = () => {
         <Route path={ROUTES.BOOKING} element={<Booking />} />
         <Route path={ROUTES.ABOUT} element={<About />} />
         <Route path={ROUTES.PAYMENT} element={<Payment />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
   );
