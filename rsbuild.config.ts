@@ -15,6 +15,6 @@ export default defineConfig({
     distPath: {
       root: "dist",
     },
-    assetPrefix: '/<spartisan>/',
+    assetPrefix: '/Spartisan/',
   },
 });
