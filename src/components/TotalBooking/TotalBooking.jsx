@@ -1,5 +1,17 @@
 import style from "./TotalBooking.module.scss";
 
+import {
+  selectPrograms,
+  validatedForm,
+  selectTime,
+  selectServices
+} from "../../features/booking/bookingSlice";
+import { useSelector } from "react-redux";
+
+const ser = useSelector(selectServices);
+console.log(ser);
+
+
 const TotalBooking = () => {
   return (
     <div className={style.totalBooking}>

@@ -8,7 +8,7 @@ import Gift from "pages/Gift/Gift";
 import Booking from "pages/Booking/Booking";
 import About from "pages/About/About";
 import Payment from "pages/Payment";
-import NotFound from "pages/NotFound";
+
 
 import ScrollToTop from "Scroll/ScrollToTop";
 

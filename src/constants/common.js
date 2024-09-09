@@ -31,10 +31,15 @@ export const serviceItems = [
 
 
 export const randomizeDisable = (arr) => {
-    const randomCount = Math.floor(Math.random() * 4) + 2;
+    const randomCount = Math.floor(Math.random() * 4) + 1;
     const shuffleItems = arr.sort(() => 0.5 - Math.random());
-    for (let i = 0; i < Math.min(randomCount, shuffleItems.length); i++) {
-        shuffleItems[i].dis = true;
+    let disCount = shuffleItems.filter(item => item.dis === true ).length;
+    for (let i = 0; i < Math.min(randomCount, shuffleItems.length) && disCount < 5; i++) {
+        if(!shuffleItems[i].dis) {
+            shuffleItems[i].dis = true;
+            disCount++;
+            if(disCount <= 5) break;
+        } 
     }
     shuffleItems.sort((a,b)=> a.id - b.id);
     return arr;

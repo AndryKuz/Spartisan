@@ -46,7 +46,6 @@ const SearchPlace = ({ time }) => {
         ))}
       </div>
       <span className={style.divider}></span>
-
       <AddServicesToOrder />
       <span className={style.divider}></span>
       <Form styleForm="row" />

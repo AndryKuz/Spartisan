@@ -12,7 +12,8 @@ export const bookingSlice = createSlice({
     countPeople: 0,
     errors: [],
     validatedFormSearch: false,
-    time:[]
+    time: [],
+    services: [],
   },
   reducers: {
     addDate: (state, { payload }) => {
@@ -51,10 +52,18 @@ export const bookingSlice = createSlice({
       state.errors = newErrors;
 
       state.validatedFormSearch = newErrors.length === 0;
-
     },
-    addTime: (state, {payload}) => {
-state.time = payload;
+    addTime: (state, { payload }) => {
+      state.time = payload;
+    },
+    addServices: (state, { payload }) => {
+      const findServices = state.services.find(({ id }) => id === payload.id);
+    
+      if (findServices) {
+        state.services = state.services.filter(({ id }) => id !== payload.id);
+      } else {
+        state.services = [...state.services, { ...payload }];
+      }
     }
   },
   extraReducers: (builder) => {},
@@ -66,7 +75,14 @@ export const selectCountPeople = (state) => state.booking.countPeople;
 export const selectErrors = (state) => state.booking.errors;
 export const selectValidForm = (state) => state.booking.validatedFormSearch;
 export const selectTime = (state) => state.booking.time;
+export const selectServices = (state) => state.booking.services;
 
-export const { addDate, addProgram, changedCountPeople, validatedForm,addTime } =
-  bookingSlice.actions;
+export const {
+  addDate,
+  addProgram,
+  changedCountPeople,
+  validatedForm,
+  addTime,
+  addServices
+} = bookingSlice.actions;
 export default bookingSlice.reducer;

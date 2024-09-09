@@ -13,9 +13,6 @@ import { nameTitle } from "constants/common";
 import RadioButton, { labelRadio } from "common/RadioButton/RadioButton";
 
 import {
-  selectCountPeople,
-  selectDate,
-  selectErrors,
   selectPrograms,
   selectValidForm,
   validatedForm,
@@ -68,7 +65,7 @@ const Booking = () => {
         </div>
         <span className={style.testLine}></span>
       </div>
-      <Search handleValidation={handleValidation}/>
+      <Search handleValidation={handleValidation} />
       {!validatedFormSearch ? (
         <p>Booking places will appear after you click the Search button</p>
       ) : (
