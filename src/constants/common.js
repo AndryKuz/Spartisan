@@ -45,3 +45,17 @@ export const randomizeDisable = (arr) => {
     return arr;
 }
 
+  
+export const changeDate  = (arr) => {
+    const [year, month, day] = arr[0].split("-");
+    return `${day}.${month}.${year}`;
+  }
+
+export const summServices = (arr) => {
+    const priceAll = arr.map(item => item.price)
+    const res = priceAll.reduce((acc, prev) => {acc + prev}, 0);
+    return res;
+}
+
+
+

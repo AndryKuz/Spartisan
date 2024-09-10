@@ -28,7 +28,7 @@ const SearchPlace = ({ time }) => {
     return result;
   };
   const handleSelectTime = (selectedTime) => {
-    dispatch(addTime(selectedTime));
+    dispatch(addTime([selectedTime]));
   };
 
   useEffect(() => {
