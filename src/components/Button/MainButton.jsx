@@ -1,5 +1,7 @@
 import style from "./Button.module.scss";
 
+import Arrow from "assets/images/arrowButton.svg";
+
 export const nameMainButton = [
   "Search place",
   "Book now",
@@ -8,15 +10,28 @@ export const nameMainButton = [
   "Entrance",
 ];
 
-export const MainButton = ({ buttonLabel, onClick, widthButton }) => {
+export const MainButton = ({ buttonLabel, onClick, styleArrow, widthButton }) => {
 
- const styleButton = {
-  width: widthButton
- };
+ 
+
+  let arrowStyle;
+  switch (styleArrow) {
+    case "search":
+      arrowStyle = style.searchPlaceArrow;
+      break;
+    case "order":
+      arrowStyle = style.orderArrow;
+      break;
+    case 'book':
+      arrowStyle = style.bookArrow  
+  }
 
   return (
-    <button className={style.mainButton} onClick={onClick} style={{width:styleButton.width}}>
-      {buttonLabel}
-    </button>
+    <div className={style.wrapperMainButton}>
+      <button className={style.mainButton} onClick={onClick} style={{width:widthButton}}>
+        {buttonLabel}
+      </button>
+      <img src={Arrow} alt="sfa" className={`${arrowStyle} ${style.arrow}`} />
+    </div>
   );
 };

@@ -1,12 +1,8 @@
-
 import { MainButton, nameMainButton } from "../Button/MainButton";
 
 import style from "./CartInfo.module.scss";
 
-const CartInfo = ({program = []}) => {
-
-
-
+const CartInfo = ({ program = [] }) => {
   return (
     <div className={style.cartInfo}>
       <div className={style.left}>
@@ -14,7 +10,9 @@ const CartInfo = ({program = []}) => {
         <span></span>
         <p className={style.price}>€{program.price}per person</p>
         <p className={style.time}>{program.time} minutes / 5 guests maximum</p>
-        <MainButton buttonLabel={nameMainButton[1]}/>
+        <div style={{display:'flex'}}> 
+          <MainButton buttonLabel={nameMainButton[1]} styleArrow="order" />
+        </div>
       </div>
       <div className={style.right}>
         <div className={style.priceMobile}>

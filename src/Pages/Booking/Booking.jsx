@@ -36,6 +36,11 @@ const Booking = () => {
     dispatch(validatedForm());
   };
 
+  const handleClickBookNow = () => {
+
+    
+  }
+
   return (
     <section className={style.booking}>
       <Title titleStart={nameTitle[4][1]} titleEnd={nameTitle[4][2]} />
@@ -72,8 +77,8 @@ const Booking = () => {
       ) : (
         <>
           <SearchPlace time={selected} />
-          <div style={{ marginBottom: "20px" }}>
-            <MainButton buttonLabel={nameMainButton[1]} widthButton={"90%"} />
+          <div style={{ marginBottom: "20px"}}>
+            <MainButton buttonLabel={nameMainButton[1]} widthButton={"90%"} styleArrow='book'/>
           </div>
         </>
       )}

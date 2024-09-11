@@ -10,7 +10,7 @@ import { nameTitle } from "constants/common";
 import { threeReasons } from "common/ThreeReasonsBlock";
 import RadioButton from "common/RadioButton/RadioButton";
 import { labelRadio } from "common/RadioButton/RadioButton";
-import  Form  from "components/Form/Form";
+import Form from "components/Form/Form";
 import { MainButton, nameMainButton } from "components/Button/MainButton";
 
 const Gift = () => {
@@ -81,7 +81,9 @@ const Gift = () => {
       </div>
       <Form />
       <div className={style.marginB}></div>
-      <MainButton buttonLabel={nameMainButton[2]} />
+      <div style={{display:'flex'}}>
+        <MainButton buttonLabel={nameMainButton[2]} styleArrow="order" />
+      </div>
     </section>
   );
 };

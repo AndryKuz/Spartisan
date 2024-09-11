@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import style from "./Search.module.scss";
 
@@ -7,22 +8,13 @@ import PeopleCounter from "./PeopleCounter";
 
 import { ReactComponent as Data } from "assets/images/data.svg";
 import { MainButton, nameMainButton } from "components/Button/MainButton";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectCountPeople,
-  selectDate,
-  selectErrors,
-  validatedForm,
-} from "features/booking/bookingSlice";
+import { selectDate, selectErrors } from "features/booking/bookingSlice";
 
-const Search = ({handleValidation}) => {
-    const dispatch = useDispatch();
+const Search = ({ handleValidation }) => {
   const [isVisibleCalendar, setVisibleCalendar] = useState(false);
   const date = useSelector(selectDate);
-  const countPeople = useSelector(selectCountPeople);
-  const errors = useSelector(selectErrors);
 
-  
+  const errors = useSelector(selectErrors);
 
   return (
     <div className={style.search}>
@@ -38,7 +30,8 @@ const Search = ({handleValidation}) => {
       <MainButton
         buttonLabel={nameMainButton[0]}
         onClick={handleValidation}
-        widthButton={'255px'}
+        styleArrow='search'
+        widthButton='250px'
       />
       {errors.length > 0 && (
         <div className={style.errors}>

@@ -1,6 +1,9 @@
 import { useForm } from "react-hook-form";
+
 import style from "./Form.module.scss";
+
 import { GoAlert } from "react-icons/go";
+import ErrorMessage from "./ErrorMessage";
 
 const Form = ({ styleForm }) => {
   const classForm = styleForm === "row" ? style.styleFormRow : style.form;
@@ -9,7 +12,7 @@ const Form = ({ styleForm }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     reset,
   } = useForm({
     defaultValues: {},
@@ -17,7 +20,11 @@ const Form = ({ styleForm }) => {
   });
 
   const submit = (data) => {
-    console.log(data);
+    if(isValid) {
+      //dispatch что бы закинуть данные в redux
+    } else {
+      
+    }
     reset();
   };
 
@@ -35,14 +42,7 @@ const Form = ({ styleForm }) => {
                 placeholder="Name"
                 autoComplete="off"
               />
-              <div className={classError}>
-                {errors?.name && (
-                  <div>
-                    <GoAlert />
-                    <span>{errors?.name.message || "Error!"}</span>
-                  </div>
-                )}
-              </div>
+              <ErrorMessage error={errors?.name} className={classError}/>
             </div>
             <div className={style.input}>
               <input
@@ -56,16 +56,7 @@ const Form = ({ styleForm }) => {
                 placeholder="Phone"
                 autoComplete="off"
               />
-              <div className={classError}>
-                {errors?.phone && (
-                  <div>
-                    <GoAlert />
-                    <span>
-                      {errors?.phone.message || "Invalid phone number"}
-                    </span>
-                  </div>
-                )}
-              </div>
+              <ErrorMessage error={errors?.phone} className={classError}/>
             </div>
             <div className={style.input}>
               <input
@@ -79,16 +70,7 @@ const Form = ({ styleForm }) => {
                 placeholder="Email"
                 autoComplete="off"
               />
-              <div className={classError}>
-                {errors?.email && (
-                  <div>
-                    <GoAlert />
-                    <span>
-                      {errors?.email.message || "Invalid email address"}
-                    </span>
-                  </div>
-                )}
-              </div>
+              <ErrorMessage error={errors?.email} className={classError}/>
             </div>
           </div>
           <div className={style.textArea}>
