@@ -9,7 +9,7 @@ import {
   selectPrograms,
   selectServices,
 } from "../../features/booking/bookingSlice";
-import { changeDate, summServices } from "constants/common";
+import { changeDate, parseToNumber} from "constants/common";
 import { useEffect, useState } from "react";
 
 const TotalBooking = () => {
@@ -22,7 +22,6 @@ const TotalBooking = () => {
   const services = useSelector(selectServices);
 
   const dateNew = changeDate(dateChoose);
-
 
   const timeFromTo = (hours) => {
     if (hours.length === 0) {
@@ -41,17 +40,12 @@ const TotalBooking = () => {
     setTimeRange(result);
   }, [time]);
 
+  
+  const resSumServices = parseToNumber(services);
+ const totalPrice = resSumServices + program[0].price;
 
-// const activeTime = time.length === 2 ? `from ${time[1]}`
-
-  const arrOrice = services.map((item) => item.price);
-  const res = (arr) => {
-    const one = arr.map((item) => {
-      if (typeof item === "string") {
-        item = +item;
-      }
-    });
-  };
+ console.log(services);
+ 
 
   return (
     <div className={style.totalBooking}>
@@ -79,11 +73,18 @@ const TotalBooking = () => {
         <div>
           <span>Aroma fan:</span>
           30$
+          <ul>
+            {services.map((item) => (
+              <li key={item.id}>
+
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
       <div className={style.totalPrice}>
         <h3>Price:</h3>
-        <p>150$</p>
+        <p>{totalPrice}$</p>
       </div>
     </div>
   );
