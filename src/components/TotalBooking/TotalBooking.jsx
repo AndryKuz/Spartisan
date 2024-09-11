@@ -9,7 +9,7 @@ import {
   selectPrograms,
   selectServices,
 } from "../../features/booking/bookingSlice";
-import { changeDate, parseToNumber} from "constants/common";
+import { changeDate, parseToNumber } from "constants/common";
 import { useEffect, useState } from "react";
 
 const TotalBooking = () => {
@@ -27,7 +27,6 @@ const TotalBooking = () => {
     if (hours.length === 0) {
       setNotSelectTime("Not selected time");
       return [];
-
     } else {
       const timeArray = hours.join().split("-");
       setNotSelectTime(false);
@@ -40,12 +39,10 @@ const TotalBooking = () => {
     setTimeRange(result);
   }, [time]);
 
-  
   const resSumServices = parseToNumber(services);
- const totalPrice = resSumServices + program[0].price;
+  const totalPrice = resSumServices + program[0].price;
 
- console.log(services);
- 
+  console.log(services);
 
   return (
     <div className={style.totalBooking}>
@@ -65,18 +62,17 @@ const TotalBooking = () => {
           {countPeople}
         </div>
       </div>
-      <div className={style.describeTotal}>
+      <div className={style.describeProgram}>
         <div>
           <span>Deep delight:</span>
           {program[0].price}$
         </div>
         <div>
-          <span>Aroma fan:</span>
-          30$
           <ul>
             {services.map((item) => (
               <li key={item.id}>
-
+                <span>{item.title}: </span>
+                {item.price}$
               </li>
             ))}
           </ul>

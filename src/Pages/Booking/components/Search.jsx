@@ -38,6 +38,7 @@ const Search = ({handleValidation}) => {
       <MainButton
         buttonLabel={nameMainButton[0]}
         onClick={handleValidation}
+        widthButton={'255px'}
       />
       {errors.length > 0 && (
         <div className={style.errors}>

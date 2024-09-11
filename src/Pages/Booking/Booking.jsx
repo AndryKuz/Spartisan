@@ -17,14 +17,13 @@ import {
   selectValidForm,
   validatedForm,
 } from "../../features/booking/bookingSlice";
+import { MainButton, nameMainButton } from "components/Button/MainButton";
 
 const Booking = () => {
   const dispatch = useDispatch();
   const [selected, useSelected] = useState(7);
   const validatedFormSearch = useSelector(selectValidForm);
   const programList = useSelector(selectPrograms);
-  
-  
 
   const isActive = (program) => program.id === programList[0]?.id;
 
@@ -71,7 +70,12 @@ const Booking = () => {
       {!validatedFormSearch ? (
         <p>Booking places will appear after you click the Search button</p>
       ) : (
-        <SearchPlace time={selected} />
+        <>
+          <SearchPlace time={selected} />
+          <div style={{ marginBottom: "20px" }}>
+            <MainButton buttonLabel={nameMainButton[1]} widthButton={"90%"} />
+          </div>
+        </>
       )}
     </section>
   );

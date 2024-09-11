@@ -1,37 +1,55 @@
 .totalBooking {
+  display: flex;
+  align-items: center;
+  border-top: 1px var(--gray) solid;
+  border-bottom: 1px var(--gray) solid;
+  & > div {
+    flex: 1 1 25%;
+  }
+  .describeTotal {
+    display: flex;
+    flex-direction: column;
+  }
+  .describeProgram {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px 10px 0;
+    
+    li{
+        position: relative; 
+    }
+    span {
+      font-weight: 500;
+      font-size: 18px;
+      margin-right: 5px;
+   
+    }
+    span::after {
+        content: "";
+        position: absolute;
+        top: 11px ;
+        left: -16px ;
+        background: var(--gold);
+        width: 7px;
+        height: 7px;
+    }
+    
+  }
+  .totalPrice {
     display: flex;
     align-items: center;
-    border-top: 1px var(--gray) solid;
-    border-bottom: 1px var(--gray) solid;
-    & > div {
-        flex: 1 1 25%;
+    justify-content: center;
+    height: 164px;
+    background: #000;
+    h3 {
+      font-size: 25px;
+      font-weight: 700;
+      margin: 0 5px 0 0;
     }
-    .describeTotal {
-        display: flex;
-        flex-direction: column;
-        span {
-            font-weight: 700;
-            font-size: 18px;
-            margin-right: 5px;
-        }
+    p {
+      font-size: 30px;
+      font-weight: 700;
+      margin: 0;
     }
-    .totalPrice {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 164px;
-        background: #000;
-        h3{
-            font-size: 25px;
-            font-weight: 700;
-            margin: 0 5px 0 0;
-        }
-        p {
-            font-size: 30px;
-            font-weight: 700;
-            margin: 0;
-        }
-    }
+  }
 }
-
-

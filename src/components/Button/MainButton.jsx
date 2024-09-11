@@ -8,12 +8,14 @@ export const nameMainButton = [
   "Entrance",
 ];
 
-export const MainButton = ({ buttonLabel, onClick }) => {
+export const MainButton = ({ buttonLabel, onClick, widthButton }) => {
 
- 
+ const styleButton = {
+  width: widthButton
+ };
 
   return (
-    <button className={style.mainButton} onClick={onClick}>
+    <button className={style.mainButton} onClick={onClick} style={{width:styleButton.width}}>
       {buttonLabel}
     </button>
   );

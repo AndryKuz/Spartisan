@@ -19,7 +19,7 @@ const CheckboxCustom = ({ children = []}) => {
       />
       <span className={style.radioCheckmark}></span>
       <div className={style.labelName}>
-        <span>{children.services}</span>
+        <span>{children.title}</span>
       </div>
     </label>
   );
