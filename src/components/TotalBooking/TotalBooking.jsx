@@ -48,17 +48,17 @@ const TotalBooking = () => {
     <div className={style.totalBooking}>
       <div className={style.describeTotal}>
         <div>
-          <span>Data:</span>
+          <span>Data : </span>
           {dateNew}
         </div>
         <div>
-          <span>Time:</span>
+          <span>Time : </span>
           {notSelectTime || `from ${timeRange[0]} to ${timeRange[1]}`}
         </div>
       </div>
       <div className={style.describeTotal}>
         <div>
-          <span>Number of people:</span>
+          <span>Number of people : </span>
           {countPeople}
         </div>
       </div>

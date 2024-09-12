@@ -10,7 +10,6 @@ import SearchPlace from "components/SearchPlace/SearchPlace";
 
 import { nameButtonProgram } from "constants/programCart";
 import { nameTitle } from "constants/common";
-import RadioButton, { labelRadio } from "common/RadioButton/RadioButton";
 
 import {
   selectPrograms,
@@ -21,17 +20,12 @@ import { MainButton, nameMainButton } from "components/Button/MainButton";
 
 const Booking = () => {
   const dispatch = useDispatch();
-  const [selected, useSelected] = useState(7);
+
   const validatedFormSearch = useSelector(selectValidForm);
   const programList = useSelector(selectPrograms);
 
   const isActive = (program) => program.id === programList[0]?.id;
 
-  const nameRadio = labelRadio.slice(6, 8);
-
-  const handleChange = (id) => {
-    useSelected(id);
-  };
   const handleValidation = () => {
     dispatch(validatedForm());
   };
@@ -55,28 +49,12 @@ const Booking = () => {
           />
         ))}
       </div>
-      <div className={style.time}>
-        <h5>Time</h5>
-        <div className={style.radio}>
-          {nameRadio.map((item) => (
-            <RadioButton
-              key={item.id}
-              checked={selected === item.id}
-              label={item.label}
-              currency={item.currency}
-              id={item.id}
-              onChange={handleChange}
-            />
-          ))}
-        </div>
-        <span className={style.testLine}></span>
-      </div>
       <Search handleValidation={handleValidation} />
       {!validatedFormSearch ? (
         <p>Booking places will appear after you click the Search button</p>
       ) : (
         <>
-          <SearchPlace time={selected} />
+          <SearchPlace />
           <div style={{ marginBottom: "20px"}}>
             <MainButton buttonLabel={nameMainButton[1]} widthButton={"90%"} styleArrow='book'/>
           </div>

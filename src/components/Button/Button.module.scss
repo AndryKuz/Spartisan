@@ -2,8 +2,7 @@
 .buttonWrapper {
   position: relative;
 }
-.but,
-.mainButton {
+.but {
   display: inline-block;
   text-align: center;
   height: 50px;
@@ -18,12 +17,14 @@
   &:hover {
     transition: all 0.2s ease;
     border: 1px solid var(--gold);
-    color: var(--gold);
+    color: var(--white);
   }
 }
 .activeButton {
   border: 1px solid var(--gold);
-  color: var(--gold);
+  background: var(--gold);
+  color:var(--white);
+  font-weight: 700;
 }
 
 .info {
@@ -89,64 +90,8 @@
   }
 }
 
-// Book
-.wrapperMainButton {
-  display: flex;
-  flex-grow: 0;
-  position: relative;
-  &:hover {
-    .mainButton {
-      font-size: 18px;
-      transition: all 0.3s ease;
-    }
-    .searchPlaceArrow,
-    .orderArrow {
-      right: -60px;
-      transition: all 0.3s ease;
-    }
-    .bookArrow {
-      right: 20px;
-      transition: all 0.3s ease;
-    }
-  }
-  .mainButton {
-    position: relative;
-    width: 175px;
-    background: var(--gold);
-    font-weight: 700;
-    font-size: 17px;
-    text-transform: uppercase;
-    padding: 2px 0;
-    z-index: 1;
-  }
-  .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
 
-    &:hover {
-      right: -30px;
-    }
-  }
-}
-.searchPlaceArrow,
-.orderArrow {
-  transition: all 0.3s ease;
-  width: 48px;
-  right: -30px;
-}
 
-.bookArrow {
-  transition: all 0.3s ease;
-  width: 80px;
-  right: 70px;
-}
-
-.disabledSearchButton {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
 
 // timeButton
 .timeButton,

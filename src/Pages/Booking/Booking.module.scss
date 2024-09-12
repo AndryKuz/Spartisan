@@ -12,6 +12,7 @@
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    margin-bottom: 30px;
     @media (max-width: 410px) {
       justify-content: center;
     }
@@ -22,24 +23,6 @@
     line-height: 30px;
   }
 }
-.time {
-  display: flex;
-  align-items: center;
-  h5 {
-    margin-right: 20px;
-  }
-  .radio {
-    display: flex;
-    align-items: center;
-    gap: 150px;
-    span {
-      color: #fff;
-      font-size: 20px;
-      line-height: 25px;
-    }
-  }
-}
-
 
 
 h6 {

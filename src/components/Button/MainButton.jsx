@@ -1,4 +1,4 @@
-import style from "./Button.module.scss";
+import style from "./MainButton.module.scss";
 
 import Arrow from "assets/images/arrowButton.svg";
 

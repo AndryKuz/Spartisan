@@ -10,6 +10,7 @@ import { ReactComponent as Data } from "assets/images/data.svg";
 import { MainButton, nameMainButton } from "components/Button/MainButton";
 import { selectDate, selectErrors } from "features/booking/bookingSlice";
 
+
 const Search = ({ handleValidation }) => {
   const [isVisibleCalendar, setVisibleCalendar] = useState(false);
   const date = useSelector(selectDate);
