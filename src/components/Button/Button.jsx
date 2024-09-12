@@ -5,8 +5,6 @@ import { addProgram } from "../../features/booking/bookingSlice";
 
 const Button = ({ program, isActive, nameButtonProgram }) => {
   const dispatch = useDispatch();
-  
-
 
   const tooltipClass = program.id < 3 ? style.tooltip : style.tooltipLeft;
 

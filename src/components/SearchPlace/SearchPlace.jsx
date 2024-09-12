@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 
 import style from "./SearchPlace.module.scss";
 
@@ -12,13 +12,21 @@ import TimeButton from "../Button/TimeButton";
 import AddServicesToOrder from "../AddServices/AddServicesToOrder";
 
 import TotalBooking from "../TotalBooking/TotalBooking";
-import { addTime} from "features/booking/bookingSlice";
+import { addTime, selectTime} from "features/booking/bookingSlice";
 
 
 const SearchPlace = () => {
   const dispatch = useDispatch();
   const [disabledTimes, setDisabledTimes] = useState([]);
   const [selected, useSelected] = useState(7);
+  const timeSelect = useSelector(selectTime);
+
+  const isActiveTime = (button) => button.id === timeSelect[0]?.id;
+
+  const handleSelectTime = (selectedTime) => {
+    dispatch(addTime([selectedTime]));
+
+  };
 
   const handleChange = (id) => {
     useSelected(id);
@@ -33,23 +41,20 @@ const SearchPlace = () => {
     }
     return result;
   };
-  const handleSelectTime = (selectedTime) => {
-    dispatch(addTime([selectedTime]));
-  };
+ 
 
   useEffect(() => {
     const randomizedTimes = choiceTime();
     setDisabledTimes(randomizedTimes);
   }, [selected]);
 
-  const disableShuffle = randomizeDisable(disabledTimes);
-
+ 
   return (
     <div className={style.searchPlace}>
       <TimeRadioButton handleChange={handleChange} selected={selected}/>
       <div className={style.buttonsTime}>
-        {disableShuffle.map((button) => (
-          <TimeButton key={button.id} children={button} onClick={() => handleSelectTime(button.hours)} />
+        {disabledTimes.map((button) => (
+          <TimeButton key={button.id} isActiveTime={isActiveTime(button)} children={button} onClick={() => handleSelectTime(button)} />
         ))}
       </div>
       <span className={style.divider}></span>

@@ -20,15 +20,18 @@ const TotalBooking = () => {
   const countPeople = useSelector(selectCountPeople);
   const program = useSelector(selectPrograms);
   const services = useSelector(selectServices);
+  
+  const resSumServices = parseToNumber(services);
+  const totalPrice = resSumServices + program[0].price;
 
   const dateNew = changeDate(dateChoose);
 
-  const timeFromTo = (hours) => {
-    if (hours.length === 0) {
+  const timeFromTo = (timeItem) => {
+    if (timeItem.length === 0) {
       setNotSelectTime("Not selected time");
       return [];
     } else {
-      const timeArray = hours.join().split("-");
+      const timeArray = timeItem.map(item => item.hours).join().split("-");
       setNotSelectTime(false);
       return timeArray;
     }
@@ -38,11 +41,6 @@ const TotalBooking = () => {
     const result = timeFromTo(time);
     setTimeRange(result);
   }, [time]);
-
-  const resSumServices = parseToNumber(services);
-  const totalPrice = resSumServices + program[0].price;
-
-  console.log(services);
 
   return (
     <div className={style.totalBooking}>

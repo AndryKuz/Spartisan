@@ -14,11 +14,11 @@ export const dateTimeOneHour = [
 ];
 
 export const dateTimeTwoHour = [
-  {id: 1, hours:"10:00-12:00",dis:false},
-  {id: 2, hours:"12:00-14:00",dis:false},
-  {id: 3, hours:"14:00-16:00",dis:false},
-  {id: 4, hours:"16:00-18:00",dis:false},
-  {id: 5, hours:"18:00-20:00",dis:false},
-  {id: 6, hours:"20:00-22:00",dis:false},
+  {id: 13, hours:"10:00-12:00",dis:false},
+  {id: 14, hours:"12:00-14:00",dis:false},
+  {id: 15, hours:"14:00-16:00",dis:false},
+  {id: 16, hours:"16:00-18:00",dis:false},
+  {id: 17, hours:"18:00-20:00",dis:false},
+  {id: 18, hours:"20:00-22:00",dis:false},
 
 ];
