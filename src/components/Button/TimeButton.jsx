@@ -1,14 +1,18 @@
+import style from "./TimeButton.module.scss";
 
-import style from './Button.module.scss';
+const TimeButton = ({ children = [], onClick, isActiveTime }) => {
+  const disabledTrue = children.dis === true;
+  const disabledClass =
+    disabledTrue ? style.disableButton : style.timeButton;
 
-
-const TimeButton = ({children = [], onClick, isActiveTime}) => {
-
-  const disabledClass = children.dis === true ? style.disableButton : style.timeButton;
-
-  
   return (
-    <button className={`${disabledClass} ${isActiveTime ? style.activeButtonTime : ''}`} onClick={onClick}>
+    <button
+      className={`${disabledClass} ${
+        isActiveTime ? style.activeButtonTime : ""
+      }`}
+      onClick={onClick}
+      disabled={disabledTrue}
+    >
       {children.hours}
     </button>
   );

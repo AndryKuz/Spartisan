@@ -2,10 +2,13 @@ import { useForm } from "react-hook-form";
 
 import style from "./Form.module.scss";
 
-import { GoAlert } from "react-icons/go";
 import ErrorMessage from "./ErrorMessage";
+import { useDispatch } from "react-redux";
+import { formValidated } from "features/booking/bookingSlice";
+import { useEffect } from "react";
 
 const Form = ({ styleForm }) => {
+  const dispatch = useDispatch();
   const classForm = styleForm === "row" ? style.styleFormRow : style.form;
   const classError =
     styleForm === "row" ? style.errorMessageRow : style.errorMessage;
@@ -19,14 +22,15 @@ const Form = ({ styleForm }) => {
     mode: "onBlur",
   });
 
-  const submit = (data) => {
-    if(isValid) {
-      //dispatch что бы закинуть данные в redux
+  const submit = (data) => {};
+
+  useEffect(() => {
+    if (!isValid) {
+      dispatch(formValidated(null));
     } else {
-      
+      dispatch(formValidated(true));
     }
-    reset();
-  };
+  }, [isValid]);
 
   return (
     <>
@@ -42,7 +46,7 @@ const Form = ({ styleForm }) => {
                 placeholder="Name"
                 autoComplete="off"
               />
-              <ErrorMessage error={errors?.name} className={classError}/>
+              <ErrorMessage error={errors?.name} className={classError} />
             </div>
             <div className={style.input}>
               <input
@@ -56,7 +60,7 @@ const Form = ({ styleForm }) => {
                 placeholder="Phone"
                 autoComplete="off"
               />
-              <ErrorMessage error={errors?.phone} className={classError}/>
+              <ErrorMessage error={errors?.phone} className={classError} />
             </div>
             <div className={style.input}>
               <input
@@ -70,7 +74,7 @@ const Form = ({ styleForm }) => {
                 placeholder="Email"
                 autoComplete="off"
               />
-              <ErrorMessage error={errors?.email} className={classError}/>
+              <ErrorMessage error={errors?.email} className={classError} />
             </div>
           </div>
           <div className={style.textArea}>

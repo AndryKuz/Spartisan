@@ -1,39 +1,49 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import style from "./Booking.module.scss";
 
-import Title from "common/Title";
 import Button from "components/Button/Button";
 import Search from "./components/Search";
 import SearchPlace from "components/SearchPlace/SearchPlace";
+import { MainButton, nameMainButton } from "components/Button/MainButton";
 
 import { nameButtonProgram } from "constants/programCart";
 import { nameTitle } from "constants/common";
+import Title from "common/Title";
 
 import {
   selectPrograms,
   selectValidForm,
-  validatedForm,
+  isOpenSearchPlace,
+  selectFormValid,
+  addErrorButtonBook,
+  selectErrors,
+  selectTime,
 } from "../../features/booking/bookingSlice";
-import { MainButton, nameMainButton } from "components/Button/MainButton";
+import { useNavigate } from "react-router-dom";
 
 const Booking = () => {
   const dispatch = useDispatch();
-
-  const validatedFormSearch = useSelector(selectValidForm);
+  const navigate = useNavigate();
+  const isOpenSearchPlaceSearch = useSelector(selectValidForm);
   const programList = useSelector(selectPrograms);
+  const validBookNow = useSelector(selectFormValid);
+  const errors = useSelector(selectErrors);
+const hours = useSelector(selectTime);
 
   const isActive = (program) => program.id === programList[0]?.id;
 
   const handleValidation = () => {
-    dispatch(validatedForm());
+    dispatch(isOpenSearchPlace());
   };
 
   const handleClickBookNow = () => {
-
-    
-  }
+    if (!validBookNow) {
+      dispatch(addErrorButtonBook(["fill out a valid form"]));
+    } else {
+      navigate("/");
+    }
+  };
 
   return (
     <section className={style.booking}>
@@ -50,13 +60,23 @@ const Booking = () => {
         ))}
       </div>
       <Search handleValidation={handleValidation} />
-      {!validatedFormSearch ? (
+      {!isOpenSearchPlaceSearch ? (
         <p>Booking places will appear after you click the Search button</p>
       ) : (
         <>
           <SearchPlace />
-          <div style={{ marginBottom: "20px"}}>
-            <MainButton buttonLabel={nameMainButton[1]} widthButton={"90%"} styleArrow='book'/>
+          <div style={{ marginBottom: "20px" }}>
+            <MainButton
+              buttonLabel={nameMainButton[1]}
+              widthButton={"90%"}
+              styleArrow="book"
+              onClick={handleClickBookNow}
+            />
+            {errors[1].length !== 0 ? (
+              <p className={style.error}>{errors[1]}</p>
+            ) : (
+              ""
+            )}
           </div>
         </>
       )}

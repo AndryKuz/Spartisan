@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 import style from "./TotalBooking.module.scss";
 
@@ -10,7 +11,6 @@ import {
   selectServices,
 } from "../../features/booking/bookingSlice";
 import { changeDate, parseToNumber } from "constants/common";
-import { useEffect, useState } from "react";
 
 const TotalBooking = () => {
   const [notSelectTime, setNotSelectTime] = useState(false);

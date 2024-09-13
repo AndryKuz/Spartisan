@@ -4,7 +4,7 @@ import { useDispatch, useSelector} from "react-redux";
 import style from "./SearchPlace.module.scss";
 
 import { dateTimeOneHour, dateTimeTwoHour } from "../Button/dateTime";
-import { randomizeDisable } from "constants/common";
+import { initialStateTimeDisable, randomizeDisable } from "constants/common";
 
 import TimeRadioButton from "pages/Booking/components/TimeRadioButton";
 import Form from "components/Form/Form";
@@ -25,7 +25,6 @@ const SearchPlace = () => {
 
   const handleSelectTime = (selectedTime) => {
     dispatch(addTime([selectedTime]));
-
   };
 
   const handleChange = (id) => {
@@ -47,6 +46,7 @@ const SearchPlace = () => {
     const randomizedTimes = choiceTime();
     setDisabledTimes(randomizedTimes);
   }, [selected]);
+
 
  
   return (
