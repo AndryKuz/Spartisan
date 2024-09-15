@@ -1,8 +1,16 @@
+import { useSelector } from "react-redux";
 import { MainButton, nameMainButton } from "../Button/MainButton";
+import { Link } from "react-router-dom";
 
 import style from "./CartInfo.module.scss";
+import { selectPrograms } from "features/booking/bookingSlice";
 
 const CartInfo = ({ program = [] }) => {
+
+  const programSelected = useSelector(selectPrograms);
+  console.log(programSelected[0].id);
+  
+
   return (
     <div className={style.cartInfo}>
       <div className={style.left}>
@@ -11,7 +19,10 @@ const CartInfo = ({ program = [] }) => {
         <p className={style.price}>€{program.price}per person</p>
         <p className={style.time}>{program.time} minutes / 5 guests maximum</p>
         <div style={{display:'flex'}}> 
+          <Link to={`/booking/${programSelected[0].id}`}>
           <MainButton buttonLabel={nameMainButton[1]} styleArrow="order" />
+
+          </Link>
         </div>
       </div>
       <div className={style.right}>

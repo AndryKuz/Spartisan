@@ -2,15 +2,14 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import { ROUTES } from "./index";
 
+import ScrollToTop from "Scroll/ScrollToTop";
+
 import Home from "pages/Home";
 import Gallery from "pages/Gallery/Gallery";
 import Gift from "pages/Gift/Gift";
 import Booking from "pages/Booking/Booking";
 import About from "pages/About/About";
-import Payment from "pages/Payment";
-
-
-import ScrollToTop from "Scroll/ScrollToTop";
+import Result from "pages/Result/Result";
 
 
 const AppRoutes = () => {
@@ -23,7 +22,7 @@ const AppRoutes = () => {
         <Route path={ROUTES.GIFT} element={<Gift />} />
         <Route path={ROUTES.BOOKING} element={<Booking />} />
         <Route path={ROUTES.ABOUT} element={<About />} />
-        <Route path={ROUTES.PAYMENT} element={<Payment />} />
+        <Route path={ROUTES.RESULT} element={<Result />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>

@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 import style from "./Header.module.scss";
 import { FaInstagram } from "react-icons/fa";
@@ -6,14 +6,9 @@ import { FaInstagram } from "react-icons/fa";
 import { ROUTES } from "../Routes";
 import { ReactComponent as LogoSvg } from "assets/images/logo.svg";
 
-
-const Header = ({handleBurger}) => {
-  const location = useLocation();
+const Header = ({ handleBurger }) => {
  
 
-  const isHomePage = location.pathname === "/";
-  const logoСlass = isHomePage ? "logo large" : "logo small";
- 
   return (
     <header className={style.head}>
       <div className="container">
@@ -27,21 +22,14 @@ const Header = ({handleBurger}) => {
               <FaInstagram />
             </a>
           </div>
-          <Link to={ROUTES.HOME}>
-            <LogoSvg className={logoСlass} />
-          </Link>
-
+            <Link to={ROUTES.HOME} className={style.linkLogo}>
+              <LogoSvg className={style.large} />
+            </Link>
           <div className={style.navigation}>
             <div className={style.menu}>
               <button>Book now</button>
             </div>
-            <button
-            onClick={handleBurger}
-              type="button"
-              class={style.burger}
-              // openBurger={isOpenBurger}
-              // closeBurger={() => setOpenBurger(false)}
-            >
+            <button onClick={handleBurger} type="button" class={style.burger}>
               <span></span>
             </button>
           </div>

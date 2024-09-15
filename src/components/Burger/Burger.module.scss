@@ -12,18 +12,19 @@
   }
 }
 .icon {
-    justify-content: flex-end;
-    margin-left: 100px;
+  justify-content: flex-end;
+  margin-left: 100px;
   svg {
     cursor: pointer;
     color: #fff;
-    
+    &:hover {
+      color: var(--gold);
+    }
   }
 }
 .list {
   text-align: center;
 }
 .linkLogin {
-    margin-top: 40px;
+  margin-top: 40px;
 }
-

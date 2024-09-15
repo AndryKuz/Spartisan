@@ -15,7 +15,6 @@ function App() {
         openBurger={isOpenBurger}
         closeBurger={() => setOpenBurger(false)}
       />
-      {/* <MainPage /> */}
       <main>
         <div className="container">
           <AppRoutes />

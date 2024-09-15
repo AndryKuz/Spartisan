@@ -1,40 +1,40 @@
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 import style from "./Form.module.scss";
 
 import ErrorMessage from "./ErrorMessage";
-import { useDispatch } from "react-redux";
-import { formValidated } from "features/booking/bookingSlice";
-import { useEffect } from "react";
+import { formValidated, selectTime } from "features/booking/bookingSlice";
 
 const Form = ({ styleForm }) => {
   const dispatch = useDispatch();
+  const hour = useSelector(selectTime);
+
   const classForm = styleForm === "row" ? style.styleFormRow : style.form;
   const classError =
     styleForm === "row" ? style.errorMessageRow : style.errorMessage;
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
-    reset,
+    formState: { errors, isValid }
   } = useForm({
     defaultValues: {},
     mode: "onBlur",
   });
 
-  const submit = (data) => {};
 
   useEffect(() => {
     if (!isValid) {
       dispatch(formValidated(null));
-    } else {
+    } else if(isValid && hour.length > 0) {
       dispatch(formValidated(true));
     }
   }, [isValid]);
 
   return (
     <>
-      <form onSubmit={handleSubmit(submit)}>
+      <form onSubmit={handleSubmit}>
         <div className={classForm}>
           <div className={style.inputs}>
             <div className={style.input}>

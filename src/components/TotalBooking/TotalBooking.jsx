@@ -20,6 +20,8 @@ const TotalBooking = () => {
   const countPeople = useSelector(selectCountPeople);
   const program = useSelector(selectPrograms);
   const services = useSelector(selectServices);
+  console.log(program);
+  
   
   const resSumServices = parseToNumber(services);
   const totalPrice = resSumServices + program[0].price;
@@ -62,7 +64,7 @@ const TotalBooking = () => {
       </div>
       <div className={style.describeProgram}>
         <div>
-          <span>Deep delight:</span>
+          <span>{program[0].title}:</span>
           {program[0].price}$
         </div>
         <div>

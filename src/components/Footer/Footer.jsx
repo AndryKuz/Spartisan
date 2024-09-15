@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+
 import { ReactComponent as LogoSvg } from "assets/images/logo.svg";
+
 import style from "./Footer.module.scss";
+
 import { ROUTES } from "../Routes";
 
 const Footer = () => {
@@ -8,8 +11,8 @@ const Footer = () => {
     <footer>
       <div className="container">
         <div className={style.footer}>
-          <Link to={ROUTES.HOME}>
-            <LogoSvg className={style.logo} />
+          <Link to={ROUTES.HOME} className={style.linkLogo}>
+            <LogoSvg className={style.small} />
           </Link>
           <nav className={style.menu}>
             <Link to={ROUTES.GALLERY}>Gallery</Link>

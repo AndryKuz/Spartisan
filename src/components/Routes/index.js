@@ -1,8 +1,8 @@
 export const ROUTES = {
     HOME: '/Spartisan/',
     GALLERY: '/gallery',
-    BOOKING: '/booking',
+    BOOKING: '/booking/:id',
     GIFT: '/gift',
     ABOUT: '/about',
-    PAYMENT: '/payment',
+    RESULT: '/result',
 }

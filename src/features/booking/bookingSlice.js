@@ -102,6 +102,7 @@ export const {
   addTime,
   addServices,
   formDataPerson,
-  formValidated
+  formValidated,
+  addErrorTimeSelect
 } = bookingSlice.actions;
 export default bookingSlice.reducer;
