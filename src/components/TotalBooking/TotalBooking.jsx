@@ -1,7 +1,9 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 import style from "./TotalBooking.module.scss";
+
+import { changeDate, parseToNumber } from "constants/common";
 
 import {
   selectDate,
@@ -9,20 +11,26 @@ import {
   selectCountPeople,
   selectPrograms,
   selectServices,
+  selectErrors,
+  addErrorTimeSelect
 } from "../../features/booking/bookingSlice";
-import { changeDate, parseToNumber } from "constants/common";
 
 const TotalBooking = () => {
-  const [notSelectTime, setNotSelectTime] = useState(false);
+  const dispatch = useDispatch();
   const [timeRange, setTimeRange] = useState([]);
   const dateChoose = useSelector(selectDate);
   const time = useSelector(selectTime);
   const countPeople = useSelector(selectCountPeople);
   const program = useSelector(selectPrograms);
   const services = useSelector(selectServices);
-  console.log(program);
-  
-  
+  const errors = useSelector(selectErrors);
+
+ console.log(time);
+ console.log(timeRange);
+ console.log(errors);
+ 
+ 
+ 
   const resSumServices = parseToNumber(services);
   const totalPrice = resSumServices + program[0].price;
 
@@ -30,19 +38,21 @@ const TotalBooking = () => {
 
   const timeFromTo = (timeItem) => {
     if (timeItem.length === 0) {
-      setNotSelectTime("Not selected time");
       return [];
     } else {
+      dispatch(addErrorTimeSelect([]));
       const timeArray = timeItem.map(item => item.hours).join().split("-");
-      setNotSelectTime(false);
+      setTimeRange(timeArray);
       return timeArray;
     }
   };
 
   useEffect(() => {
-    const result = timeFromTo(time);
-    setTimeRange(result);
+    timeFromTo(time);
   }, [time]);
+const lelee = [];
+
+
 
   return (
     <div className={style.totalBooking}>
@@ -53,7 +63,7 @@ const TotalBooking = () => {
         </div>
         <div>
           <span>Time : </span>
-          {notSelectTime || `from ${timeRange[0]} to ${timeRange[1]}`}
+          {errors[2]?.length ? errors[2] : `from ${timeRange[0]} to ${timeRange[1]}`}
         </div>
       </div>
       <div className={style.describeTotal}>

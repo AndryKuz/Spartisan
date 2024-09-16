@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import style from "./Booking.module.scss";
 
@@ -19,22 +20,19 @@ import {
   selectFormValid,
   addErrorButtonBook,
   selectErrors,
-  selectTime,
-  addErrorTimeSelect,
 } from "../../features/booking/bookingSlice";
 import { ROUTES } from "components/Routes";
 
 const Booking = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [isErrorMessageTime, setErrorMessageTime] = useState(null);
   const isOpenSearchPlaceSearch = useSelector(selectValidForm);
   const programList = useSelector(selectPrograms);
   const validBookNow = useSelector(selectFormValid);
   const errors = useSelector(selectErrors);
-  const hours = useSelector(selectTime);
 
-
+console.log(errors);
 
   const isActive = (program) => program.id === programList[0]?.id;
 
@@ -43,22 +41,18 @@ const Booking = () => {
   };
 
   const handleClickBookNow = () => {
-    if (hours.length === 0) {
-      dispatch(addErrorTimeSelect(["You need to select Time"]));
-    } else {
-      dispatch(addErrorTimeSelect([]));
-    }
-
     if (!validBookNow) {
       dispatch(addErrorButtonBook(["fill out a valid form"]));
-    } else  {
-      dispatch(addErrorButtonBook([]));
     } 
-    if (hours.length > 0 && validBookNow) {
+    if(errors[2].length > 0) {
+      setErrorMessageTime(true);
+    }
+    if (validBookNow && errors[2].length === 0) {
+      dispatch(addErrorButtonBook([]));
+      setErrorMessageTime(null);
       navigate(ROUTES.RESULT, { state: { status: "booking" } });
     }
   };
- 
 
   return (
     <section className={style.booking}>
@@ -92,7 +86,7 @@ const Booking = () => {
             ) : (
               ""
             )}
-            {errors[2].length > 0 ? (
+            {isErrorMessageTime > 0 ? (
               <p className={style.error}>{errors[2]}</p>
             ) : (
               ""

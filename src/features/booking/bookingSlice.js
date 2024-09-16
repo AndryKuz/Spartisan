@@ -10,21 +10,16 @@ export const bookingSlice = createSlice({
     date: [],
     programList: [defaultProgramButton],
     countPeople: 0,
-    errors: [[],[],[]],
+    errors: [[],[],["You need to select Time"]],
     isOpenSearchPlaceSearch: false,
     time: [],
     services: [],
-    dataPerson: [],
     formValid:null,
   },
   reducers: {
     addDate: (state, { payload }) => {
       const newDate = dayjs(payload).startOf("day").format("YYYY-MM-DD");
-      if (state.date.length === 0) {
-        state.date.push(newDate);
-      } else {
-        state.date[0] = newDate;
-      }
+      state.date = [newDate];
     },
     addProgram: (state, { payload }) => {
       const idProgram = state.programList[0];
@@ -34,6 +29,10 @@ export const bookingSlice = createSlice({
       }
       state.programList = [payload];
     },
+    addError: (state, {payload}) => {
+      const {index, error} = payload;
+      state.errors[index] = error;
+    },
     changedCountPeople: (state, { payload }) => {
       state.countPeople = payload;
     },
@@ -41,7 +40,7 @@ export const bookingSlice = createSlice({
       state.errors[1] = payload;
     },
     addErrorTimeSelect: (state, { payload }) => {
-      state.errors[2] = payload;
+        state.errors[2] = payload;
     },
     
     isOpenSearchPlace: (state) => {
@@ -71,9 +70,6 @@ export const bookingSlice = createSlice({
         state.services = [...state.services, { ...payload }];
       }
     },
-    formDataPerson: (state, { payload }) => {
-      state.dataPerson = payload;
-    },
     formValidated: (state, {payload}) => {
       state.formValid = payload;
     }
@@ -88,7 +84,6 @@ export const selectErrors = (state) => state.booking.errors;
 export const selectValidForm = (state) => state.booking.isOpenSearchPlaceSearch;
 export const selectTime = (state) => state.booking.time;
 export const selectServices = (state) => state.booking.services;
-export const selectFormDataPerson = (state) => state.booking.dataPerson;
 export const selectFormValid = (state) => state.booking.formValid;
 
 
@@ -97,11 +92,11 @@ export const {
   addDate,
   addProgram,
   changedCountPeople,
+  addError,
   addErrorButtonBook,
   isOpenSearchPlace,
   addTime,
   addServices,
-  formDataPerson,
   formValidated,
   addErrorTimeSelect
 } = bookingSlice.actions;

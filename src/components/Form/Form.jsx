@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import style from "./Form.module.scss";
 
 import ErrorMessage from "./ErrorMessage";
-import { formValidated, selectTime } from "features/booking/bookingSlice";
+import { addErrorButtonBook, formValidated, selectTime } from "features/booking/bookingSlice";
 
 const Form = ({ styleForm }) => {
   const dispatch = useDispatch();
@@ -27,8 +27,10 @@ const Form = ({ styleForm }) => {
   useEffect(() => {
     if (!isValid) {
       dispatch(formValidated(null));
-    } else if(isValid && hour.length > 0) {
+      
+    } else {
       dispatch(formValidated(true));
+      dispatch(addErrorButtonBook([]));
     }
   }, [isValid]);
 
