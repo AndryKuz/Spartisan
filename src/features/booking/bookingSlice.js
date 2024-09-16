@@ -16,6 +16,7 @@ export const bookingSlice = createSlice({
     services: [],
     formValid: null,
     order: [],
+    valueForm:[]
   },
   reducers: {
     addDate: (state, { payload }) => {
@@ -85,6 +86,9 @@ export const bookingSlice = createSlice({
       state.time = [];
       state.services = [];
       state.formValid = null;
+    },
+    getValueForm: (state, {payload}) => {
+      state.valueForm = [...state.valueForm, {...payload}]
     }
   },
   extraReducers: (builder) => {},
@@ -99,7 +103,8 @@ export const {
   addServices,
   formValidated,
   successOrder,
-  defaultInitialState
+  defaultInitialState,
+  getValueForm
 } = bookingSlice.actions;
 export default bookingSlice.reducer;
 
@@ -112,4 +117,6 @@ export const selectTime = (state) => state.booking.time;
 export const selectServices = (state) => state.booking.services;
 export const selectFormValid = (state) => state.booking.formValid;
 export const selectOrder = (state) => state.booking.order;
+
+export const selectValue = (state) => state.booking.valueForm;
 

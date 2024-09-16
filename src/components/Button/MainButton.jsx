@@ -28,7 +28,7 @@ export const MainButton = ({ buttonLabel, onClick, styleArrow, widthButton }) =>
 
   return (
     <div className={style.wrapperMainButton}>
-      <button className={style.mainButton} onClick={onClick} style={{width:widthButton}}>
+      <button type="submit" className={style.mainButton} onClick={onClick} style={{width:widthButton}}>
         {buttonLabel}
       </button>
       <img src={Arrow} alt="sfa" className={`${arrowStyle} ${style.arrow}`} />

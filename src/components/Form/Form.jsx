@@ -5,7 +5,12 @@ import { useEffect } from "react";
 import style from "./Form.module.scss";
 
 import ErrorMessage from "./ErrorMessage";
-import { addError, formValidated, selectTime } from "features/booking/bookingSlice";
+import {
+  addError,
+  formValidated,
+  getValueForm,
+  selectTime,
+} from "features/booking/bookingSlice";
 
 const Form = ({ styleForm }) => {
   const dispatch = useDispatch();
@@ -17,22 +22,31 @@ const Form = ({ styleForm }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid }
+    formState: { errors, isValid },
+    getValues,
   } = useForm({
     defaultValues: {},
     mode: "onBlur",
   });
-
+  
 
   useEffect(() => {
     if (!isValid) {
       dispatch(formValidated(null));
-      
     } else {
       dispatch(formValidated(true));
-      dispatch(addError({index:1, error:[]}));
+      dispatch(addError({ index: 1, error: [] }));
+      
+      const formValues = {
+        name: getValues("name"),
+        phone: getValues("phone"),
+        email: getValues("email")
+      };
+      dispatch(getValueForm(formValues));
     }
   }, [isValid]);
+
+  
 
   return (
     <>
