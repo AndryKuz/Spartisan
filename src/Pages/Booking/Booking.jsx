@@ -18,8 +18,10 @@ import {
   selectValidForm,
   isOpenSearchPlace,
   selectFormValid,
-  addErrorButtonBook,
   selectErrors,
+  addError,
+  successOrder,
+  defaultInitialState,
 } from "../../features/booking/bookingSlice";
 import { ROUTES } from "components/Routes";
 
@@ -27,12 +29,10 @@ const Booking = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isErrorMessageTime, setErrorMessageTime] = useState(null);
-  const isOpenSearchPlaceSearch = useSelector(selectValidForm);
+  const openSearchPlace = useSelector(selectValidForm);
   const programList = useSelector(selectPrograms);
   const validBookNow = useSelector(selectFormValid);
   const errors = useSelector(selectErrors);
-
-console.log(errors);
 
   const isActive = (program) => program.id === programList[0]?.id;
 
@@ -42,14 +42,15 @@ console.log(errors);
 
   const handleClickBookNow = () => {
     if (!validBookNow) {
-      dispatch(addErrorButtonBook(["fill out a valid form"]));
+      dispatch(addError({index:1, error:["fill out a valid form"]}))
     } 
     if(errors[2].length > 0) {
       setErrorMessageTime(true);
     }
     if (validBookNow && errors[2].length === 0) {
-      dispatch(addErrorButtonBook([]));
       setErrorMessageTime(null);
+      dispatch(successOrder());
+      dispatch(defaultInitialState());
       navigate(ROUTES.RESULT, { state: { status: "booking" } });
     }
   };
@@ -69,7 +70,7 @@ console.log(errors);
         ))}
       </div>
       <Search handleValidation={handleValidation} />
-      {!isOpenSearchPlaceSearch ? (
+      {!openSearchPlace ? (
         <p>Booking places will appear after you click the Search button</p>
       ) : (
         <>

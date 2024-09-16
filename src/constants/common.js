@@ -47,25 +47,24 @@ export const randomizeDisable = (arr) => {
   return arr;
 };
 
-
-
 export const changeDate = (arr) => {
-  const [year, month, day] = arr[0].split("-");
-  return `${day}.${month}.${year}`;
+  if (Array.isArray(arr) && arr.length > 0) {
+    const dateString = arr[0];
+    const [year, month, day] = dateString.split("-");
+    if (year && month && day) {
+      return `${day}.${month}.${year}`;
+    }
+  }
 };
 
-
-
 export const parseToNumber = (arr) => {
-    const findPrice = arr.map(item => item.price);
-    const findString = findPrice.map((item) => {
-      if (typeof item === "string") {
-        item = +item;
-      }
-      return item;
-    });
-    const res = findString.reduce((acc, prev) => 
-      acc + prev, 0);
-    return res;
-  };
-  
+  const findPrice = arr.map((item) => item.price);
+  const findString = findPrice.map((item) => {
+    if (typeof item === "string") {
+      item = +item;
+    }
+    return item;
+  });
+  const res = findString.reduce((acc, prev) => acc + prev, 0);
+  return res;
+};

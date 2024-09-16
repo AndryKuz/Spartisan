@@ -12,7 +12,7 @@ import {
   selectPrograms,
   selectServices,
   selectErrors,
-  addErrorTimeSelect
+  addError
 } from "../../features/booking/bookingSlice";
 
 const TotalBooking = () => {
@@ -25,22 +25,17 @@ const TotalBooking = () => {
   const services = useSelector(selectServices);
   const errors = useSelector(selectErrors);
 
- console.log(time);
- console.log(timeRange);
- console.log(errors);
- 
- 
- 
+
   const resSumServices = parseToNumber(services);
   const totalPrice = resSumServices + program[0].price;
 
   const dateNew = changeDate(dateChoose);
 
   const timeFromTo = (timeItem) => {
-    if (timeItem.length === 0) {
+    if (!timeItem || timeItem.length === 0)  {
       return [];
     } else {
-      dispatch(addErrorTimeSelect([]));
+      dispatch(addError({index:2, error:[]}));
       const timeArray = timeItem.map(item => item.hours).join().split("-");
       setTimeRange(timeArray);
       return timeArray;
@@ -48,10 +43,11 @@ const TotalBooking = () => {
   };
 
   useEffect(() => {
-    timeFromTo(time);
+    if(time.length > 0) {
+      timeFromTo(time);
+    }
+    
   }, [time]);
-const lelee = [];
-
 
 
   return (

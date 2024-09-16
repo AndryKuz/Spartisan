@@ -10,11 +10,12 @@ export const bookingSlice = createSlice({
     date: [],
     programList: [defaultProgramButton],
     countPeople: 0,
-    errors: [[],[],["You need to select Time"]],
-    isOpenSearchPlaceSearch: false,
+    errors: [[], [], ["You need to select Time"]],
+    isOpenSearchPlace: false,
     time: [],
     services: [],
-    formValid:null,
+    formValid: null,
+    order: [],
   },
   reducers: {
     addDate: (state, { payload }) => {
@@ -29,20 +30,13 @@ export const bookingSlice = createSlice({
       }
       state.programList = [payload];
     },
-    addError: (state, {payload}) => {
-      const {index, error} = payload;
-      state.errors[index] = error;
-    },
     changedCountPeople: (state, { payload }) => {
       state.countPeople = payload;
     },
-    addErrorButtonBook: (state, { payload }) => {
-      state.errors[1] = payload;
+    addError: (state, { payload }) => {
+      const { index, error } = payload;
+      state.errors[index] = error;
     },
-    addErrorTimeSelect: (state, { payload }) => {
-        state.errors[2] = payload;
-    },
-    
     isOpenSearchPlace: (state) => {
       let newErrors = [];
 
@@ -56,7 +50,7 @@ export const bookingSlice = createSlice({
 
       state.errors[0] = newErrors;
 
-      state.isOpenSearchPlaceSearch = newErrors.length === 0;
+      state.isOpenSearchPlace = newErrors.length === 0;
     },
     addTime: (state, { payload }) => {
       state.time = payload;
@@ -70,34 +64,52 @@ export const bookingSlice = createSlice({
         state.services = [...state.services, { ...payload }];
       }
     },
-    formValidated: (state, {payload}) => {
+    formValidated: (state, { payload }) => {
       state.formValid = payload;
+    },
+    successOrder: (state) => {
+      state.order.push({
+        date: state.date,
+        programList: state.programList,
+        countPeople: state.countPeople,
+        time: state.time,
+        services: state.services,
+        formValid: state.formValid,
+      });
+    },
+    defaultInitialState: (state) => {
+      state.date = [];
+      state.programList = [defaultProgramButton];
+      state.countPeople = 0;
+      state.errors = [[], [], ["You need to select Time"]];
+      state.time = [];
+      state.services = [];
+      state.formValid = null;
     }
   },
   extraReducers: (builder) => {},
 });
-
-export const selectPrograms = (state) => state.booking.programList;
-export const selectDate = (state) => state.booking.date;
-export const selectCountPeople = (state) => state.booking.countPeople;
-export const selectErrors = (state) => state.booking.errors;
-export const selectValidForm = (state) => state.booking.isOpenSearchPlaceSearch;
-export const selectTime = (state) => state.booking.time;
-export const selectServices = (state) => state.booking.services;
-export const selectFormValid = (state) => state.booking.formValid;
-
-
-
 export const {
   addDate,
   addProgram,
   changedCountPeople,
   addError,
-  addErrorButtonBook,
   isOpenSearchPlace,
   addTime,
   addServices,
   formValidated,
-  addErrorTimeSelect
+  successOrder,
+  defaultInitialState
 } = bookingSlice.actions;
 export default bookingSlice.reducer;
+
+export const selectDate = (state) => state.booking.date;
+export const selectPrograms = (state) => state.booking.programList;
+export const selectCountPeople = (state) => state.booking.countPeople;
+export const selectErrors = (state) => state.booking.errors;
+export const selectValidForm = (state) => state.booking.isOpenSearchPlace;
+export const selectTime = (state) => state.booking.time;
+export const selectServices = (state) => state.booking.services;
+export const selectFormValid = (state) => state.booking.formValid;
+export const selectOrder = (state) => state.booking.order;
+

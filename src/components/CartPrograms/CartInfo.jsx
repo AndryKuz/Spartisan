@@ -8,8 +8,7 @@ import { selectPrograms } from "features/booking/bookingSlice";
 const CartInfo = ({ program = [] }) => {
 
   const programSelected = useSelector(selectPrograms);
-  console.log(programSelected[0].id);
-  
+
 
   return (
     <div className={style.cartInfo}>
