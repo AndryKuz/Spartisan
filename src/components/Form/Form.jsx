@@ -18,9 +18,9 @@ const Form = ({ styleForm }) => {
     name: false,
     phone: false,
     email: false,
-    text: false
+    text: false,
   });
-  
+
   const allBlurred = Object.values(isBlurred).every(Boolean);
   const classForm = styleForm === "row" ? style.styleFormRow : style.form;
   const classError =
@@ -42,7 +42,7 @@ const Form = ({ styleForm }) => {
         name: getValues("name"),
         phone: getValues("phone"),
         email: getValues("email"),
-        text: getValues("text")
+        text: getValues("text"),
       };
       dispatch(getValueForm(formValues));
       dispatch(formValidated(true));
@@ -114,9 +114,9 @@ const Form = ({ styleForm }) => {
               })}
               placeholder="Text"
               onBlur={() => handleBlurred("text")}
-            ></textarea>
-            <ErrorMessage error={errors?.text} className={classError} />
+            />
           </div>
+          <ErrorMessage error={errors?.text} className={classError} />
         </div>
       </form>
     </>
