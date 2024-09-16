@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 
 import style from "./Form.module.scss";
 
@@ -9,13 +9,19 @@ import {
   addError,
   formValidated,
   getValueForm,
-  selectTime,
 } from "features/booking/bookingSlice";
 
 const Form = ({ styleForm }) => {
   const dispatch = useDispatch();
-  const hour = useSelector(selectTime);
 
+  const [isBlurred, setIsBlurred] = useState({
+    name: false,
+    phone: false,
+    email: false,
+    text: false
+  });
+  
+  const allBlurred = Object.values(isBlurred).every(Boolean);
   const classForm = styleForm === "row" ? style.styleFormRow : style.form;
   const classError =
     styleForm === "row" ? style.errorMessageRow : style.errorMessage;
@@ -24,29 +30,33 @@ const Form = ({ styleForm }) => {
     handleSubmit,
     formState: { errors, isValid },
     getValues,
+    trigger,
   } = useForm({
     defaultValues: {},
     mode: "onBlur",
   });
-  
 
   useEffect(() => {
-    if (!isValid) {
-      dispatch(formValidated(null));
-    } else {
-      dispatch(formValidated(true));
-      dispatch(addError({ index: 1, error: [] }));
-      
+    if (isValid && allBlurred) {
       const formValues = {
         name: getValues("name"),
         phone: getValues("phone"),
-        email: getValues("email")
+        email: getValues("email"),
+        text: getValues("text")
       };
       dispatch(getValueForm(formValues));
+      dispatch(formValidated(true));
+      dispatch(addError({ index: 1, error: [] }));
+    } else {
+      dispatch(formValidated(null));
     }
-  }, [isValid]);
+  }, [isValid, allBlurred]);
 
-  
+  const handleBlurred = async (field) => {
+    const result = await trigger(field);
+    setIsBlurred((prevState) => ({ ...prevState, [field]: true }));
+    return result;
+  };
 
   return (
     <>
@@ -57,10 +67,11 @@ const Form = ({ styleForm }) => {
               <input
                 {...register("name", {
                   required: "Required to fill out",
-                  minLength: { value: 5, message: "Минимум 5 символов" },
+                  minLength: { value: 5, message: "Minimum 5 characters" },
                 })}
                 placeholder="Name"
                 autoComplete="off"
+                onBlur={() => handleBlurred("name")}
               />
               <ErrorMessage error={errors?.name} className={classError} />
             </div>
@@ -75,6 +86,7 @@ const Form = ({ styleForm }) => {
                 })}
                 placeholder="Phone"
                 autoComplete="off"
+                onBlur={() => handleBlurred("phone")}
               />
               <ErrorMessage error={errors?.phone} className={classError} />
             </div>
@@ -89,12 +101,21 @@ const Form = ({ styleForm }) => {
                 })}
                 placeholder="Email"
                 autoComplete="off"
+                onBlur={() => handleBlurred("email")}
               />
               <ErrorMessage error={errors?.email} className={classError} />
             </div>
           </div>
           <div className={style.textArea}>
-            <textarea {...register("text")} placeholder="Text"></textarea>
+            <textarea
+              {...register("text", {
+                required: "Required to fill out",
+                minLength: { value: 1, message: "Minimum 1 characters" },
+              })}
+              placeholder="Text"
+              onBlur={() => handleBlurred("text")}
+            ></textarea>
+            <ErrorMessage error={errors?.text} className={classError} />
           </div>
         </div>
       </form>

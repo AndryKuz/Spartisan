@@ -88,7 +88,7 @@ export const bookingSlice = createSlice({
       state.formValid = null;
     },
     getValueForm: (state, {payload}) => {
-      state.valueForm = [...state.valueForm, {...payload}]
+      state.valueForm = payload;
     }
   },
   extraReducers: (builder) => {},
@@ -117,6 +117,5 @@ export const selectTime = (state) => state.booking.time;
 export const selectServices = (state) => state.booking.services;
 export const selectFormValid = (state) => state.booking.formValid;
 export const selectOrder = (state) => state.booking.order;
-
 export const selectValue = (state) => state.booking.valueForm;
 
