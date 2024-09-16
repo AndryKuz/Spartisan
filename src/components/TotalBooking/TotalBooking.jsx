@@ -12,7 +12,7 @@ import {
   selectPrograms,
   selectServices,
   selectErrors,
-  addError
+  addError,
 } from "../../features/booking/bookingSlice";
 
 const TotalBooking = () => {
@@ -25,31 +25,32 @@ const TotalBooking = () => {
   const services = useSelector(selectServices);
   const errors = useSelector(selectErrors);
 
-
   const resSumServices = parseToNumber(services);
   const totalPrice = resSumServices + program[0].price;
 
   const dateNew = changeDate(dateChoose);
 
   const timeFromTo = (timeItem) => {
-    if (!timeItem || timeItem.length === 0)  {
+    if (!timeItem || timeItem.length === 0) {
       return [];
     } else {
-      dispatch(addError({index:2, error:[]}));
-      const timeArray = timeItem.map(item => item.hours).join().split("-");
+      dispatch(addError({ index: 2, error: [] }));
+      const timeArray = timeItem
+        .map((item) => item.hours)
+        .join()
+        .split("-");
       setTimeRange(timeArray);
       return timeArray;
     }
   };
 
   useEffect(() => {
-    if(time.length > 0) {
+    if (time.length > 0) {
       timeFromTo(time);
     }
-    
   }, [time]);
 
-
+  const notSelectTimeStyle = errors[2]?.length ? style.notSelectTime : "";
   return (
     <div className={style.totalBooking}>
       <div className={style.describeTotal}>
@@ -57,9 +58,11 @@ const TotalBooking = () => {
           <span>Data : </span>
           {dateNew}
         </div>
-        <div>
+        <div className={notSelectTimeStyle}>
           <span>Time : </span>
-          {errors[2]?.length ? errors[2] : `from ${timeRange[0]} to ${timeRange[1]}`}
+          {errors[2]?.length
+            ? errors[2]
+            : `from ${timeRange[0]} to ${timeRange[1]}`}
         </div>
       </div>
       <div className={style.describeTotal}>

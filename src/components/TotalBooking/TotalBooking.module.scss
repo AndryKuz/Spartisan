@@ -9,6 +9,13 @@
   .describeTotal {
     display: flex;
     flex-direction: column;
+    .notSelectTime {
+      color: rgb(214, 30, 30);
+      span {
+        color:#fff;
+      }
+    }
+    
   }
   .describeProgram {
     display: flex;
@@ -53,3 +60,4 @@
     }
   }
 }
+
