@@ -7,7 +7,7 @@ export const nameMainButton = [
   "Book now",
   "Order",
   "Register",
-  "Entrance",
+  "Entrance"
 ];
 
 export const MainButton = ({ buttonLabel, onClick, styleArrow, widthButton }) => {

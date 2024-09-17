@@ -1,3 +1,4 @@
+
 import { Link} from "react-router-dom";
 
 import style from "./Header.module.scss";
@@ -6,8 +7,8 @@ import { FaInstagram } from "react-icons/fa";
 import { ROUTES } from "../Routes";
 import { ReactComponent as LogoSvg } from "assets/images/logo.svg";
 
-const Header = ({ handleBurger }) => {
- 
+const Header = ({openBurger}) => {
+
 
   return (
     <header className={style.head}>
@@ -29,7 +30,7 @@ const Header = ({ handleBurger }) => {
             <div className={style.menu}>
               <Link to={ROUTES.BOOK}>Book now</Link>
             </div>
-            <button onClick={handleBurger} type="button" class={style.burger}>
+            <button type="button" class={style.burger} onClick={openBurger}>
               <span></span>
             </button>
           </div>

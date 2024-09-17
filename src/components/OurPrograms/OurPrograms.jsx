@@ -22,7 +22,6 @@ const OurPrograms = () => {
           <Button
             key={program.id}
             program={program}
-            nameButtonProgram={program.title}
             isActive={isActive(program)}
           />
         ))}

@@ -4,14 +4,11 @@ import { ReactComponent as Info } from "assets/images/info.svg";
 import { useDispatch } from "react-redux";
 import { addProgram } from "../../features/booking/bookingSlice";
 
-const Button = ({ program, isActive, nameButtonProgram }) => {
+const Button = ({ program, isActive}) => {
   const dispatch = useDispatch();
 
-  // const tooltipClass = program.id < 3 ? style.tooltip : style.tooltipLeft;
-  //1010px - button 5, right-213px
-  //810 button 4 , button 3 - right -171
-  let infoTooltip;
 
+  let infoTooltip;
   if (program.id === 1) {
     infoTooltip = style.shortInfo;
   } else if (program.id === 2) {
@@ -34,7 +31,7 @@ const Button = ({ program, isActive, nameButtonProgram }) => {
         className={`${style.but} ${isActive ? style.activeButton : ""}`}
         onClick={handleProgram}
       >
-        {nameButtonProgram}
+        {program.title}
       </button>
       <div className={style.info}>
         <div className={style.wrapCircle}>

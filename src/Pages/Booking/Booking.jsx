@@ -63,7 +63,6 @@ const Booking = () => {
         {nameButtonProgram.map((program) => (
           <Button
             key={program.id}
-            nameButtonProgram={program.title}
             program={program}
             isActive={isActive(program)}
           />
