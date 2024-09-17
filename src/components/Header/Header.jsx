@@ -27,7 +27,7 @@ const Header = ({ handleBurger }) => {
             </Link>
           <div className={style.navigation}>
             <div className={style.menu}>
-              <button>Book now</button>
+              <Link to={ROUTES.BOOK}>Book now</Link>
             </div>
             <button onClick={handleBurger} type="button" class={style.burger}>
               <span></span>

@@ -46,13 +46,11 @@
       height: 13px;
       color: #ffff;
     }
-    .tooltip,
-    .tooltipLeft {
+    .tooltipCommon {
       padding-left: 30px;
       position: absolute;
+      top: 75px;
       z-index: 1000;
-      top: -10px;
-      left: 35px;
       background: var(--gold);
       color: #ffff;
       opacity: 0;
@@ -67,26 +65,67 @@
         list-style: circle;
       }
     }
-    .tooltip {
-      top: -10px;
-      left: 35px;
-    }
-    .tooltipLeft {
-      top: 70px;
-      left: -383px;
-    }
     &:hover {
       transition: all 0.3s ease;
       background-color: #856741;
     }
-    &:hover .tooltip {
+    &:hover .tooltipCommon {
       transition: opacity 0.2s ease;
       opacity: 1;
     }
-    &:hover .tooltipLeft {
-      transition: opacity 0.2s ease;
-      opacity: 1;
-    }
+    // &:hover .tooltipLeft {
+    //   transition: opacity 0.2s ease;
+    //   opacity: 1;
+    // }
   }
 }
 
+.shortInfo {
+  left: -163px;
+  @media (max-width: 410px) {
+    left: -286px;
+  }
+}
+.deepInfo {
+  left: -163px;
+  @media (max-width: 614px) {
+    left: -300px;
+  }
+  @media (max-width: 514px) {
+    left: -374px;
+  }
+  @media (max-width: 410px) {
+    left: -286px;
+  }
+}
+
+.steamInfo {
+  right: 8px;
+  @media (max-width: 614px) {
+    right: -213px;
+  }
+  @media (max-width: 410px) {
+    right: -85px;
+  }
+}
+.yourOwnInfo {
+  right: 8px;
+  @media (max-width: 810px) {
+    right: -213px;
+  }
+  @media (max-width: 610px) {
+    right: -90px;
+  }
+  @media (max-width: 410px) {
+    right: -85px;
+  }
+}
+.oneToOneInfo {
+  right: 8px;
+  @media (max-width: 1010px) {
+    right: -213px;
+  }
+  @media (max-width: 410px) {
+    right: -85px;
+  }
+}

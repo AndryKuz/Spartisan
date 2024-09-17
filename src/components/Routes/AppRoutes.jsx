@@ -21,6 +21,7 @@ const AppRoutes = () => {
         <Route path={ROUTES.GALLERY} element={<Gallery />} />
         <Route path={ROUTES.GIFT} element={<Gift />} />
         <Route path={ROUTES.BOOKING} element={<Booking />} />
+        <Route path={ROUTES.BOOK} element={<Booking />} />
         <Route path={ROUTES.ABOUT} element={<About />} />
         <Route path={ROUTES.RESULT} element={<Result />} />
         <Route path="*" element={<Navigate to="/" replace />} />
