@@ -5,8 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from './components/App/App.jsx'
 import './assets/styles/index.scss';
-
 import { store } from "./components/App/store.js";
+import 'firebase.js';
 
 createRoot(document.getElementById("root")).render(
     <Provider store={store}>

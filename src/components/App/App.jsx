@@ -8,7 +8,6 @@ import Burger from "../Burger/Burger";
 import UserForm from "auth/components/UserForm";
 
 import {
-  selectFormType,
   selectShowBurger,
   selectShowForm,
   toggleBurger,
@@ -17,16 +16,16 @@ import {
 function App() {
   const dispatch = useDispatch();
   const showForm = useSelector(selectShowForm);
-  const isOpenBurger = useSelector(selectShowBurger);
-  const formType = useSelector(selectFormType);
+  const activeBurger = useSelector(selectShowBurger);
 
   const openBurger = () => dispatch(toggleBurger(true));
   const closeBurger = () => dispatch(toggleBurger(false));
+  
 
   return (
     <div className="wrapper">
-      <Header openBurger={openBurger}/>
-      {isOpenBurger ? <Burger openBurger={openBurger} closeBurger={closeBurger}/> : ''}
+       <Header openBurger={openBurger} />
+      <Burger isOpenBurger={activeBurger} closeBurger={closeBurger} />
       {showForm ? <UserForm /> : ""}
       <main>
         <div className="container">

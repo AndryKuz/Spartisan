@@ -1,8 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-
-
 export const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -10,7 +7,9 @@ export const userSlice = createSlice({
     showForm: false,
     formType: "login",
     showBurger: false,
-    
+    email: null,
+    token: null,
+    id: null,
   },
   reducers: {
     toggleForm: (state, { payload }) => {
@@ -19,30 +18,27 @@ export const userSlice = createSlice({
     toggleFormType: (state, { payload }) => {
       state.formType = payload;
     },
-    toggleBurger: (state, {payload}) => {
-        state.showBurger = payload;
-    }
+    toggleBurger: (state, { payload }) => {
+      state.showBurger = payload;
+    },
+    setUser: (state, { payload }) => {
+      state.email = payload.email;
+      state.token = payload.token;
+      state.id = payload.id;
+    },
+    removeUser: (state, { payload }) => {
+      state.email = null;
+      state.token = null;
+      state.id = null;
+    },
   },
 
   extraReducers: (builder) => {
-    builder
-    //   .addCase(createUser.fulfilled, (state, { payload }) => {
-    //     state.currentUser = payload;
-    //   })
-    //   .addCase(loginUser.fulfilled, (state, { payload }) => {
-    //     state.currentUser = payload;
-    //   });
-    // //   .addCase(updateUser.fulfilled, (state, { payload }) => {
-    // //     state.currentUser = payload;
-    // //   });
+    builder;
   },
 });
 
-export const {
-  toggleForm,
-  toggleFormType,
-  toggleBurger
-} = userSlice.actions;
+export const { toggleForm, toggleFormType, toggleBurger,setUser, removeUser } = userSlice.actions;
 
 export default userSlice.reducer;
 
@@ -50,4 +46,3 @@ export const selectCurrentUser = (state) => state.user.currentUser;
 export const selectShowForm = (state) => state.user.showForm;
 export const selectFormType = (state) => state.user.formType;
 export const selectShowBurger = (state) => state.user.showBurger;
-

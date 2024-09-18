@@ -16,25 +16,31 @@ const PopupAuth = ({ closePopup}) => {
     console.log(data);
   };
 
-  const dinamicPopup = (type) => {
-    const obj = [];
-    if (type === "login") {
-      obj.title = "Registration";
-      obj.input = true;
-      obj.message = false;
-    } else if (type === "signup") {
-      obj.title = "Authorization";
-      obj.input = true;
-      obj.message = false;
-    } else {
-      obj.title = "Password recovery";
-      obj.input = false;
-      obj.message = true;
-    }
-    return obj;
+  const dynamicPopup = (type) => {
+    const popupConfig = {
+      login: {
+        title: "Registration",
+        input: true,
+        message: false,
+        nameButton: 3
+      },
+      signup: {
+        title: "Authorization",
+        input: true,
+        message: false,
+        nameButton: 4
+      },
+      recovery: {
+        title: "Password recovery",
+        input: false,
+        message: true,
+        nameButton: 4
+      }
+    };
+  
+    return popupConfig[type];
   };
-
-  const resultPopupContent = dinamicPopup(formType);
+  const resultPopupContent = dynamicPopup(formType);
 
 
   return (
@@ -66,7 +72,7 @@ const PopupAuth = ({ closePopup}) => {
             ""
           )}
         </form>
-        <MainButton buttonLabel={nameMainButton[3]} styleArrow="order" />
+        <MainButton buttonLabel={nameMainButton[resultPopupContent.nameButton]} styleArrow="order" />
       </div>
     </div>
   );

@@ -8,8 +8,6 @@ import { ReactComponent as LogoSvg } from "assets/images/logo.svg";
 
 
 const Header = ({openBurger}) => {
-
-
   return (
     <header className={style.head}>
       <div className="container">
