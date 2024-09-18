@@ -1,6 +1,6 @@
 import { Drawer, List, ListItem, ListItemIcon } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -8,22 +8,19 @@ import style from "./Burger.module.scss";
 
 import { ROUTES } from "../Routes";
 import { LinkName } from "constants/link.js";
-import { selectFormType, selectShowBurger, selectShowForm, toggleBurger, toggleForm } from "auth/redux/authSlice";
+import { toggleForm, toggleFormType } from "auth/redux/authSlice";
 
 
 const Burger = ({openBurger, closeBurger}) => {
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const formType = useSelector(selectFormType);
-  // const showForm = useSelector(selectShowForm);
-
-  // const openBurger = () => dispatch(toggleBurger(true));
-  // const closeBurger = () => dispatch(toggleBurger(false));
+ 
 
   const openRegistration = (type) => {
-    // dispatch(toggleForm(true));
-    console.log(type);
+    dispatch(toggleFormType(type));
+    dispatch(toggleForm(true));
+    closeBurger();
     
     
   }
@@ -64,10 +61,10 @@ const Burger = ({openBurger, closeBurger}) => {
             </ListItem>
           ))}
           <ListItem>
-            <Link className={style.linkLogin} onClick={openRegistration('login')}>log in</Link>
+            <button className={style.linkLogin} onClick={() => openRegistration('login')}>log in</button>
           </ListItem>
           <ListItem>
-            <Link className={style.linkSign} onClick={openRegistration('signup')}>sign up</Link>
+            <button className={style.linkSign} onClick={() => openRegistration('signup')}>sign up</button>
           </ListItem>
         </List>
         

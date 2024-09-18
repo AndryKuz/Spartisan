@@ -8,13 +8,13 @@ const UserForm = () => {
   const showForm = useSelector(selectFormType);
   const formType = useSelector(selectFormType);
 
-  const closeForm = () => dispatch(toggleForm(false));
+  const closePopup = () => dispatch(toggleForm(false));
 
-  const toggleCurrentFormType = (type) => dispatch(toggleForm(type));
+
   return (
     <>
-      <div className="overlay" />
-      <PopupAuth />
+      <div className="overlay" onClick={closePopup}/>
+      <PopupAuth closePopup={closePopup}/>
     </>
   );
 };
