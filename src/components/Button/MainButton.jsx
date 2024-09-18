@@ -14,6 +14,8 @@ export const MainButton = ({ buttonLabel, onClick, styleArrow, widthButton }) =>
 
  
 
+ 
+
   let arrowStyle;
   switch (styleArrow) {
     case "search":
