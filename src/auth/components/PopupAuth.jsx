@@ -5,14 +5,17 @@ import style from "./PopupAuth.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import { useForm } from "react-hook-form";
 import { MainButton, nameMainButton } from "components/Button/MainButton";
+import { toggleForm } from "auth/redux/authSlice";
 
-const PopupAuth = ({ closeForm }) => {
+const PopupAuth = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
   };
+
+  const closeForm = () => dispatch(toggleForm(false));
 
   return (
     <div className={style.popupWindow}>

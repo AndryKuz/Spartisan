@@ -1,11 +1,11 @@
-
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import style from "./Header.module.scss";
 import { FaInstagram } from "react-icons/fa";
 
 import { ROUTES } from "../Routes";
 import { ReactComponent as LogoSvg } from "assets/images/logo.svg";
+
 
 const Header = ({openBurger}) => {
 
@@ -23,9 +23,9 @@ const Header = ({openBurger}) => {
               <FaInstagram />
             </a>
           </div>
-            <Link to={ROUTES.HOME} className={style.linkLogo}>
-              <LogoSvg className={style.large} />
-            </Link>
+          <Link to={ROUTES.HOME} className={style.linkLogo}>
+            <LogoSvg className={style.large} />
+          </Link>
           <div className={style.navigation}>
             <div className={style.menu}>
               <Link to={ROUTES.BOOK}>Book now</Link>

@@ -1,5 +1,6 @@
 import { selectFormType, toggleForm } from "auth/redux/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+
 import PopupAuth from "./PopupAuth";
 
 const UserForm = () => {
@@ -12,7 +13,7 @@ const UserForm = () => {
   const toggleCurrentFormType = (type) => dispatch(toggleForm(type));
   return (
     <>
-      <div className="overlay" onClick={closeForm} closeForm={closeForm}/>
+      <div className="overlay" />
       <PopupAuth />
     </>
   );

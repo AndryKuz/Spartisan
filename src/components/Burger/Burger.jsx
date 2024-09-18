@@ -8,26 +8,25 @@ import style from "./Burger.module.scss";
 
 import { ROUTES } from "../Routes";
 import { LinkName } from "constants/link.js";
-import { selectFormType, selectShowBurger, selectShowForm, toggleForm } from "auth/redux/authSlice";
+import { selectFormType, selectShowBurger, selectShowForm, toggleBurger, toggleForm } from "auth/redux/authSlice";
 
 
-const Burger = ({closeBurger, openBurger}) => {
+const Burger = ({openBurger, closeBurger}) => {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const formType = useSelector(selectFormType);
-  const showForm = useSelector(selectShowForm);
-  const isOpenBurger = useSelector(selectShowBurger);
+  // const formType = useSelector(selectFormType);
+  // const showForm = useSelector(selectShowForm);
 
-  const toggleCurrentFormType = (type) => dispatch(toggleForm(type));
+  // const openBurger = () => dispatch(toggleBurger(true));
+  // const closeBurger = () => dispatch(toggleBurger(false));
 
-  const openRegistration = () => {
-    dispatch(toggleForm(true));
-    toggleCurrentFormType('login');
-    closeBurger();
+  const openRegistration = (type) => {
+    // dispatch(toggleForm(true));
+    console.log(type);
+    
+    
   }
-
-  
 
   return (
     <>
@@ -51,7 +50,7 @@ const Burger = ({closeBurger, openBurger}) => {
           }}
         >
           <ListItemIcon className={style.icon}>
-            <CloseIcon onClick={closeBurger} />
+            <CloseIcon onClick={closeBurger}/>
           </ListItemIcon>
           {LinkName.map((item) => (
             <ListItem key={item.name}>
@@ -65,10 +64,10 @@ const Burger = ({closeBurger, openBurger}) => {
             </ListItem>
           ))}
           <ListItem>
-            <button className={style.linkLogin} onClick={openRegistration}>log in</button>
+            <Link className={style.linkLogin} onClick={openRegistration('login')}>log in</Link>
           </ListItem>
           <ListItem>
-            <button className={style.linkSign}onClick={openRegistration}>sign up</button>
+            <Link className={style.linkSign} onClick={openRegistration('signup')}>sign up</Link>
           </ListItem>
         </List>
         
