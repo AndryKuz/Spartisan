@@ -5,7 +5,7 @@ export const userSlice = createSlice({
   initialState: {
     currentUser: null,
     showForm: false,
-    formType: "login",
+    formType: "register",
     showBurger: false,
     email: null,
     token: null,
@@ -31,6 +31,9 @@ export const userSlice = createSlice({
       state.token = null;
       state.id = null;
     },
+    setCurrentUser: (state, { payload }) => {
+      state.currentUser = payload;
+    },
   },
 
   extraReducers: (builder) => {
@@ -38,7 +41,14 @@ export const userSlice = createSlice({
   },
 });
 
-export const { toggleForm, toggleFormType, toggleBurger,setUser, removeUser } = userSlice.actions;
+export const {
+  toggleForm,
+  toggleFormType,
+  setCurrentUser,
+  toggleBurger,
+  setUser,
+  removeUser,
+} = userSlice.actions;
 
 export default userSlice.reducer;
 
@@ -46,3 +56,4 @@ export const selectCurrentUser = (state) => state.user.currentUser;
 export const selectShowForm = (state) => state.user.showForm;
 export const selectFormType = (state) => state.user.formType;
 export const selectShowBurger = (state) => state.user.showBurger;
+export const selectEmail = (state) => state.user.email;

@@ -1,40 +1,60 @@
-import { useSelector } from "react-redux";
-import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword  } from "firebase/auth";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { useForm } from "react-hook-form";
 
 import style from "./PopupAuth.module.scss";
 
 import CloseIcon from "@mui/icons-material/Close";
 import { MainButton, nameMainButton } from "components/Button/MainButton";
-import { selectFormType } from "auth/redux/authSlice";
+import { selectFormType, setCurrentUser, setUser } from "auth/redux/authSlice";
 import { popupConfig } from "./popupConfig";
 
-
 const PopupAuth = ({ closePopup }) => {
+const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const formType = useSelector(selectFormType);
   const auth = getAuth();
 
-  
+
   const dynamicPopup = (type) => {
     return popupConfig[type];
   };
   const resultPopupContent = dynamicPopup(formType);
 
-  const handleLogin = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then(console.log)
-      .catch(console.error)
-      
-  }
-  const handleRegister = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(console.log)
-      .catch(console.error)
-      
-  }
+  const handleLogin = async (email, password) => {
+    try {
+      const userLogin = await signInWithEmailAndPassword(auth, email, password);
+      console.log(userLogin);
+    
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handleRegister = async (email, password) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log(({email}));
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const onSubmit = (data) => {
-    handleRegister(data.email, data.password)
+    if (formType === "register") {
+      handleRegister(data.email, data.password);
+      dispatch(setCurrentUser(true));
+      dispatch(setUser({email: data.email}))
+      closePopup();
+    } else {
+      handleLogin(data.email, data.password);
+    }
   };
 
 
@@ -47,7 +67,7 @@ const PopupAuth = ({ closePopup }) => {
           <input
             placeholder="E-mail"
             type="email"
-            {...register("email", { required: true, maxLength: 20 })}
+            {...register("email", { required: true, maxLength: 30 })}
           />
           {resultPopupContent.input ? (
             <input
@@ -71,6 +91,7 @@ const PopupAuth = ({ closePopup }) => {
         <MainButton
           buttonLabel={nameMainButton[resultPopupContent.nameButton]}
           styleArrow="order"
+          onClick={handleSubmit(onSubmit)}
         />
       </div>
     </div>

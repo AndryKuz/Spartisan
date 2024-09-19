@@ -57,7 +57,7 @@ const Burger = ({ isOpenBurger, closeBurger }) => {
           <ListItem>
             <button
               className={style.linkLogin}
-              onClick={() => openRegistration("login")}
+              onClick={() => openRegistration("register")}
             >
               log in
             </button>
