@@ -8,7 +8,7 @@ import { FaInstagram } from "react-icons/fa";
 import { ROUTES } from "../Routes";
 import { ReactComponent as LogoSvg } from "assets/images/logo.svg";
 import { ReactComponent as User } from "assets/images/person.svg";
-import { selectCurrentUser, selectEmail, setCurrentUser } from "auth/redux/authSlice";
+import { removeUser, selectCurrentUser, selectEmail, setCurrentUser } from "auth/redux/authSlice";
 
 const Header = ({ openBurger }) => {
   const dispatch = useDispatch();
@@ -20,6 +20,7 @@ const Header = ({ openBurger }) => {
  
   const handleCurrentUser = () => {
     dispatch(setCurrentUser(null));
+    dispatch(removeUser());
   };
   
   return (

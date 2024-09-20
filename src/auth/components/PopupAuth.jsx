@@ -13,12 +13,12 @@ import { MainButton, nameMainButton } from "components/Button/MainButton";
 import { selectFormType, setCurrentUser, setUser } from "auth/redux/authSlice";
 import { popupConfig } from "./popupConfig";
 
+
 const PopupAuth = ({ closePopup }) => {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const formType = useSelector(selectFormType);
   const auth = getAuth();
-
 
   const dynamicPopup = (type) => {
     return popupConfig[type];
@@ -28,20 +28,26 @@ const dispatch = useDispatch();
   const handleLogin = async (email, password) => {
     try {
       const userLogin = await signInWithEmailAndPassword(auth, email, password);
-      console.log(userLogin);
-    
+      const { email: userEmail, uid, accessToken } = userLogin.user;
+      dispatch(
+        setUser({ email:userEmail, id: uid, token: accessToken })
+      );
     } catch (error) {
-      console.error(error);
+      const resEr = () => alert(`'Invalid user' ${error}`)
+      return resEr;
     }
   };
   const handleRegister = async (email, password) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(
+      const userRegister = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      console.log(({email}));
+      const { email: userEmail, uid, accessToken } = userRegister.user;
+      dispatch(
+        setUser({ email:userEmail, id: uid, token: accessToken })
+      );
     } catch (error) {
       console.error(error);
     }
@@ -50,13 +56,13 @@ const dispatch = useDispatch();
     if (formType === "register") {
       handleRegister(data.email, data.password);
       dispatch(setCurrentUser(true));
-      dispatch(setUser({email: data.email}))
       closePopup();
     } else {
       handleLogin(data.email, data.password);
+      dispatch(setCurrentUser(true));
+      closePopup();
     }
   };
-
 
   return (
     <div className={style.popupWindow}>
