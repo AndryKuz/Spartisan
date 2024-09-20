@@ -80,7 +80,7 @@ const Gift = () => {
         </div>
       </div>
       <Form />
-      <div className={style.marginB}></div>
+     <br/>
       <div style={{display:'flex'}}>
         <MainButton buttonLabel={nameMainButton[2]} styleArrow="order" />
       </div>
