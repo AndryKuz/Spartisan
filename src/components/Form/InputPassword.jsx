@@ -3,7 +3,7 @@ import ErrorMessage from "./ErrorMessage";
 
 import style from './Form.module.scss';
 
-const InputName = ({ handleBlurred, classError }) => {
+const InputPassword = ({ handleBlurred, classError }) => {
   const {
     register,
     formState: { errors },
@@ -24,4 +24,4 @@ const InputName = ({ handleBlurred, classError }) => {
   );
 };
 
-export default InputName;
+export default InputPassword;

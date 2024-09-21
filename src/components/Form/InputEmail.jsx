@@ -4,6 +4,8 @@ import ErrorMessage from "./ErrorMessage";
 import style from "./Form.module.scss";
 
 const InputEmail = ({ handleBlurred, classError }) => {
+
+  
   const {
     register,
     formState: { errors },

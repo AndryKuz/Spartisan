@@ -4,7 +4,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { useForm } from "react-hook-form";
 
 import style from "./PopupAuth.module.scss";
 
@@ -12,11 +11,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import { MainButton, nameMainButton } from "components/Button/MainButton";
 import { selectFormType, setCurrentUser, setUser } from "auth/redux/authSlice";
 import { popupConfig } from "./popupConfig";
+import  Form  from "components/Form/Form";
 
 
 const PopupAuth = ({ closePopup }) => {
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
   const formType = useSelector(selectFormType);
   const auth = getAuth();
 
@@ -29,11 +28,9 @@ const PopupAuth = ({ closePopup }) => {
     try {
       const userLogin = await signInWithEmailAndPassword(auth, email, password);
       const { email: userEmail, uid, accessToken } = userLogin.user;
-      dispatch(
-        setUser({ email:userEmail, id: uid, token: accessToken })
-      );
+      dispatch(setUser({ email: userEmail, id: uid, token: accessToken }));
     } catch (error) {
-      const resEr = () => alert(`'Invalid user' ${error}`)
+      const resEr = () => alert(`'Invalid user' ${error}`);
       return resEr;
     }
   };
@@ -45,9 +42,7 @@ const PopupAuth = ({ closePopup }) => {
         password
       );
       const { email: userEmail, uid, accessToken } = userRegister.user;
-      dispatch(
-        setUser({ email:userEmail, id: uid, token: accessToken })
-      );
+      dispatch(setUser({ email: userEmail, id: uid, token: accessToken }));
     } catch (error) {
       console.error(error);
     }
@@ -69,9 +64,10 @@ const PopupAuth = ({ closePopup }) => {
       <div className={style.wrapper}>
         <CloseIcon className={style.close} onClick={closePopup} />
         <h3>{resultPopupContent.title}</h3>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        {/* <form onSubmit={handleSubmit(onSubmit)}>
           <input
             placeholder="E-mail"
+            autoComplete="off"
             type="email"
             {...register("email", { required: true, maxLength: 30 })}
           />
@@ -93,11 +89,12 @@ const PopupAuth = ({ closePopup }) => {
           ) : (
             ""
           )}
-        </form>
+        </form> */}
+        <Form popupForm={true}/>
         <MainButton
           buttonLabel={nameMainButton[resultPopupContent.nameButton]}
           styleArrow="order"
-          onClick={handleSubmit(onSubmit)}
+          // onClick={handleSubmit(onSubmit)}
         />
       </div>
     </div>

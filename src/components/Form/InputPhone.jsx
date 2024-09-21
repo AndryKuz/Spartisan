@@ -4,6 +4,8 @@ import ErrorMessage from "./ErrorMessage";
 import style from "./Form.module.scss";
 
 const InputPhone = ({ handleBlurred, classError }) => {
+  console.log(classError);
+  
   const {
     register,
     formState: { errors },
@@ -18,7 +20,6 @@ const InputPhone = ({ handleBlurred, classError }) => {
             message: "Enter a valid phone number (10-15 digits)",
           },
         })}
-        type="number"
         placeholder="Phone"
         autoComplete="off"
         onBlur={() => handleBlurred("phone")}
