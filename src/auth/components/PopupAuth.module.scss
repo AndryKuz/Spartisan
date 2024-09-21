@@ -5,7 +5,7 @@
   @include absolute-center;
   background-color: var(--bg);
   width: 588px;
-  height: 370px;
+  min-height: 400px;
   z-index: 999;
   border: 1px solid var(--gold);
 }
@@ -44,6 +44,22 @@
       margin-bottom: 10px;
       
     }
+  }
+  .changePopup {
+    display: flex;
+    h4 {
+      opacity: .7;
+      margin-right: 15px;
+    }
+    button {
+      text-decoration: underline;
+      transition: color .2s ease;
+      &:hover {
+        transition: color .2s ease;
+        color: var(--gold);
+      }
+    }
+
   }
   p {
     color: rgb(177, 51, 51);

@@ -1,0 +1,16 @@
+.user {
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+    span {
+      margin: 0px 10px;
+    }
+  
+    button {
+      transition: all .2s ease;
+  &:hover {
+    color: var(--gold);
+    transition: all .2s ease;
+  }
+    }
+  }

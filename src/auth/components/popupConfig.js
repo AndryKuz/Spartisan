@@ -11,7 +11,7 @@ export const popupConfig = {
     message: false,
     nameButton: 4,
   },
-  default: {
+  recovery: {
     title: "Password recovery",
     input: false,
     message: true,

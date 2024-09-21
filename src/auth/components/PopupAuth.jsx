@@ -14,7 +14,12 @@ import style from "./PopupAuth.module.scss";
 
 import CloseIcon from "@mui/icons-material/Close";
 import { MainButton, nameMainButton } from "components/Button/MainButton";
-import { selectFormType, setCurrentUser, setUser } from "auth/redux/authSlice";
+import {
+  selectFormType,
+  setCurrentUser,
+  setUser,
+  toggleFormType,
+} from "auth/redux/authSlice";
 import { popupConfig } from "./popupConfig";
 import ValidPopup from "./ValidPopup";
 
@@ -38,6 +43,13 @@ const PopupAuth = ({ closePopup }) => {
   };
   const resultPopupContent = dynamicPopup(formType);
 
+  const handleTypePopup = (typePopup) => {
+    if (typePopup === "signup") {
+      dispatch(toggleFormType("register"));
+    } else {
+      dispatch(toggleFormType("signup"));
+    }
+  };
   const handleLogin = async (email, password) => {
     try {
       const userLogin = await signInWithEmailAndPassword(auth, email, password);
@@ -146,7 +158,11 @@ const PopupAuth = ({ closePopup }) => {
             <p>We will send you your password to this email</p>
           )}
         </form>
-        <div style={{marginTop:"10px"}}>
+        <div className={style.changePopup}>
+          <h4>Already have an account? </h4>{" "}
+          <button onClick={() => handleTypePopup(formType)}>Sign up</button>
+        </div>
+        <div>
           <MainButton
             buttonLabel={nameMainButton[resultPopupContent.nameButton]}
             styleArrow="order"
