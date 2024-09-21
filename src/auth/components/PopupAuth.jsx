@@ -5,7 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   getIdToken,
-  signOut
+  signOut,
 } from "firebase/auth";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { useForm } from "react-hook-form";
@@ -46,7 +46,7 @@ const PopupAuth = ({ closePopup }) => {
       dispatch(setUser({ email: userEmail, id: uid, token: idToken }));
       return true;
     } catch (err) {
-      console.error('Firebase error:', err);
+      console.error("Firebase error:", err);
       if (err.code === "auth/wrong-password") {
         setErrorPassword("Wrong password. Try again.");
       } else if (err.code === "auth/invalid-email") {
@@ -76,7 +76,7 @@ const PopupAuth = ({ closePopup }) => {
       return true;
     } catch (err) {
       console.log(err);
-      
+
       if (err.code === "auth/email-already-in-use") {
         setErrorEmail("This email is already registered.");
       } else {
@@ -105,22 +105,24 @@ const PopupAuth = ({ closePopup }) => {
         <CloseIcon className={style.close} onClick={closePopup} />
         <h3>{resultPopupContent.title}</h3>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input
-            placeholder="E-mail"
-            autoComplete="off"
-            type="email"
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                message: "Enter a valid email address",
-              },
-            })}
-          />
-          <ValidPopup error={errors?.email} />
-          {errorEmail ? <p>{errorEmail}</p> : ""}
-          {resultPopupContent.input ? (
-            <>
+          <div className={style.wrapperInput}>
+            <input
+              placeholder="E-mail"
+              autoComplete="off"
+              type="email"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                  message: "Enter a valid email address",
+                },
+              })}
+            />
+            <ValidPopup error={errors?.email} />
+            {errorEmail && <p>{errorEmail}</p>}
+          </div>
+          {resultPopupContent.input && (
+            <div>
               <input
                 type="password"
                 placeholder="Password"
@@ -138,17 +140,13 @@ const PopupAuth = ({ closePopup }) => {
               />
               {errorPassword ? <p>{errorPassword}</p> : ""}
               <ValidPopup error={errors?.password} />
-            </>
-          ) : (
-            ""
+            </div>
           )}
-          {resultPopupContent.message ? (
+          {resultPopupContent.message && (
             <p>We will send you your password to this email</p>
-          ) : (
-            ""
           )}
         </form>
-        <div>
+        <div style={{marginTop:"10px"}}>
           <MainButton
             buttonLabel={nameMainButton[resultPopupContent.nameButton]}
             styleArrow="order"
