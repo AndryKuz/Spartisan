@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 import style from "./Form.module.scss";
 
-import ErrorMessage from "./ErrorMessage";
 import {
   addError,
   formValidated,
@@ -37,10 +36,9 @@ const Form = ({ styleForm }) => {
 
   const {
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { isValid },
     getValues,
-    trigger,
-    register,
+    trigger
   } = methods;
 
   useEffect(() => {

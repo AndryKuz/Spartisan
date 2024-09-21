@@ -1,12 +1,10 @@
-import { selectFormType, toggleForm } from "auth/redux/authSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { toggleForm } from "auth/redux/authSlice";
+import { useDispatch} from "react-redux";
 
 import PopupAuth from "./PopupAuth";
 
 const UserForm = () => {
   const dispatch = useDispatch();
-  const showForm = useSelector(selectFormType);
-  const formType = useSelector(selectFormType);
 
   const closePopup = () => dispatch(toggleForm(false));
 

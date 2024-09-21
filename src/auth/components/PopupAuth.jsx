@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  getIdToken,
+  signOut
 } from "firebase/auth";
+import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 
 import style from "./PopupAuth.module.scss";
@@ -12,13 +16,22 @@ import CloseIcon from "@mui/icons-material/Close";
 import { MainButton, nameMainButton } from "components/Button/MainButton";
 import { selectFormType, setCurrentUser, setUser } from "auth/redux/authSlice";
 import { popupConfig } from "./popupConfig";
-
+import ValidPopup from "./ValidPopup";
 
 const PopupAuth = ({ closePopup }) => {
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
-  const formType = useSelector(selectFormType);
+  const db = getFirestore();
   const auth = getAuth();
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
+  });
+  const formType = useSelector(selectFormType);
 
   const dynamicPopup = (type) => {
     return popupConfig[type];
@@ -28,13 +41,22 @@ const PopupAuth = ({ closePopup }) => {
   const handleLogin = async (email, password) => {
     try {
       const userLogin = await signInWithEmailAndPassword(auth, email, password);
-      const { email: userEmail, uid, accessToken } = userLogin.user;
-      dispatch(
-        setUser({ email:userEmail, id: uid, token: accessToken })
-      );
-    } catch (error) {
-      const resEr = () => alert(`'Invalid user' ${error}`)
-      return resEr;
+      const { email: userEmail, uid } = userLogin.user;
+      const idToken = await userLogin.user.getIdToken();
+      dispatch(setUser({ email: userEmail, id: uid, token: idToken }));
+      return true;
+    } catch (err) {
+      console.error('Firebase error:', err);
+      if (err.code === "auth/wrong-password") {
+        setErrorPassword("Wrong password. Try again.");
+      } else if (err.code === "auth/invalid-email") {
+        setErrorPassword("Invalid email format.");
+      } else if (err.code === "auth/user-not-found") {
+        setErrorPassword("No user found with this email.");
+      } else {
+        setErrorPassword(`Sign-in error: ${err.message}`);
+      }
+      return false;
     }
   };
   const handleRegister = async (email, password) => {
@@ -45,20 +67,33 @@ const PopupAuth = ({ closePopup }) => {
         password
       );
       const { email: userEmail, uid, accessToken } = userRegister.user;
-      dispatch(
-        setUser({ email:userEmail, id: uid, token: accessToken })
-      );
-    } catch (error) {
-      console.error(error);
+      await setDoc(doc(db, "users", userRegister.user.uid), {
+        name: name,
+        email: email,
+        createdAt: new Date(),
+      });
+      dispatch(setUser({ email: userEmail, id: uid, token: accessToken }));
+      return true;
+    } catch (err) {
+      console.log(err);
+      
+      if (err.code === "auth/email-already-in-use") {
+        setErrorEmail("This email is already registered.");
+      } else {
+        setErrorEmail("An error occurred during registration.");
+      }
+      return false;
     }
   };
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    let isSuccessful = false;
     if (formType === "register") {
-      handleRegister(data.email, data.password);
-      dispatch(setCurrentUser(true));
-      closePopup();
+      isSuccessful = await handleRegister(data.email, data.password);
     } else {
-      handleLogin(data.email, data.password);
+      isSuccessful = await handleLogin(data.email, data.password);
+    }
+
+    if (isSuccessful && errorEmail.length === 0) {
       dispatch(setCurrentUser(true));
       closePopup();
     }
@@ -72,19 +107,38 @@ const PopupAuth = ({ closePopup }) => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             placeholder="E-mail"
+            autoComplete="off"
             type="email"
-            {...register("email", { required: true, maxLength: 30 })}
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                message: "Enter a valid email address",
+              },
+            })}
           />
+          <ValidPopup error={errors?.email} />
+          {errorEmail ? <p>{errorEmail}</p> : ""}
           {resultPopupContent.input ? (
-            <input
-              type="password"
-              placeholder="Password"
-              {...register("password", {
-                required: true,
-                maxLength: 20,
-                minLength: 8,
-              })}
-            />
+            <>
+              <input
+                type="password"
+                placeholder="Password"
+                {...register("password", {
+                  required: "Password is required",
+                  maxLength: {
+                    value: 20,
+                    message: "Password cannot exceed 20 characters",
+                  },
+                  minLength: {
+                    value: 8,
+                    message: "Password must be at least 8 characters long",
+                  },
+                })}
+              />
+              {errorPassword ? <p>{errorPassword}</p> : ""}
+              <ValidPopup error={errors?.password} />
+            </>
           ) : (
             ""
           )}
@@ -94,11 +148,13 @@ const PopupAuth = ({ closePopup }) => {
             ""
           )}
         </form>
-        <MainButton
-          buttonLabel={nameMainButton[resultPopupContent.nameButton]}
-          styleArrow="order"
-          onClick={handleSubmit(onSubmit)}
-        />
+        <div>
+          <MainButton
+            buttonLabel={nameMainButton[resultPopupContent.nameButton]}
+            styleArrow="order"
+            onClick={handleSubmit(onSubmit)}
+          />
+        </div>
       </div>
     </div>
   );

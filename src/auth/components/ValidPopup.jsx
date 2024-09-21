@@ -1,11 +1,11 @@
 
-
 import { GoAlert } from "react-icons/go";
+import style from './PopupAuth.module.scss';
 
-const ErrorMessage = ({ error, className }) => {
+const ValidPopup = ({ error }) => {
   
   return (
-    <div className={className}>
+    <div className={style.errorMessage}>
       {error && (
         <div>
           <GoAlert />
@@ -16,4 +16,4 @@ const ErrorMessage = ({ error, className }) => {
   );
 };
 
-export default ErrorMessage;
+export default ValidPopup;
