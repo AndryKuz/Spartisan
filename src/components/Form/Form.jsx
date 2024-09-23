@@ -36,8 +36,11 @@ const Form = ({ styleForm, popupForm }) => {
   });
 
   const {
+    handleSubmit,
+    formState: { isValid },
     formState: { isValid },
     getValues,
+    trigger
     trigger,
   } = methods;
 

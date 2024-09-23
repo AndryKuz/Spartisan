@@ -1,27 +1,17 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-
 
 import style from "./Header.module.scss";
 import { FaInstagram } from "react-icons/fa";
 
 import { ROUTES } from "../Routes";
 import { ReactComponent as LogoSvg } from "assets/images/logo.svg";
-import { ReactComponent as User } from "assets/images/person.svg";
-import { removeUser, selectCurrentUser, selectEmail, setCurrentUser } from "auth/redux/authSlice";
+import ActiveUser from "components/ActiveUser/ActiveUser";
+import { selectCurrentUser } from "auth/redux/authSlice";
+
 
 const Header = ({ openBurger }) => {
-  const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
-  const currentEmail = useSelector(selectEmail);
-  
-  const [headerUserName] = (typeof currentEmail === 'string' && currentEmail.includes('@')) ? currentEmail.split('@'): [''];
- 
- 
-  const handleCurrentUser = () => {
-    dispatch(setCurrentUser(null));
-    dispatch(removeUser());
-  };
   
   return (
     <header className={style.head}>
@@ -42,19 +32,7 @@ const Header = ({ openBurger }) => {
             </Link>
           </div>
           <div className={style.userWrapper}>
-            {currentUser ? (
-              <div className={style.user}>
-                <div>
-                  <User />
-                  <span>Hello {headerUserName || 'user'} | </span>
-                </div>
-                <div>
-                  <button onClick={handleCurrentUser}> Go out</button>
-                </div>
-              </div>
-            ) : (
-              ""
-            )}
+            {currentUser && (<ActiveUser/>)}
           </div>
           <div className={style.navigation}>
             <div className={style.menu}>

@@ -1,6 +1,6 @@
 import { Drawer, List, ListItem, ListItemIcon } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -8,11 +8,16 @@ import style from "./Burger.module.scss";
 
 import { ROUTES } from "../Routes";
 import { LinkName } from "constants/link.js";
-import { toggleForm, toggleFormType } from "auth/redux/authSlice";
+import {
+  selectCurrentUser,
+  toggleForm,
+  toggleFormType,
+} from "auth/redux/authSlice";
+import ActiveUser from "components/ActiveUser/ActiveUser";
 
 const Burger = ({ isOpenBurger, closeBurger }) => {
   const dispatch = useDispatch();
-
+  const isVisibleAuth = useSelector(selectCurrentUser);
   const openRegistration = (type) => {
     dispatch(toggleFormType(type));
     dispatch(toggleForm(true));
@@ -54,22 +59,31 @@ const Burger = ({ isOpenBurger, closeBurger }) => {
               </Link>
             </ListItem>
           ))}
-          <ListItem>
-            <button
-              className={style.linkLogin}
-              onClick={() => openRegistration("register")}
-            >
-              log in
-            </button>
-          </ListItem>
-          <ListItem>
-            <button
-              className={style.linkSign}
-              onClick={() => openRegistration("signup")}
-            >
-              sign up
-            </button>
-          </ListItem>
+          {isVisibleAuth ? (
+            <div className={style.activeUser}>
+              <ActiveUser />
+
+            </div>
+          ) : (
+            <>
+              <ListItem>
+                <button
+                  className={style.linkLogin}
+                  onClick={() => openRegistration("register")}
+                >
+                  log in
+                </button>
+              </ListItem>
+              <ListItem>
+                <button
+                  className={style.linkSign}
+                  onClick={() => openRegistration("signup")}
+                >
+                  sign up
+                </button>
+              </ListItem>
+            </>
+          )}
         </List>
       </Drawer>
     </>
