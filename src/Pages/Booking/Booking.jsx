@@ -10,8 +10,8 @@ import SearchPlace from "components/SearchPlace/SearchPlace";
 import { MainButton, nameMainButton } from "components/Button/MainButton";
 
 import { nameButtonProgram } from "constants/programCart";
-import { nameTitle } from "constants/common";
-import Title from "common/Title";
+
+import Title from "common/Title/Title";
 
 import {
   selectPrograms,
@@ -24,6 +24,7 @@ import {
   defaultInitialState,
 } from "../../features/booking/bookingSlice";
 import { ROUTES } from "components/Routes";
+import { nameTitle } from "common/Title/titleData";
 
 const Booking = () => {
   const dispatch = useDispatch();

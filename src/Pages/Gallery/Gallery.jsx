@@ -1,12 +1,11 @@
-import Title from "common/Title";
-import { nameTitle } from "constants/common";
+import Title from "common/Title/Title";
+
 import { images } from "constants/imageGallery";
 
 import style from "./Gallery.module.scss";
+import { nameTitle } from "common/Title/titleData";
 
 const Gallery = () => {
-  // const firstGallery = images.filter((item) => item.id <= 4);
-  // const secondGallery = images.filter((item) => item.id > 4);
 
   const firstGallery = [];
   const secondGallery = [];

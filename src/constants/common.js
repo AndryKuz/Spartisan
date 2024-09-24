@@ -7,15 +7,7 @@ import { ReactComponent as Sound } from "../assets/images/services/sound.svg";
 import { ReactComponent as WarmFoot } from "../assets/images/services/warmFoot.svg";
 import { ReactComponent as WarmHerbs } from "../assets/images/services/warmHerbs.svg";
 
-export const nameTitle = [
-  { 1: "Our", 2: "programs" },
-  { 1: "Additional", 2: "services" },
-  { 1: "Our", 2: "reviews" },
-  { 1: "Our", 2: "gallery" },
-  { 1: "Book", 2: "now" },
-  { 1: "Gift", 2: "Vouchers" },
-  { 1: "About", 2: "Spartisan" },
-];
+
 
 export const serviceItems = [
   { id: 1, icon: <Aroma />, text: "Aroma fan soaring" },

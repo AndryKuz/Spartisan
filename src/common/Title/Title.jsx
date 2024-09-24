@@ -1,6 +1,5 @@
 import style from './Title.module.scss';
 
-
 const Title = ({titleStart, titleEnd}) => {
     return (
         <div className={style.main}>

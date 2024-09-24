@@ -5,11 +5,11 @@ import style from "./OurReviews.module.scss";
 
 import { Arrow } from "common/Arrow";
 
-import Title from "common/Title";
+import Title from "common/Title/Title";
 import ReviewCart from "../ReviewsCart/ReviewsCart";
 import Navigation from "common/Navigation";
 
-import { nameTitle } from "constants/common";
+import { nameTitle } from "common/Title/titleData";
 import { reviewsData } from "constants/reviewsData";
 
 const OurReviews = () => {

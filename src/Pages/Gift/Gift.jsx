@@ -5,13 +5,14 @@ import style from "./Gift.module.scss";
 import GiftImg from "assets/images/gift.png";
 
 import ThreeReasonsBlock from "common/ThreeReasonsBlock";
-import Title from "common/Title";
-import { nameTitle } from "constants/common";
+import Title from "common/Title/Title";
+
 import { threeReasons } from "common/ThreeReasonsBlock";
 import RadioButton from "common/RadioButton/RadioButton";
 import { labelRadio } from "common/RadioButton/RadioButton";
 import Form from "components/Form/Form";
 import { MainButton, nameMainButton } from "components/Button/MainButton";
+import { nameTitle } from "common/Title/titleData";
 
 const Gift = () => {
   const [selected, setSelected] = useState("");

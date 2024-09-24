@@ -2,11 +2,12 @@ import { useSelector } from "react-redux";
 
 import style from "./OurPrograms.module.scss";
 
-import Title from "common/Title.jsx";
+import Title from "common/Title/Title.jsx";
 import Button from "../Button/Button.jsx";
 import { nameButtonProgram } from "constants/programCart.js";
-import { nameTitle } from "constants/common.js";
+
 import { selectPrograms } from "../../features/booking/bookingSlice.js";
+import { nameTitle } from "common/Title/titleData";
 
 const OurPrograms = () => {
 

@@ -1,10 +1,12 @@
 import style from "./About.module.scss";
 
-import Title from "common/Title";
-import { nameTitle } from "constants/common";
+import Title from "common/Title/Title";
+
 
 import Image from "assets/images/about.png";
 import Info from "common/Info/Info";
+import { nameTitle } from "common/Title/titleData";
+
 
 const About = () => {
   return (
