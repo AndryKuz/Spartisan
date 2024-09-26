@@ -1,6 +1,9 @@
-import { MainButton, nameMainButton } from "components/Button/MainButton";
 import style from "./ClubCard.module.scss";
+
+import { MainButton, nameMainButton } from "components/Button/MainButton";
+
 import TopHistory from "./TopHistory";
+
 const ClubCard = () => {
   return (
     <>

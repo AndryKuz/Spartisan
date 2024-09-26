@@ -2,7 +2,8 @@ import Title from "common/Title/Title";
 
 import { nameTitle } from "common/Title/titleData";
 import ButtonArea from "./components/ButtonArea";
-import ClubCard from "./components/ClubCard";
+import ClubCard from "./components/ClubCard/ClubCard";
+import BookingHistory from "./components/BookingHistory/BookingHistory";
 
 
 const PersonalArea = () => {
@@ -13,6 +14,7 @@ const PersonalArea = () => {
       <ButtonArea />
       <br />
       <ClubCard />
+      <BookingHistory/>
     </div>
   );
 };

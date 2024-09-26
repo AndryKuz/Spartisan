@@ -1,0 +1,23 @@
+.history {
+    margin-bottom: 150px;
+    .columns {
+      display: flex;
+      margin-bottom: 15px;
+    
+      & > div:first-child {
+        flex: 15%;
+      }
+      & > div:nth-child(2) {
+        flex: 20%;
+      }
+      & > div:nth-child(3) {
+        flex: 25%;
+      }
+      & > div:nth-child(4) {
+        flex: 20%;
+      }
+      & > div:nth-child(5) {
+        flex: 20%;
+      }
+    }
+}

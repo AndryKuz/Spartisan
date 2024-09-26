@@ -23,7 +23,7 @@ const TopHistory = () => {
           <div className={style.columns}>
             <div>{item.data}</div>
             <div>{item.quantity} visits</div>
-            <div>${item.sum}</div>
+            <div>€{item.sum}</div>
           </div>
           <span className="divider"></span>
         </div>
