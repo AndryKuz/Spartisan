@@ -1,0 +1,23 @@
+.mainTopHistory {
+    margin-bottom: 150px;
+  h2 {
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .columns {
+    display: flex;
+    gap: 80px;
+    margin-bottom: 15px;
+
+    & > div:first-child {
+      flex: 20%;
+    }
+    & > div:nth-child(2) {
+      flex: 30%;
+    }
+    & > div:nth-child(3) {
+      flex: 50%;
+    }
+  }
+}

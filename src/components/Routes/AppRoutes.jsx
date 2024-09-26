@@ -10,6 +10,8 @@ import Gift from "pages/Gift/Gift";
 import Booking from "pages/Booking/Booking";
 import About from "pages/About/About";
 import Result from "pages/Result/Result";
+import PersonalArea from "pages/PersonalArea/PersonalArea";
+
 
 
 const AppRoutes = () => {
@@ -24,6 +26,7 @@ const AppRoutes = () => {
         <Route path={ROUTES.BOOK} element={<Booking />} />
         <Route path={ROUTES.ABOUT} element={<About />} />
         <Route path={ROUTES.RESULT} element={<Result />} />
+        <Route path={ROUTES.PERSONAL} element={<PersonalArea/>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>

@@ -61,3 +61,12 @@ $mobileSmall: 479.98px;
 .slick-list {
   padding-bottom: 40px;
 }
+
+.divider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--gray);
+  line-height: 0;
+ margin: 20px 0;
+}

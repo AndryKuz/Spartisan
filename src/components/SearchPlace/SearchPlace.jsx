@@ -4,7 +4,7 @@ import { useDispatch, useSelector} from "react-redux";
 import style from "./SearchPlace.module.scss";
 
 import { dateTimeOneHour, dateTimeTwoHour } from "../Button/dateTime";
-import { initialStateTimeDisable, randomizeDisable } from "constants/common";
+import { randomizeDisable } from "constants/common";
 
 import TimeRadioButton from "pages/Booking/components/TimeRadioButton";
 import Form from "components/Form/Form";
@@ -57,9 +57,9 @@ const SearchPlace = () => {
           <TimeButton key={button.id} isActiveTime={isActiveTime(button)} children={button} onClick={() => handleSelectTime(button)} />
         ))}
       </div>
-      <span className={style.divider}></span>
+      <span className='divider'></span>
       <AddServicesToOrder />
-      <span className={style.divider}></span>
+      <span className='divider'></span>
       <Form styleForm="row" />
       <br />
       <TotalBooking />

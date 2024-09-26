@@ -7,25 +7,21 @@ export const nameMainButton = [
   "Book now",
   "Order",
   "Register",
-  "Entrance"
+  "Entrance",
+  "Buy now",
 ];
 
 export const MainButton = ({ buttonLabel, onClick, styleArrow, widthButton }) => {
-
- 
-
- 
 
   let arrowStyle;
   switch (styleArrow) {
     case "search":
       arrowStyle = style.searchPlaceArrow;
       break;
-    case "order":
-      arrowStyle = style.orderArrow;
-      break;
     case 'book':
-      arrowStyle = style.bookArrow  
+      arrowStyle = style.bookArrow  ;
+      default:
+        arrowStyle = style.orderArrow;
   }
 
   return (

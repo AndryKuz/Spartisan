@@ -6,4 +6,5 @@ export const ROUTES = {
     GIFT: '/gift',
     ABOUT: '/about',
     RESULT: '/result',
+    PERSONAL: '/personal-area'
 }
