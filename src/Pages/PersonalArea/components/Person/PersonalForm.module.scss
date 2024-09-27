@@ -1,0 +1,26 @@
+
+.formWrapperPerson{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+    & > div {
+        display: flex;
+        gap: 15px;
+        input {
+            flex:33.33%;
+            max-width: 384px;
+            height: 50px;
+            padding: 20px;
+            background: var(--gray);
+            @media(max-width: 780px) {
+              min-width: 324px;
+            }
+            
+        }
+        @media(max-width: 780px) {
+          flex-wrap: wrap;
+        }
+    }
+    
+}

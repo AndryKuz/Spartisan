@@ -4,6 +4,7 @@ import { nameTitle } from "common/Title/titleData";
 import ButtonArea from "./components/ButtonArea";
 import ClubCard from "./components/ClubCard/ClubCard";
 import BookingHistory from "./components/BookingHistory/BookingHistory";
+import PersonalForm from "./components/Person/PersonalForm";
 
 
 const PersonalArea = () => {
@@ -13,8 +14,9 @@ const PersonalArea = () => {
       <br />
       <ButtonArea />
       <br />
-      <ClubCard />
-      <BookingHistory/>
+      {/* <ClubCard />
+      <BookingHistory/> */}
+      <PersonalForm/>
     </div>
   );
 };
