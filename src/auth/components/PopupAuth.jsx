@@ -26,7 +26,7 @@ const PopupAuth = ({ closePopup }) => {
   const db = getFirestore();
   const auth = getAuth();
   const [showPassword, setShowPassword] = useState(false);
-  const [errorEmail, setErrorEmail] = useState("");
+  const [errorEmail,  ] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const {
     register,
@@ -169,8 +169,8 @@ const togglePasswordVisibility = () => {
                 })}
               />
               <VisibilityIcon onClick={togglePasswordVisibility}/>
-              {errorPassword ? <p>{errorPassword}</p> : ""}
               <ValidPopup error={errors?.password} />
+              {errorPassword && <p>{errorPassword}</p>}
             </div>
           )}
           {resultPopupContent.message && (

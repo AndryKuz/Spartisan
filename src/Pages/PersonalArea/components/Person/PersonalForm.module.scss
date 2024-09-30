@@ -1,26 +1,30 @@
-
-.formWrapperPerson{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
-    & > div {
-        display: flex;
-        gap: 15px;
-        input {
-            flex:33.33%;
-            max-width: 384px;
-            height: 50px;
-            padding: 20px;
-            background: var(--gray);
-            @media(max-width: 780px) {
-              min-width: 324px;
-            }
-            
-        }
-        @media(max-width: 780px) {
-          flex-wrap: wrap;
-        }
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  & > div {
+    flex: 33.33%;
+    max-width: 384px;
+    @media (max-width: 768px) {
+      flex: 100%;
     }
-    
+  }
+  input {
+    width: 100%;
+    height: 50px;
+    padding: 20px;
+    background: var(--gray);
+  }
+  @media (max-width: 1210px) {
+    justify-content: center;
+  }
+
+  .empty {
+    max-width: 384px;
+    width: 384px;
+    @media (max-width: 1210px) {
+      display: none;
+    }
+  }
 }

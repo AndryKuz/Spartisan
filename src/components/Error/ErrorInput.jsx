@@ -2,10 +2,10 @@
 
 import { GoAlert } from "react-icons/go";
 
-const ErrorInput = ({ error, className }) => {
+const ErrorInput = ({ error}) => {
   
   return (
-    <div className={className}>
+    <div style={{color:'red'}}>
       {error && (
         <div>
           <GoAlert />
