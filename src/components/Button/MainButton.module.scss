@@ -8,8 +8,7 @@
       font-size: 18px;
       transition: all 0.3s ease;
     }
-    .searchPlaceArrow,
-    .orderArrow {
+    .arrowDefault {
       right: -60px;
       transition: all 0.3s ease;
     }
@@ -39,21 +38,17 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
-
-    &:hover {
-      right: -30px;
-    }
+    
   }
 }
-.searchPlaceArrow,
-.orderArrow {
+.arrowDefault {
   transition: all 0.3s ease;
   width: 48px;
   right: -30px;
 }
-
 .bookArrow {
   transition: all 0.3s ease;
-  width: 80px;
-  right: 70px;
+  width: 130px;
+  right: 60px;
+ 
 }

@@ -28,7 +28,7 @@ const Form = ({ styleForm, popupForm }) => {
   const classForm = styleForm === "row" ? style.styleFormRow : style.form;
   const classError =
     styleForm === "row" ? style.errorMessageRow : style.errorMessage;
-  console.log(classError);
+
 
   const methods = useForm({
     defaultValues: {},

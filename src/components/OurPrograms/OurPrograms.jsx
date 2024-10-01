@@ -13,8 +13,6 @@ const OurPrograms = () => {
 
   const [programs] = useSelector(selectPrograms);
 
-
-  
   const isActive = (program) => program.id === programs?.id;
   return (
     <div className={style.programs}>

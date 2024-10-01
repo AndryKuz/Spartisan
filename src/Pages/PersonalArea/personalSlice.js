@@ -1,18 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { personalButton } from "./components/Person/personalButtonData";
+
+const [defaultPersonalButton] = personalButton;
 
 export const personalAreaSlice = createSlice({
   name: "personalArea",
   initialState: {
     info: {
-      firstName: 'Andry',
-      lastName: 'fsfs',
-      phone: 43424,
-      email: 'fef@bk.ru',
-      data: '02.06.1221',
-      passwordOld:6666666666,
-      passwordNew: 6666666666,
-      passwordNewAgain: 66666666666666,
+      firstName: null,
+      lastName: null,
+      phone: null,
+      email: null,
+      data: null,
+      passwordOld: null,
+      passwordNew: null,
+      passwordNewAgain: null,
     },
+    activeButton: defaultPersonalButton,
   },
   reducers: {
     updateInfo: (state, action) => {
@@ -35,9 +39,12 @@ export const personalAreaSlice = createSlice({
       state.info.passwordNew = passwordNew;
       state.info.passwordNewAgain = passwordNewAgain;
     },
+    changeButton: (state, { payload }) => {
+      state.activeButton = payload;
+    },
   },
   extraReducers: (builder) => {},
 });
 
-export const { updateInfo } = personalAreaSlice.actions;
+export const { updateInfo, changeButton } = personalAreaSlice.actions;
 export default personalAreaSlice.reducer;

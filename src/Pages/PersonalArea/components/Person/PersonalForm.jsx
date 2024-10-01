@@ -20,7 +20,6 @@ const PersonalForm = () => {
   }, });
 
   const onSubmit = (data) => {
-    console.log(data);
     dispatch(updateInfo(data));
   };
   

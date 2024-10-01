@@ -27,7 +27,7 @@ const ClubCard = () => {
         <div>
           <input placeholder="Number of visits" type="number"/>
           <div style={{ display: "flex" }}>
-            <MainButton buttonLabel={nameMainButton[5]} styleArrow="order" />
+            <MainButton buttonLabel={nameMainButton[5]}/>
           </div>
         </div>
       </div>

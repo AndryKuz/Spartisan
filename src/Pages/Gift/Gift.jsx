@@ -83,7 +83,7 @@ const Gift = () => {
       <Form />
      <br/>
       <div style={{display:'flex'}}>
-        <MainButton buttonLabel={nameMainButton[2]} styleArrow="order" />
+        <MainButton buttonLabel={nameMainButton[2]}/>
       </div>
     </section>
   );

@@ -21,12 +21,12 @@ const TotalBooking = () => {
   const dateChoose = useSelector(selectDate);
   const time = useSelector(selectTime);
   const countPeople = useSelector(selectCountPeople);
-  const program = useSelector(selectPrograms);
+  const [program]= useSelector(selectPrograms);
   const services = useSelector(selectServices);
   const errors = useSelector(selectErrors);
 
   const resSumServices = parseToNumber(services);
-  const totalPrice = resSumServices + program[0].price;
+  const totalPrice = resSumServices + program.price;
 
   const dateNew = changeDate(dateChoose);
 
@@ -73,8 +73,8 @@ const TotalBooking = () => {
       </div>
       <div className={style.describeProgram}>
         <div>
-          <span>{program[0].title}:</span>
-          {program[0].price}$
+          <span>{program.title}:</span>
+          {program.price}$
         </div>
         <div>
           <ul>
