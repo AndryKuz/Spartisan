@@ -9,20 +9,12 @@ export const nameMainButton = [
   "Register",
   "Entrance",
   "Buy now",
+  "Save"
 ];
 
 export const MainButton = ({ buttonLabel, onClick, styleArrow, widthButton }) => {
 
-  let arrowStyle;
-  switch (styleArrow) {
-    case "search":
-      arrowStyle = style.searchPlaceArrow;
-      break;
-    case 'book':
-      arrowStyle = style.bookArrow  ;
-      default:
-        arrowStyle = style.orderArrow;
-  }
+  const arrowStyle = styleArrow === 'book' ? style.bookArrow : style.arrowDefault;
 
   return (
     <div className={style.wrapperMainButton}>

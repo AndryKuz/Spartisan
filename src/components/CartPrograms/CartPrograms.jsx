@@ -7,19 +7,17 @@ import { selectPrograms } from '../../features/booking/bookingSlice';
 
 
 const CartPrograms = () => {
+    const [program] = useSelector(selectPrograms);
 
-    const program = useSelector(selectPrograms);
-
- 
     return (
         <section className={style.cartProgram}>
             <div className={style.images}>
-                <CartImages program={program[0]} />
-                <h3>{program[0].title}</h3>
+                <CartImages program={program} />
+                <h3>{program.title}</h3>
             </div>
             <span></span>
             <div>
-                <CartInfo program={program[0]}/>
+                <CartInfo program={program}/>
             </div>
         </section>
     );

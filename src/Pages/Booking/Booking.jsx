@@ -31,11 +31,11 @@ const Booking = () => {
   const navigate = useNavigate();
   const [isErrorMessageTime, setErrorMessageTime] = useState(null);
   const openSearchPlace = useSelector(selectValidForm);
-  const programList = useSelector(selectPrograms);
+  const [programList] = useSelector(selectPrograms);
   const validBookNow = useSelector(selectFormValid);
   const errors = useSelector(selectErrors);
 
-  const isActive = (program) => program.id === programList[0]?.id;
+  const isActive = (program) => program.id === programList?.id;
 
   const handleValidation = () => {
     dispatch(isOpenSearchPlace());

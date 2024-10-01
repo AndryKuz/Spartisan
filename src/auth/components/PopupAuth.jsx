@@ -184,7 +184,6 @@ const togglePasswordVisibility = () => {
         <div>
           <MainButton
             buttonLabel={nameMainButton[resultPopupContent.nameButton]}
-            styleArrow="order"
             onClick={handleSubmit(onSubmit)}
           />
         </div>

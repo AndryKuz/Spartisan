@@ -1,30 +1,31 @@
 form {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   & > div {
-    flex: 33.33%;
-    max-width: 384px;
-    @media (max-width: 768px) {
-      flex: 100%;
+    display: flex;
+    gap: 15px;
+    .input {
+      flex: 33.33%;
+      max-width: 384px;
+      @media (max-width: 780px) {
+        min-width: 324px;
+      }
+      input {
+        width: 100%;
+        height: 50px;
+        padding: 20px;
+        background: var(--gray);
+      }
     }
-  }
-  input {
-    width: 100%;
-    height: 50px;
-    padding: 20px;
-    background: var(--gray);
-  }
-  @media (max-width: 1210px) {
-    justify-content: center;
-  }
-
-  .empty {
-    max-width: 384px;
-    width: 384px;
-    @media (max-width: 1210px) {
-      display: none;
+    @media (max-width: 780px) {
+      flex-wrap: wrap;
     }
   }
 }
+.errorMessage {
+  color: rgb(209, 32, 32);
+  padding-left: 15px;
+}
+

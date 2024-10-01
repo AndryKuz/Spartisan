@@ -2,13 +2,13 @@ import style from "./About.module.scss";
 
 import Title from "common/Title/Title";
 
-
 import Image from "assets/images/about.png";
 import Info from "common/Info/Info";
 import { nameTitle } from "common/Title/titleData";
 
 
 const About = () => {
+  
   return (
     <div>
       <Title titleStart={nameTitle[6][1]} titleEnd={nameTitle[6][2]} />
@@ -47,17 +47,15 @@ const About = () => {
           </p>
         </div>
         <div className={style.imageWrapper}>
-
-            <div className={style.frame}></div>
-            <img src={Image} alt="traditional steam" />
-
+          <div className={style.frame}></div>
+          <img src={Image} alt="traditional steam" />
         </div>
       </div>
       <div className={style.contactInfo}>
         <h2 className={style.contactInfo}>Contact information:</h2>
       </div>
       <div className={style.infoIcon}>
-        <Info/>
+        <Info />
       </div>
     </div>
   );

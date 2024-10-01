@@ -14,7 +14,7 @@ import { selectDate, selectErrors } from "features/booking/bookingSlice";
 const Search = ({ handleValidation }) => {
   const [isVisibleCalendar, setVisibleCalendar] = useState(false);
   const date = useSelector(selectDate);
-  const errors = useSelector(selectErrors);
+  const [errors] = useSelector(selectErrors);
 
 
   return (
@@ -31,12 +31,11 @@ const Search = ({ handleValidation }) => {
       <MainButton
         buttonLabel={nameMainButton[0]}
         onClick={handleValidation}
-        styleArrow='search'
         widthButton='250px'
       />
-      {errors[0].length > 0 && (
+      {errors.length > 0 && (
         <div className={style.errors}>
-          {errors[0].map((errors, i) => (
+          {errors.map((errors, i) => (
             <div key={i}>{errors}</div>
           ))}
         </div>
