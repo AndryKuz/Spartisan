@@ -1,33 +1,84 @@
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import style from './PersonalForm.module.scss';
+
+import { inputFirst, inputSecond, inputThird } from "./inputData";
+import InputField from "./InputField";
+import { MainButton, nameMainButton } from "components/Button/MainButton";
+import { updateInfo } from "pages/PersonalArea/personalSlice";
+
 
 const PersonalForm = () => {
+  const dispatch = useDispatch();
+  const personalInfo = useSelector((state) => state.personal);
+ 
   const {
-    register,
     handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+    register,
+    formState: { errors, isValid },
+  } = useForm({ mode: "onBlur",defaultValues: {
+    ...personalInfo,
+  }, });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    dispatch(updateInfo(data));
+  };
+  
+const valueInputFirstRow = Object.values(personalInfo.info).slice(0,3);
+const valueInputSecondRow = Object.values(personalInfo.info).slice(3,5);
+const valueInputThirdRow = Object.values(personalInfo.info).slice(5,8);
+
   return (
-    <form>
-      <div className={style.formWrapperPerson}>
+    <div style={{ marginBottom: 150 }}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <input type="text" placeholder="First Name" />
-          <input type="text" placeholder="Last Name" />
-          <input type="number" placeholder="phone" />
-        </div>
-        <div className={style.twoInput}>
-          <input type="email" placeholder="email" />
-          <input type="data" placeholder="data birthday" />
-    
+          {inputFirst.map((field, index) => (
+            <InputField
+              key={field.name}
+              placeholder={field.placeholder}
+              name={field.name}
+              register={register}
+              type={field.type}
+              errors={errors}
+              validation={field.validation}
+              defaultValue={valueInputFirstRow[index] || ""}
+            />
+          ))}
         </div>
         <div>
-          <input type="password" placeholder="Old password"/>
-          <input type="password" placeholder="New password"/>
-          <input type="password" placeholder="New password again"/>
+          {inputSecond.map((field,index) => (
+            <InputField
+              key={field.name}
+              placeholder={field.placeholder}
+              name={field.name}
+              register={register}
+              type={field.type}
+              errors={errors}
+              validation={field.validation}
+              defaultValue={valueInputSecondRow[index] || ""}
+            />
+          ))}
         </div>
-      </div>
-    </form>
+        <div>
+          {inputThird.map((field,index) => (
+            <InputField
+              key={field.name}
+              placeholder={field.placeholder}
+              name={field.name}
+              register={register}
+              type={field.type}
+              errors={errors}
+              validation={field.validation}
+              defaultValue={valueInputThirdRow[index] || ""}
+            />
+          ))}
+        </div>
+        <div style={{ display: "flex" }}>
+          <MainButton buttonLabel={nameMainButton[6]} />
+        </div>
+      </form>
+      {/* {!isValid && <p>not valid form</p>} */}
+    </div>
   );
 };
 

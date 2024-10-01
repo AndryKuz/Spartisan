@@ -9,6 +9,7 @@ export const nameMainButton = [
   "Register",
   "Entrance",
   "Buy now",
+  "Save"
 ];
 
 export const MainButton = ({ buttonLabel, onClick, styleArrow, widthButton }) => {

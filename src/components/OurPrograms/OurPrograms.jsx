@@ -11,10 +11,11 @@ import { nameTitle } from "common/Title/titleData";
 
 const OurPrograms = () => {
 
-  const programs = useSelector(selectPrograms);
+  const [programs] = useSelector(selectPrograms);
+
 
   
-  const isActive = (program) => program.id === programs[0]?.id;
+  const isActive = (program) => program.id === programs?.id;
   return (
     <div className={style.programs}>
       <Title titleStart={nameTitle[0][1]} titleEnd={nameTitle[0][2]} />

@@ -10,7 +10,7 @@ const ButtonArea = () => {
   return (
     <div className={style.wrapperButton}>
       {personalButton.map((item) => (
-        <button className={style.button}>{item.title}</button>
+        <button key={item.id} className={style.button}>{item.title}</button>
       ))}
     </div>
   );
