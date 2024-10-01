@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-
+import style from './PersonalForm.module.scss';
 import { inputFirst, inputSecond, inputThird } from "./inputData";
 import InputField from "./InputField";
 import { MainButton, nameMainButton } from "components/Button/MainButton";
