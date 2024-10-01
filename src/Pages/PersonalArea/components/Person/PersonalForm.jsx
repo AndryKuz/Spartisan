@@ -29,7 +29,7 @@ const valueInputThirdRow = Object.values(personalInfo.info).slice(5,8);
 
   return (
     <div style={{ marginBottom: 150 }}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <div>
           {inputFirst.map((field, index) => (
             <InputField
