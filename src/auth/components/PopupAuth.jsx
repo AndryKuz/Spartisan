@@ -168,7 +168,7 @@ const togglePasswordVisibility = () => {
                   },
                 })}
               />
-              <VisibilityIcon onClick={togglePasswordVisibility}/>
+              <VisibilityIcon onClick={togglePasswordVisibility} id='isVisiblePassword'/>
               <ValidPopup error={errors?.password} />
               {errorPassword && <p>{errorPassword}</p>}
             </div>

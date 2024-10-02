@@ -71,4 +71,16 @@ $mobileSmall: 479.98px;
  margin: 20px 0;
 }
 
+#isVisiblePassword  {
+  cursor: pointer;
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  fill: #867b7b ;
+  transition: all .2s ease;
+  &:hover {
+    fill: #fff;
+    transition: all .2s ease;
+  }
+}
 

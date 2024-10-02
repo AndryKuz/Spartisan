@@ -28,4 +28,10 @@
   color: rgb(209, 32, 32);
   padding-left: 15px;
 }
-
+.thirdLine {
+  & > div {
+    flex: 33.33%;
+    max-width: 384px;
+    position: relative;
+  }
+}
