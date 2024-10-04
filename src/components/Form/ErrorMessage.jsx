@@ -1,14 +1,13 @@
-
-
 import { GoAlert } from "react-icons/go";
 
 const ErrorMessage = ({ error, className }) => {
-  
   return (
     <div className={className}>
       {error && (
         <div>
-          <GoAlert />
+          <div>
+            <GoAlert />
+          </div>
           <span>{error.message || "Error!"}</span>
         </div>
       )}

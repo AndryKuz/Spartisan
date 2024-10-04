@@ -1,8 +1,8 @@
-
+@use 'assets/styles/global.scss' as * ;
+@use 'assets/styles/mixins.scss' as * ;
 .form,
 .styleFormRow {
   display: flex;
-
   .input {
     display: flex;
     & > input {
@@ -23,10 +23,16 @@
 }
 .form {
   gap: 25px;
+  @media(max-width:$mobile) {
+      flex-wrap: wrap;
+  }
   .inputs {
     display: flex;
     flex-direction: column;
     flex: 0 1 45%;
+    @media(max-width:$mobile) {
+      min-width: 300px;
+  }
     .input {
       display: flex;
       flex-direction: column;
@@ -34,10 +40,11 @@
         margin-bottom: 10px;
       }
     }
+    
   }
   .textArea {
     flex: 0 0 50%;
-    
+    min-width: 300px;
   }
 }
 .styleFormRow {
@@ -46,26 +53,34 @@
   .inputs {
     display: flex;
     gap: 20px;
+    @media(max-width:$tablet) {
+      flex-wrap: wrap;
+    }
     .input {
+
       flex: 0 1 33.333%;
       flex-direction: column;
+      
     }
   }
 }
 .errorMessage,
 .errorMessageRow {
-  display: flex;
-  align-items: center;
-  color: rgb(177, 51, 51);
-  margin-top: 5px;
-  span {
-    font-size: 16px;
-    text-transform: lowercase;
-  }
-  svg {
-    width: 15px;
-    height: 15px;
-    margin: 0 10px;
+  & > div {
+    display: flex;
+    align-items: center;
+    color: rgb(177, 51, 51);
+    margin-top: 5px;
+    span {
+      font-size: 16px;
+      text-transform: lowercase;
+      line-height: 18px;
+    }
+    svg {
+      width: 15px;
+      height: 15px;
+      margin: 0 10px;
+    }
   }
 }
 

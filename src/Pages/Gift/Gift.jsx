@@ -17,7 +17,11 @@ import { nameTitle } from "common/Title/titleData";
 const Gift = () => {
   const [selected, setSelected] = useState("");
 
-  const nameLabelButton = labelRadio.slice(0, 6);
+  const nameLabelButton = labelRadio.slice(0, 5);
+  const radioCustomPrice = labelRadio.find(
+    (item) => item.label === "Custom amount"
+  );
+  console.log(radioCustomPrice.label);
 
   const handleChange = (id) => {
     setSelected(id);
@@ -71,19 +75,23 @@ const Gift = () => {
               id={label.id}
             />
           ))}
-          <input
-            type="text"
-            placeholder="Your amount"
-            className={style.amount}
-            pattern="\d*"
-            title="Only numbers are allowed"
-          />
+          <div className={style.customAmount}>
+            <div>
+              <RadioButton label={radioCustomPrice.label} />
+            </div>
+            <input
+              type="number"
+              placeholder="Your amount"
+              className={style.amount}
+              title="Only numbers are allowed"
+            />
+          </div>
         </div>
       </div>
       <Form />
-     <br/>
-      <div style={{display:'flex'}}>
-        <MainButton buttonLabel={nameMainButton[2]}/>
+      <br />
+      <div style={{ display: "flex" }}>
+        <MainButton buttonLabel={nameMainButton[2]} />
       </div>
     </section>
   );

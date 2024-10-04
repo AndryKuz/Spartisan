@@ -10,7 +10,7 @@
       flex: 33.33%;
       max-width: 384px;
       @media (max-width: 780px) {
-        min-width: 324px;
+        min-width: 290px;
       }
       input {
         width: 100%;
@@ -23,6 +23,7 @@
       flex-wrap: wrap;
     }
   }
+
 }
 .errorMessage {
   color: rgb(209, 32, 32);

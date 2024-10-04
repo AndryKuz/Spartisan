@@ -21,7 +21,7 @@ const TotalBooking = () => {
   const dateChoose = useSelector(selectDate);
   const time = useSelector(selectTime);
   const countPeople = useSelector(selectCountPeople);
-  const [program]= useSelector(selectPrograms);
+  const [program] = useSelector(selectPrograms);
   const services = useSelector(selectServices);
   const errors = useSelector(selectErrors);
 
@@ -59,32 +59,34 @@ const TotalBooking = () => {
           {dateNew}
         </div>
         <div className={notSelectTimeStyle}>
-          <span>Time : </span>
-          {errors[2]?.length
-            ? errors[2]
-            : `from ${timeRange[0]} to ${timeRange[1]}`}
+          <span>Time: </span>
+          <p>
+            {errors[2]?.length
+              ? errors[2]
+              : `from ${timeRange[0]} to ${timeRange[1]}`}
+          </p>
         </div>
       </div>
-      <div className={style.describeTotal}>
+      <div className={style.secondColumn}>
         <div>
-          <span>Number of people : </span>
+          <span style={{whiteSpace: 'nowrap'}}>Number of people : </span>
           {countPeople}
         </div>
-      </div>
-      <div className={style.describeProgram}>
-        <div>
-          <span>{program.title}:</span>
-          {program.price}$
-        </div>
-        <div>
-          <ul>
-            {services.map((item) => (
-              <li key={item.id}>
-                <span>{item.title}: </span>
-                {item.price}$
-              </li>
-            ))}
-          </ul>
+        <div className={style.describeProgram}>
+          <div>
+            <span>{program.title}:</span>
+            {program.price}$
+          </div>
+          <div>
+            <ul>
+              {services.map((item) => (
+                <li key={item.id}>
+                  <span>{item.title}: </span>
+                  {item.price}$
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
       <div className={style.totalPrice}>

@@ -10,7 +10,7 @@ import { nameTitle } from "common/Title/titleData";
 const About = () => {
   
   return (
-    <div>
+    <section>
       <Title titleStart={nameTitle[6][1]} titleEnd={nameTitle[6][2]} />
       <div className={style.main}>
         <div className={style.description}>
@@ -57,7 +57,7 @@ const About = () => {
       <div className={style.infoIcon}>
         <Info />
       </div>
-    </div>
+    </section>
   );
 };
 

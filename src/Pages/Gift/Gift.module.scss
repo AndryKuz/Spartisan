@@ -94,10 +94,18 @@
   margin-bottom: 40px;
   border-top:1px solid rgba(217, 217, 217, 0.1);
   padding-top: 40px;
+  @media(max-width: 375px) {
+   margin-bottom: 20px;
+
+   }
   .radio {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 105px;
+    gap: 30px 30px;
+    & > div:not(:last-child) {
+      padding-right: 70px;
+    }
   }
   .amount {
     padding: 10px;
@@ -105,5 +113,19 @@
     width: 196px;
     background: rgba(217, 217, 217, 0.1);
     margin-left: 20px;
+  }
+  .customAmount{
+    display: flex;
+    align-items: center;
+    & > div {
+      margin-right: 100px;
+      span {
+        text-transform: capitalize;
+      }
+    }
+    input {
+     max-width: 170px;
+    }
+    
   }
 }

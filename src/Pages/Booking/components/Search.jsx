@@ -10,12 +10,10 @@ import { ReactComponent as Data } from "assets/images/data.svg";
 import { MainButton, nameMainButton } from "components/Button/MainButton";
 import { selectDate, selectErrors } from "features/booking/bookingSlice";
 
-
 const Search = ({ handleValidation }) => {
   const [isVisibleCalendar, setVisibleCalendar] = useState(false);
   const date = useSelector(selectDate);
   const [errors] = useSelector(selectErrors);
-
 
   return (
     <div className={style.search}>
@@ -26,13 +24,17 @@ const Search = ({ handleValidation }) => {
       {isVisibleCalendar && (
         <Calendar onHide={() => setVisibleCalendar(false)} />
       )}
-      <PeopleCounter />
-      <h6>People</h6>
-      <MainButton
-        buttonLabel={nameMainButton[0]}
-        onClick={handleValidation}
-        widthButton='250px'
-      />
+      <div style={{display:'flex', alignItems:'center'}}>
+        <PeopleCounter />
+        <h6 style={{marginLeft:20}}>People</h6>
+      </div>
+      <div style={{ paddingRight: 40 }}>
+        <MainButton
+          buttonLabel={nameMainButton[0]}
+          onClick={handleValidation}
+          widthButton="250px"
+        />
+      </div>
       {errors.length > 0 && (
         <div className={style.errors}>
           {errors.map((errors, i) => (

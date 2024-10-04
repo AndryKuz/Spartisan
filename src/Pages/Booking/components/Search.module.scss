@@ -8,13 +8,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    min-width: 190px;
     width: 20%;
     height: 50px;
     background-color: rgba(217, 217, 217, 0.1);
     padding: 0 10px;
     cursor: pointer;
     @media (max-width: 500px) {
-      width: 100%;
+      min-width: 190px;
     }
   }
 }

@@ -1,4 +1,4 @@
-// Book
+@use "assets/styles/global.scss" as *;
 .wrapperMainButton {
   display: flex;
   flex-grow: 0;
@@ -38,7 +38,6 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
-    
   }
 }
 .arrowDefault {
@@ -50,5 +49,14 @@
   transition: all 0.3s ease;
   width: 130px;
   right: 60px;
- 
+  @media (max-width: $tablet) {
+    right: 25px;
+  }
+  @media (max-width: $mobile) {
+    right: 25px;
+    width: 80px;
+  }
+  @media (max-width: $mobileSmall) {
+    right: 10px;
+  }
 }

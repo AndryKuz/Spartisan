@@ -12,9 +12,6 @@
   .description {
     width: 100%;
     max-width: 666px;
-    @media (max-width: 992px) {
-      min-width: 400px;
-    }
     p {
         font-size: 22px;
       &:not(:last-child) {
