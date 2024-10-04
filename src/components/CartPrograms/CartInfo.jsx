@@ -17,7 +17,7 @@ const CartInfo = ({ program = [] }) => {
         <p className={style.time}>{program.time} minutes / 5 guests maximum</p>
         <div style={{ display: "flex" }}>
           <Link to={`/booking/${programSelected.id}`}>
-            <MainButton buttonLabel={nameMainButton[1]}/>
+            <MainButton buttonLabel={nameMainButton[1]} />
           </Link>
         </div>
       </div>
@@ -33,7 +33,9 @@ const CartInfo = ({ program = [] }) => {
           ))}
         </ul>
         <div className={style.button}>
-          <MainButton />
+          <div style={{ display: "flex" }}>
+            <MainButton buttonLabel={nameMainButton[1]} />
+          </div>
         </div>
       </div>
     </div>
