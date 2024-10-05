@@ -1,23 +1,54 @@
+@use "assets/styles/global.scss" as *;
 .history {
-    margin-bottom: 150px;
+  margin-bottom: 150px;
+  .desktop {
+    @media (max-width: $mobile) {
+      display: none;
+    }
     .columns {
       display: flex;
       margin-bottom: 15px;
-    
+      gap: 10px;
+      @media (max-width: $mobile) {
+        display: none;
+      }
+  
       & > div:first-child {
-        flex: 15%;
+        flex: 10%;
+        min-width: 85px;
       }
       & > div:nth-child(2) {
         flex: 20%;
+        text-align: center;
       }
       & > div:nth-child(3) {
         flex: 25%;
+        text-align: center;
       }
       & > div:nth-child(4) {
         flex: 20%;
+        text-align: center;
       }
       & > div:nth-child(5) {
         flex: 20%;
       }
     }
+  }
+
+  .mobileColumns {
+    display: none;
+    @media (max-width: $mobile) {
+      display: block;
+    }
+    .table {
+      display: flex;
+      gap: 20px;
+      .titleList {
+        & > li {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
 }
+

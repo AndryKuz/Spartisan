@@ -24,7 +24,7 @@ const Search = ({ handleValidation }) => {
       {isVisibleCalendar && (
         <Calendar onHide={() => setVisibleCalendar(false)} />
       )}
-      <div style={{display:'flex', alignItems:'center'}}>
+      <div className={style.counterPeople}>
         <PeopleCounter />
         <h6 style={{marginLeft:20}}>People</h6>
       </div>

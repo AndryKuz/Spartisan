@@ -1,6 +1,11 @@
+@use 'assets/styles/global.scss' as *;
 .info {
   display: flex;
-  gap: 150px;
+  justify-content: space-between;
+  gap: 15px;
+  @media(max-width:$tablet) {
+    flex-wrap: wrap;
+  }
   .visited {
     display: flex;
     flex-direction: column;
@@ -22,6 +27,7 @@
         margin-right: 5px;
         font-size: 17px;
         font-weight: 300;
+        // white-space: nowrap;
       }
     }
     
@@ -30,6 +36,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    
     span {
        font-size: 20px;
        line-height: 30px;
@@ -39,8 +46,11 @@
     & > div {
         display: flex;
         gap: 25px;
+        @media(max-width:$mobile) {
+          flex-wrap: wrap;
+        }
         input {
-            min-width: 384px;
+            max-width: 384px;
             height: 50px;
             background: var(--gray);
             padding: 10px;

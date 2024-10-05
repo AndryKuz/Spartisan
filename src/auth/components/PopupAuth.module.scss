@@ -1,5 +1,17 @@
 @use "assets/styles/mixins.scss" as *;
-
+@use "assets/styles/global.scss" as *;
+.overlayPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background: rgba(33, 33, 35, 0.8);
+  @media (max-width: $mobile) {
+    display: none;
+  }
+}
 .popupWindow {
   position: fixed;
   @include absolute-center;
@@ -8,7 +20,11 @@
   min-height: 400px;
   z-index: 999;
   border: 1px solid var(--gold);
-  
+  @media (max-width: $mobile) {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
 }
 .wrapper {
   display: flex;
@@ -17,6 +33,14 @@
   gap: 20px;
   padding: 40px;
   position: relative;
+  @media (max-width: $mobile) {
+    position: fixed;
+    @include absolute-center;
+    width: 100%;
+    max-width: 588px;
+    padding: 10px 10px 10px 0;
+  }
+
   .close {
     position: absolute;
     top: 10px;
@@ -29,7 +53,7 @@
     }
   }
   h3 {
-    font-size: 40px;
+    @include adaptiv-font(40, 30);
     line-height: 48px;
   }
   .form,
@@ -37,10 +61,12 @@
     display: flex;
     flex-direction: column;
     width: 80%;
+    margin-left: -20px;
 
     input {
       background: var(--gray);
       width: 100%;
+     
       height: 50px;
       padding: 10px;
       margin-bottom: 10px;
@@ -86,7 +112,10 @@
 }
 .inputPassword {
   position: relative;
-  
+  min-width: 280px;
+}
+.wrapperInput {
+  min-width: 280px;
 }
 .withoutGap {
   gap: 0;

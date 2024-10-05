@@ -26,7 +26,7 @@ function App() {
     <div className="wrapper">
        <Header openBurger={openBurger} />
       <Burger isOpenBurger={activeBurger} closeBurger={closeBurger} />
-      {showForm ? <UserForm /> : ""}
+      {showForm && <UserForm />}
       <main>
         <div className="container">
           <AppRoutes />

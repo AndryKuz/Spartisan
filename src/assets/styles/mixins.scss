@@ -1,6 +1,6 @@
 @use "sass:math";
 @use './global.scss' as *;
-$maxWidth: 1920px;
+
 //REM
 @function toRem($px, $current: 16) {
   $result: math.div($px, $current) + rem;
@@ -23,10 +23,8 @@ $maxWidth: 1920px;
 // Adaptiv Font
 @mixin adaptiv-font($pcSize, $mobSize) {
   $addSize: $pcSize - $mobSize;
-  $maxWidth: $maxWidth - 320;
-  font-size: calc(
-    #{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth})
-  );
+  $maxWidth:1920 - 320;
+  font-size: calc(#{$mobSize}px + #{$addSize} * ((100vw - $minWidth) / #{$maxWidth}));
 }
 // Flex
 @mixin flex-center {

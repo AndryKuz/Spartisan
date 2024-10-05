@@ -1,5 +1,6 @@
+@use "assets/styles/global.scss" as *;
 .mainTopHistory {
-    margin-bottom: 150px;
+  margin-bottom: 150px;
   h2 {
     font-weight: 500;
     font-size: 20px;
@@ -9,9 +10,15 @@
     display: flex;
     gap: 80px;
     margin-bottom: 15px;
-
+    @media (max-width: $mobileSmall) {
+      gap: 50px;
+    }
+    & > div {
+      white-space: nowrap;
+    }
     & > div:first-child {
       flex: 20%;
+      min-width: 85px;
     }
     & > div:nth-child(2) {
       flex: 30%;

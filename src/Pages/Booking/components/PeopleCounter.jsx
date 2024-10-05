@@ -16,17 +16,13 @@ const PeopleCounter = () => {
 
   const handlePlusCount = useCallback(() => {
     if(countPeople < 20) {
-        dispatch(changedCountPeople(countPeople + 1));
-
-        
+        dispatch(changedCountPeople(countPeople + 1)); 
     }
     
   });
   const handleMinusCount = useCallback(() => {
     if(countPeople > 1 ) {
-        dispatch(changedCountPeople(countPeople - 1));
- 
-        
+        dispatch(changedCountPeople(countPeople - 1));    
     }
    
   });
