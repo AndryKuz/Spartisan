@@ -4,7 +4,6 @@ import ErrorMessage from "./ErrorMessage";
 import style from "./Form.module.scss";
 
 const InputPhone = ({ handleBlurred, classError }) => {
-  console.log(classError);
   
   const {
     register,

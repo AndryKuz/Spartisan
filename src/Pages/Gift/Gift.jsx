@@ -21,7 +21,6 @@ const Gift = () => {
   const radioCustomPrice = labelRadio.find(
     (item) => item.label === "Custom amount"
   );
-  console.log(radioCustomPrice.label);
 
   const handleChange = (id) => {
     setSelected(id);
