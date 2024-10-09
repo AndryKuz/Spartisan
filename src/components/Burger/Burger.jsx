@@ -62,7 +62,6 @@ const Burger = ({ isOpenBurger, closeBurger }) => {
           {isVisibleAuth ? (
             <div className={style.activeUser}>
               <ActiveUser />
-
             </div>
           ) : (
             <>
