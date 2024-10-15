@@ -21,6 +21,7 @@ const InputPhone = ({ handleBlurred, classError }) => {
         })}
         placeholder="Phone"
         autoComplete="off"
+        type="number"
         onBlur={() => handleBlurred("phone")}
       />
       <ErrorMessage error={errors?.phone} className={classError} />

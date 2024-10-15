@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import style from "./Gift.module.scss";
 
@@ -7,12 +9,14 @@ import GiftImg from "assets/images/gift.png";
 import ThreeReasonsBlock from "common/ThreeReasonsBlock";
 import Title from "common/Title/Title";
 
-import { threeReasons } from "common/ThreeReasonsBlock";
-import RadioButton from "common/RadioButton/RadioButton";
-import { labelRadio } from "common/RadioButton/RadioButton";
 import Form from "components/Form/Form";
+import RadioButton from "common/RadioButton/RadioButton";
+import { threeReasons } from "common/ThreeReasonsBlock";
+import { labelRadio } from "common/RadioButton/RadioButton";
 import { MainButton, nameMainButton } from "components/Button/MainButton";
 import { nameTitle } from "common/Title/titleData";
+import { selectFormValid } from "features/booking/bookingSlice";
+import { ROUTES } from "components/Routes";
 
 const Gift = () => {
   const [selected, setSelected] = useState("");
@@ -20,6 +24,8 @@ const Gift = () => {
   const [inputValue, setInputValue] = useState("");
   const [priceAmount, setPriceAmount] = useState("");
   const [errors, setErrors] = useState([]);
+  const formValid = useSelector(selectFormValid);
+  const navigate = useNavigate();
 
   const nameLabelButton = labelRadio.slice(0, 6);
   const handleChange = (id) => {
@@ -45,13 +51,16 @@ const Gift = () => {
   const hanldeClickOrder = () => {
     if (priceAmount <= 0) {
       setErrors("You need choise Amount");
-    } 
+    }
+    if (formValid && priceAmount > 0) {
+      navigate(ROUTES.RESULT, { state: { status: "paymentSucc" } });
+    }
   };
   useEffect(() => {
-    if(priceAmount > 0) {
-      setErrors([])
+    if (priceAmount > 0) {
+      setErrors([]);
     }
-  },[priceAmount])
+  }, [priceAmount]);
 
   return (
     <section className={style.gift}>

@@ -38,7 +38,7 @@ const Header = ({ openBurger }) => {
             <div className={style.menu}>
               <Link to={ROUTES.BOOK}>Book now</Link>
             </div>
-            <button type="button" class={style.burger} onClick={openBurger}>
+            <button type="button" className={style.burger} onClick={openBurger}>
               <span></span>
             </button>
           </div>

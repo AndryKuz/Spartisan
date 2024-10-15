@@ -8,6 +8,7 @@ import {
   addError,
   formValidated,
   getValueForm,
+  getValueGift,
 } from "features/booking/bookingSlice";
 import InputName from "./InputName";
 import InputPhone from "./InputPhone";
@@ -23,8 +24,6 @@ const Form = ({ styleForm, popupForm }) => {
     email: false,
     text: false,
   });
-  console.log(popupForm);
-  
 
   const allBlurred = Object.values(isBlurred).every(Boolean);
   const classForm = styleForm === "row" ? style.styleFormRow : style.form;
@@ -48,6 +47,9 @@ const Form = ({ styleForm, popupForm }) => {
     setIsBlurred((prevState) => ({ ...prevState, [field]: true }));
     return result;
   };
+console.log(isValid);
+console.log(allBlurred);
+
 
   useEffect(() => {
     if (isValid && allBlurred) {
@@ -57,9 +59,15 @@ const Form = ({ styleForm, popupForm }) => {
         email: getValues("email"),
         text: getValues("text"),
       };
-      dispatch(getValueForm(formValues));
-      dispatch(formValidated(true));
-      dispatch(addError({ index: 1, error: [] }));
+      if(styleForm) {
+        dispatch(getValueForm(formValues));
+        dispatch(formValidated(true));
+        dispatch(addError({ index: 1, error: [] }));
+
+      } else {
+        dispatch(getValueGift(formValues));
+        dispatch(formValidated(true));
+      }
     } else {
       dispatch(formValidated(null));
     }
