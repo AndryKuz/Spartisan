@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
@@ -21,7 +22,9 @@ function App() {
   const openBurger = () => dispatch(toggleBurger(true));
   const closeBurger = () => dispatch(toggleBurger(false));
   
-
+  useEffect(() => {
+    document.title = "Spartisan"; 
+  }, []);
   return (
     <div className="wrapper">
        <Header openBurger={openBurger} />

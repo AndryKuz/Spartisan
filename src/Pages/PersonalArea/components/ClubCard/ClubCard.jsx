@@ -1,3 +1,4 @@
+import { useState } from "react";
 import style from "./ClubCard.module.scss";
 
 import { MainButton, nameMainButton } from "components/Button/MainButton";
@@ -5,6 +6,16 @@ import { MainButton, nameMainButton } from "components/Button/MainButton";
 import TopHistory from "./TopHistory";
 
 const ClubCard = () => {
+  const [inputValue, setInputValue] = useState('');
+  const handleInputChange = (e) => {
+   
+    setInputValue(e.target.value);
+  }
+  const onSubmit = () => {
+    e.preventDefault();
+    console.log(inputValue);
+    
+  }
   return (
     <>
     <div className={style.info}>
@@ -24,12 +35,12 @@ const ClubCard = () => {
       </div>
       <div className={style.buy}>
         <span>Replenishment of the club card</span>
-        <div>
-          <input placeholder="Number of visits" type="number"/>
+        <form onSubmit={onSubmit}>
+          <input placeholder="Number of visits" type="number" name="numberVisit" value={inputValue} onChange={handleInputChange}/>
           <div style={{ display: "flex", paddingRight:40 }}>
-            <MainButton buttonLabel={nameMainButton[5]}/>
+            <MainButton buttonLabel={nameMainButton[5]} />
           </div>
-        </div>
+        </form>
       </div>
     </div>
     <br />

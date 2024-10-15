@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import style from "./Gift.module.scss";
 
@@ -16,15 +16,43 @@ import { nameTitle } from "common/Title/titleData";
 
 const Gift = () => {
   const [selected, setSelected] = useState("");
+  const [isCustomChecked, setCustomChecked] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const [priceAmount, setPriceAmount] = useState("");
+  const [errors, setErrors] = useState([]);
 
-  const nameLabelButton = labelRadio.slice(0, 5);
-  const radioCustomPrice = labelRadio.find(
-    (item) => item.label === "Custom amount"
-  );
-
+  const nameLabelButton = labelRadio.slice(0, 6);
   const handleChange = (id) => {
     setSelected(id);
+    const res = labelRadio.find((item) => item.id === id);
+
+    if (res && res.label === "Custom amount") {
+      setCustomChecked(true);
+      setPriceAmount(inputValue);
+    } else {
+      setCustomChecked(false);
+      setInputValue(0);
+      setPriceAmount(res ? res.label : "");
+    }
   };
+  const handleChangeInput = (event) => {
+    setInputValue(event.target.value);
+    if (isCustomChecked) {
+      setPriceAmount(event.target.value);
+    }
+  };
+
+  const hanldeClickOrder = () => {
+    if (priceAmount <= 0) {
+      setErrors("You need choise Amount");
+    } 
+  };
+  useEffect(() => {
+    if(priceAmount > 0) {
+      setErrors([])
+    }
+  },[priceAmount])
+
   return (
     <section className={style.gift}>
       <Title titleStart={nameTitle[5][1]} titleEnd={nameTitle[5][2]} />
@@ -74,23 +102,27 @@ const Gift = () => {
               id={label.id}
             />
           ))}
-          <div className={style.customAmount}>
-            <div>
-              <RadioButton label={radioCustomPrice.label} />
-            </div>
+          <div className={style.input}>
             <input
               type="number"
               placeholder="Your amount"
               className={style.amount}
               title="Only numbers are allowed"
+              onChange={handleChangeInput}
+              disabled={!isCustomChecked}
+              value={inputValue}
             />
+            {errors && <p>{errors}</p>}
           </div>
         </div>
       </div>
       <Form />
       <br />
       <div style={{ display: "flex" }}>
-        <MainButton buttonLabel={nameMainButton[2]} />
+        <MainButton
+          buttonLabel={nameMainButton[2]}
+          onClick={hanldeClickOrder}
+        />
       </div>
     </section>
   );

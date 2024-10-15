@@ -1,5 +1,5 @@
 import { Drawer, List, ListItem, ListItemIcon } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import CloseIcon from "@mui/icons-material/Close";
@@ -17,7 +17,6 @@ import ActiveUser from "components/ActiveUser/ActiveUser";
 
 const Burger = ({ isOpenBurger, closeBurger }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const isVisibleAuth = useSelector(selectCurrentUser);
 
   const openRegistration = (type) => {
@@ -30,7 +29,6 @@ const Burger = ({ isOpenBurger, closeBurger }) => {
       dispatch(toggleFormType("signup"));
       dispatch(toggleForm(true));
       closeBurger();
-      
 
     } else {
       closeBurger();

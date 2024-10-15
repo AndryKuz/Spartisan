@@ -23,12 +23,13 @@ const Form = ({ styleForm, popupForm }) => {
     email: false,
     text: false,
   });
+  console.log(popupForm);
+  
 
   const allBlurred = Object.values(isBlurred).every(Boolean);
   const classForm = styleForm === "row" ? style.styleFormRow : style.form;
   const classError =
     styleForm === "row" ? style.errorMessageRow : style.errorMessage;
-
 
   const methods = useForm({
     defaultValues: {},

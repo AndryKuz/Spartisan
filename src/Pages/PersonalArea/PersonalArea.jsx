@@ -1,4 +1,4 @@
-
+import { useSelector } from "react-redux";
 
 import Title from "common/Title/Title";
 
@@ -7,7 +7,6 @@ import ButtonArea from "./components/ButtonArea";
 import ClubCard from "./components/ClubCard/ClubCard";
 import BookingHistory from "./components/BookingHistory/BookingHistory";
 import PersonalForm from "./components/Person/PersonalForm";
-import { useSelector } from "react-redux";
 
 
 const PersonalArea = () => {

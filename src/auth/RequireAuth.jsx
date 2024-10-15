@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 import { selectCurrentUser } from "./redux/authSlice";
-import { ROUTES } from "components/Routes";
+
 
 const RequireAuth = ({ children }) => {
   const location = useLocation();
