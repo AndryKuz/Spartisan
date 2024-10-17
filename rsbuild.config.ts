@@ -3,10 +3,6 @@ import { pluginReact } from "@rsbuild/plugin-react";
 import { pluginSvgr } from "@rsbuild/plugin-svgr";
 import { pluginSass } from "@rsbuild/plugin-sass";
 
-
-// const { publicVars } = loadEnv({ prefixes: ['REACT_APP_'] });
-
-
 export default defineConfig({
   plugins: [
     pluginReact(),

@@ -1,64 +1,80 @@
 @use "assets/styles/mixins.scss" as *;
-@use 'assets/styles/global.scss' as *;
+@use "assets/styles/global.scss" as *;
 
 .pageParent {
-    position: relative;
-    background-image: url("assets/images/bg.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 100vh;
-    width: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
-
+  position: relative;
+  background-image: url("assets/images/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 .mainPage {
-    width: 80%;
-    max-width: 966px;
-    padding: 0 10px;
-    @include absolute-center;
-    text-align: center;
-    @media(max-width:$tablet) {
-        width: 100%;
+  width: 80%;
+  max-width: 966px;
+  padding: 0 10px;
+  @include absolute-center;
+  text-align: center;
+  @media (max-width: $tablet) {
+    width: 100%;
+  }
+
+  @media (max-width: $mobile) {
+    margin-top: 80px;
+    min-width: 300px;
+  }
+
+  h3,
+  h2 {
+    font-weight: 400;
+    font-size: calc(40px + 10 * (100vw - 320px) / 1600);
+    line-height: calc(48px + 52 * (100vw - 320px) / 1600);
+  }
+  h2 {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  span {
+    margin: 20px 0;
+    display: inline-block;
+    position: relative;
+    width: 1px;
+    height: 140px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 100%;
+      background: #bca476;
     }
-    
-    @media(max-width:$mobile) {
-        margin-top: 80px;
-        min-width: 300px;
-    }
-    
-    h3,
-    h2 {
-        font-weight: 400;
-        font-size: calc(40px + 10 * (100vw - 320px) / 1600);
-        line-height: calc(48px + 52 * (100vw - 320px) / 1600);
-        
-    }
-    h2 {
-        font-weight: 700;
-        text-transform: uppercase;
-    }
-    span {
-        margin: 20px 0;
-        display: inline-block;
-        position: relative;
-        width: 1px;
-        height: 140px;
-        &::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 1px;
-            height: 100%;
-            background: #bca476;
+  }
+  .arrow {
+    display: inline-block;
+    animation: bounce 1s infinite;
+    @keyframes bounce {
+        0% {
+          transform: translateY(0);
         }
-    }
+        50% {
+          transform: translateY(10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      &:hover {
+        animation: none;
+      }
     svg {
-        cursor: pointer;
-        &:hover {
-            padding-top: 10px;
-        }
+      cursor: pointer;
+      &:hover {
+        padding-top: 10px;
+      }
     }
+  }
 }

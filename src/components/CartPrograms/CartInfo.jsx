@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { MainButton, nameMainButton } from "../Button/MainButton";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import style from "./CartInfo.module.scss";
 import { selectPrograms } from "features/booking/bookingSlice";
@@ -8,8 +9,26 @@ import { selectPrograms } from "features/booking/bookingSlice";
 const CartInfo = ({ program = [] }) => {
   const [programSelected] = useSelector(selectPrograms);
 
+  const subTitleAnimation = {
+    hidden: {
+      x: 100,
+      opacity: 0,
+    },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        delay: 0.3,
+        suration: 0.3,
+      },
+    },
+  };
+
   return (
-    <div className={style.cartInfo}>
+    <motion.div 
+    initial="hidden"
+      whileInView="visible"
+    className={style.cartInfo}>
       <div className={style.left}>
         <h3>"{program.title}"</h3>
         <span></span>
@@ -21,7 +40,7 @@ const CartInfo = ({ program = [] }) => {
           </Link>
         </div>
       </div>
-      <div className={style.right}>
+      <motion.div variants={subTitleAnimation} className={style.right}>
         <div className={style.priceMobile}>
           <p className={style.price}>€{program.price} per person</p>
           <p className={style.time}>{program.time} / 5 guests maximum</p>
@@ -37,8 +56,8 @@ const CartInfo = ({ program = [] }) => {
             <MainButton buttonLabel={nameMainButton[1]} />
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
