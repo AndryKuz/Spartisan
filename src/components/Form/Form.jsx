@@ -47,9 +47,6 @@ const Form = ({ styleForm, popupForm }) => {
     setIsBlurred((prevState) => ({ ...prevState, [field]: true }));
     return result;
   };
-console.log(isValid);
-console.log(allBlurred);
-
 
   useEffect(() => {
     if (isValid && allBlurred) {

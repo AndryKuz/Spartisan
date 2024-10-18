@@ -23,9 +23,13 @@ const Gift = () => {
   const [isCustomChecked, setCustomChecked] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [priceAmount, setPriceAmount] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errorsAmount, setErrorAmount] = useState('');
+  const [errorsForm, setErrorAmountForm] = useState('');
   const formValid = useSelector(selectFormValid);
   const navigate = useNavigate();
+
+
+  
 
   const nameLabelButton = labelRadio.slice(0, 6);
   const handleChange = (id) => {
@@ -50,7 +54,10 @@ const Gift = () => {
 
   const hanldeClickOrder = () => {
     if (priceAmount <= 0) {
-      setErrors("You need choise Amount");
+      setErrorAmount("You need choise amount");
+    }
+    if(!formValid) {
+      setErrorAmountForm('Fill out a valid form');
     }
     if (formValid && priceAmount > 0) {
       navigate(ROUTES.RESULT, { state: { status: "paymentSucc" } });
@@ -58,7 +65,7 @@ const Gift = () => {
   };
   useEffect(() => {
     if (priceAmount > 0) {
-      setErrors([]);
+      setErrorAmount([]);
     }
   }, [priceAmount]);
 
@@ -121,7 +128,7 @@ const Gift = () => {
               disabled={!isCustomChecked}
               value={inputValue}
             />
-            {errors && <p>{errors}</p>}
+            {errorsAmount && <p>{errorsAmount}</p>}
           </div>
         </div>
       </div>
@@ -133,6 +140,7 @@ const Gift = () => {
           onClick={hanldeClickOrder}
         />
       </div>
+      {errorsForm && <p className={style.errors}>{errorsForm}</p>}
     </section>
   );
 };

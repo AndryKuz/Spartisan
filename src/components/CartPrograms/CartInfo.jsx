@@ -25,10 +25,12 @@ const CartInfo = ({ program = [] }) => {
   };
 
   return (
-    <motion.div 
-    initial="hidden"
+    <motion.div
+      initial="hidden"
       whileInView="visible"
-    className={style.cartInfo}>
+      viewport={{ once: true }}
+      className={style.cartInfo}
+    >
       <div className={style.left}>
         <h3>"{program.title}"</h3>
         <span></span>

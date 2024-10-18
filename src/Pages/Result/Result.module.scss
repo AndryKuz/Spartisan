@@ -1,20 +1,25 @@
 @use "assets/styles/mixins.scss" as *;
 .result {
-  width: 100%;
   min-height: 60vh;
   & > div {
     width: 100%;
-    margin-top: -50px;
     max-width: 1050px;
+    padding: 0 10px;
     @include absolute-center;
     text-align: center;
     h1 {
-      font-size: 60px;
-      line-height: 73px;
+      @include adaptiv-font(60,30);
+      line-height: calc-line-height(60,73);
       margin-bottom: 40px;
     }
     p {
-      font-size: 25px;
+      @include adaptiv-font(25,20);
+    }
+  }
+  @media (orientation: landscape) {
+    & > div {
+      position: static;
+      transform: none;
     }
   }
 }

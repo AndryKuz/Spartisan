@@ -47,13 +47,14 @@ const Burger = ({ isOpenBurger, closeBurger }) => {
             color: "#ffff",
             flexDirection: "row",
             pt: "20px",
+            pl:"100px"
           },
         }}
       >
         <List
           className={style.list}
           sx={{
-            width: { xs: "350px", sm: "400px", md: "534px" },
+            width: { xs: "300px", sm: "400px", md: "534px" },
           }}
         >
           <ListItemIcon className={style.icon}>

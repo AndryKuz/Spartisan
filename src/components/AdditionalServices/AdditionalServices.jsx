@@ -1,7 +1,9 @@
+
+
 import style from "./AdditionalServices.module.scss";
 import Title from "common/Title/Title";
-import { nameTitle } from "common/Title/titleData";
 import ServiceCart from "./ServiceCart";
+import { nameTitle } from "common/Title/titleData";
 
 const AdditionalServices = () => {
     return (

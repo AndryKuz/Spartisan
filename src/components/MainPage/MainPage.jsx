@@ -35,6 +35,7 @@ const MainPage = ({ scrollToProgram }) => {
     <motion.section
       initial="hidden"
       whileInView="visible"
+      viewport={{once:true}}
       className={style.pageParent}
     >
       <div className={style.mainPage}>
