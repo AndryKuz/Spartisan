@@ -27,7 +27,7 @@ const CartInfo = ({ program = [] }) => {
   };
   const handleClick = () => {
     navigate(ROUTES.BOOKING);
-  }
+  };
 
   return (
     <motion.div
@@ -60,7 +60,10 @@ const CartInfo = ({ program = [] }) => {
         </ul>
         <div className={style.button}>
           <div style={{ display: "flex" }}>
-            <MainButton buttonLabel={nameMainButton[1]} onClick={handleClick}/>
+            <MainButton
+              buttonLabel={nameMainButton[1]}
+              onClick={handleClick}
+            />
           </div>
         </div>
       </motion.div>
