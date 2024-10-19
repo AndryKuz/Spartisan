@@ -60,7 +60,7 @@ const Gift = () => {
       setErrorAmountForm('Fill out a valid form');
     }
     if (formValid && priceAmount > 0) {
-      navigate(ROUTES.RESULT, { state: { status: "paymentSucc" } });
+      navigate(ROUTES.RESULT, { state: { status: "paymentSucc" }, replace:true });
     }
   };
   useEffect(() => {

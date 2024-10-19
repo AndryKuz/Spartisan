@@ -1,16 +1,16 @@
-@use 'assets/styles/global.scss' as *;
+@use "assets/styles/global.scss" as *;
 .info {
   display: flex;
   justify-content: space-between;
   gap: 15px;
-  @media(max-width:$tablet) {
+  @media (max-width: $tablet) {
     flex-wrap: wrap;
   }
   .visited {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    
+
     & > div {
       display: flex;
       align-items: flex-end;
@@ -30,32 +30,34 @@
         // white-space: nowrap;
       }
     }
-    
   }
   .buy {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    
-    span {
-       font-size: 20px;
-       line-height: 30px;
-       font-weight: 500; 
-       
+    & > div {
+      display: flex;
+      gap: 20px;
+      @media (max-width: $mobile) {
+        flex-wrap: wrap;
+      }
+
+      input {
+        max-width: 384px;
+        height: 50px;
+        background: var(--gray);
+        padding: 10px;
+        font-size: 20px;
+      }
     }
-    & > form {
-        display: flex;
-        gap: 25px;
-        @media(max-width:$mobile) {
-          flex-wrap: wrap;
-        }
-        input {
-            max-width: 384px;
-            height: 50px;
-            background: var(--gray);
-            padding: 10px;
-            font-size: 20px;
-        }
-    }
+  }
+  span {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 500;
+  }
+
+  p {
+    color: rgb(190, 34, 34);
   }
 }

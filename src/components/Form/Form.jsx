@@ -14,9 +14,9 @@ import InputName from "./InputName";
 import InputPhone from "./InputPhone";
 import InputEmail from "./InputEmail";
 import TextArea from "./TextArea";
-import InputPassword from "./InputPassword";
 
-const Form = ({ styleForm, popupForm }) => {
+
+const Form = ({ styleForm }) => {
   const dispatch = useDispatch();
   const [isBlurred, setIsBlurred] = useState({
     name: false,
@@ -36,10 +36,9 @@ const Form = ({ styleForm, popupForm }) => {
   });
 
   const {
-    handleSubmit,
     formState: { isValid },
     getValues,
-    trigger
+    trigger,
   } = methods;
 
   const handleBlurred = async (field) => {
@@ -56,11 +55,10 @@ const Form = ({ styleForm, popupForm }) => {
         email: getValues("email"),
         text: getValues("text"),
       };
-      if(styleForm) {
+      if (styleForm) {
         dispatch(getValueForm(formValues));
         dispatch(formValidated(true));
         dispatch(addError({ index: 1, error: [] }));
-
       } else {
         dispatch(getValueGift(formValues));
         dispatch(formValidated(true));
@@ -71,49 +69,20 @@ const Form = ({ styleForm, popupForm }) => {
   }, [isValid, allBlurred]);
 
   return (
-    <>
-      {!popupForm ? (
-        <FormProvider {...methods}>
-          <form>
-            <div className={classForm}>
-              <div className={style.inputs}>
-                <InputName
-                  handleBlurred={handleBlurred}
-                  classError={classError}
-                />
+    <FormProvider {...methods}>
+      <form>
+        <div className={classForm}>
+          <div className={style.inputs}>
+            <InputName handleBlurred={handleBlurred} classError={classError} />
 
-                <InputPhone
-                  handleBlurred={handleBlurred}
-                  classError={classError}
-                />
+            <InputPhone handleBlurred={handleBlurred} classError={classError} />
 
-                <InputEmail
-                  handleBlurred={handleBlurred}
-                  classError={classError}
-                />
-              </div>
-              <TextArea handleBlurred={handleBlurred} classError={classError} />
-            </div>
-          </form>
-        </FormProvider>
-      ) : (
-        <FormProvider {...methods}>
-          <form>
-            <div className={classForm}>
-              <div className={style.inputs}>
-                <InputEmail
-                  handleBlurred={handleBlurred}
-                  classError={classError}
-                />
-                <InputPassword handleBlurred={handleBlurred}
-                  classError={classError}/>
-              </div>
-
-            </div>
-          </form>
-        </FormProvider>
-      )}
-    </>
+            <InputEmail handleBlurred={handleBlurred} classError={classError} />
+          </div>
+          <TextArea handleBlurred={handleBlurred} classError={classError} />
+        </div>
+      </form>
+    </FormProvider>
   );
 };
 

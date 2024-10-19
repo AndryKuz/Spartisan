@@ -16,6 +16,7 @@ export const personalAreaSlice = createSlice({
       passwordNew: null,
       passwordNewAgain: null,
     },
+    buyVisit:null,
     activeButton: defaultPersonalButton,
   },
   reducers: {
@@ -42,9 +43,12 @@ export const personalAreaSlice = createSlice({
     changeButton: (state, { payload }) => {
       state.activeButton = payload;
     },
+    getNumberOfVisits: (state, {payload}) => {
+      state.buyVisit = payload;
+    }
   },
   extraReducers: (builder) => {},
 });
 
-export const { updateInfo, changeButton } = personalAreaSlice.actions;
+export const { updateInfo, changeButton,getNumberOfVisits } = personalAreaSlice.actions;
 export default personalAreaSlice.reducer;

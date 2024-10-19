@@ -52,7 +52,7 @@ const Booking = () => {
       setErrorMessageTime(null);
       dispatch(successOrder());
       dispatch(defaultInitialState());
-      navigate(ROUTES.RESULT, { state: { status: "booking" } });
+      navigate(ROUTES.RESULT, { state: { status: "booking" },replace:true });
     }
   };
 

@@ -1,13 +1,15 @@
 import { useSelector } from "react-redux";
 import { MainButton, nameMainButton } from "../Button/MainButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import style from "./CartInfo.module.scss";
 import { selectPrograms } from "features/booking/bookingSlice";
+import { ROUTES } from "components/Routes";
 
 const CartInfo = ({ program = [] }) => {
   const [programSelected] = useSelector(selectPrograms);
+  const navigate = useNavigate();
 
   const subTitleAnimation = {
     hidden: {
@@ -23,6 +25,9 @@ const CartInfo = ({ program = [] }) => {
       },
     },
   };
+  const handleClick = () => {
+    navigate(ROUTES.BOOKING);
+  }
 
   return (
     <motion.div
@@ -55,7 +60,7 @@ const CartInfo = ({ program = [] }) => {
         </ul>
         <div className={style.button}>
           <div style={{ display: "flex" }}>
-            <MainButton buttonLabel={nameMainButton[1]} />
+            <MainButton buttonLabel={nameMainButton[1]} onClick={handleClick}/>
           </div>
         </div>
       </motion.div>
