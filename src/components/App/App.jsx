@@ -21,13 +21,13 @@ function App() {
 
   const openBurger = () => dispatch(toggleBurger(true));
   const closeBurger = () => dispatch(toggleBurger(false));
-  
+
   useEffect(() => {
-    document.title = "Spartisan"; 
+    document.title = "Spartisan";
   }, []);
   return (
     <div className="wrapper">
-       <Header openBurger={openBurger} />
+      <Header openBurger={openBurger} />
       <Burger isOpenBurger={activeBurger} closeBurger={closeBurger} />
       {showForm && <UserForm />}
       <main>

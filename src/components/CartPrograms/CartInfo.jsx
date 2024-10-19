@@ -10,6 +10,7 @@ import { ROUTES } from "components/Routes";
 const CartInfo = ({ program = [] }) => {
   const [programSelected] = useSelector(selectPrograms);
   const navigate = useNavigate();
+  console.log(programSelected);
 
   const subTitleAnimation = {
     hidden: {
@@ -42,7 +43,7 @@ const CartInfo = ({ program = [] }) => {
         <p className={style.price}>€{program.price}per person</p>
         <p className={style.time}>{program.time} minutes / 5 guests maximum</p>
         <div style={{ display: "flex" }}>
-          <Link to={`/booking/${programSelected.id}`}>
+          <Link to={`/booking/${programSelected.title.replace(/\s+/g, "-")}`}>
             <MainButton buttonLabel={nameMainButton[1]} />
           </Link>
         </div>
@@ -60,10 +61,7 @@ const CartInfo = ({ program = [] }) => {
         </ul>
         <div className={style.button}>
           <div style={{ display: "flex" }}>
-            <MainButton
-              buttonLabel={nameMainButton[1]}
-              onClick={handleClick}
-            />
+            <MainButton buttonLabel={nameMainButton[1]} onClick={handleClick} />
           </div>
         </div>
       </motion.div>

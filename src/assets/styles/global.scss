@@ -53,7 +53,9 @@ $mobileSmall: 479.98px;
   z-index: 900;
 }
 
-
+.no-scroll {
+  overflow: hidden;
+}
 
 .slick-arrow {
   display: none !important;
