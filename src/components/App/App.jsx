@@ -22,6 +22,7 @@ function App() {
   const openBurger = () => dispatch(toggleBurger(true));
   const closeBurger = () => dispatch(toggleBurger(false));
 
+
   useEffect(() => {
     document.title = "Spartisan";
   }, []);

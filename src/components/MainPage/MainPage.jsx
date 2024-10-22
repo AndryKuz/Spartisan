@@ -31,6 +31,7 @@ const MainPage = ({ scrollToProgram }) => {
       transition: commonTransition,
     },
   };
+  
   return (
     <motion.section
       initial="hidden"
@@ -39,7 +40,7 @@ const MainPage = ({ scrollToProgram }) => {
       className={style.pageParent}
     >
       <div className={style.mainPage}>
-        <motion.h3 variants={titleAnimation}>
+        <motion.h3 variants={titleAnimation} >
           The art of restoring the body through
         </motion.h3>
         <motion.h2 variants={subTitleAnimation}>bath procedures</motion.h2>

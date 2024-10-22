@@ -10,7 +10,7 @@ import { ROUTES } from "components/Routes";
 const CartInfo = ({ program = [] }) => {
   const [programSelected] = useSelector(selectPrograms);
   const navigate = useNavigate();
-  console.log(programSelected);
+
 
   const subTitleAnimation = {
     hidden: {
